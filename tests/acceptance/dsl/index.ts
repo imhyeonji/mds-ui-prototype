@@ -1,5 +1,6 @@
 // Layer 2 entry point: the `test` the specs use, with the data provider DSL as a fixture.
 import { test as base } from '@playwright/test';
+import { createOfferMetadataDriver } from '../drivers';
 import type { OfferMetadataDriver } from './driver';
 import { ProviderDsl } from './provider-dsl';
 
@@ -10,15 +11,11 @@ type AcceptanceFixtures = {
   provider: ProviderDsl;
 };
 
-function noDriverYet(): never {
-  throw new Error('No protocol driver yet: layer 3 must provide the "offerMetadataDriver" fixture.');
-}
-
 // The fixture callback is named `provide` rather than Playwright's usual `use`, which the
 // React hooks lint rule would mistake for a hook.
 export const test = base.extend<AcceptanceFixtures>({
   offerMetadataDriver: async ({}, provide) => {
-    await provide(noDriverYet());
+    await provide(createOfferMetadataDriver());
   },
   provider: async ({ offerMetadataDriver }, provide) => {
     await provide(new ProviderDsl(offerMetadataDriver));

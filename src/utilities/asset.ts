@@ -61,7 +61,7 @@ import {
   DataAddress,
 } from "@think-it-labs/edc-connector-client";
 import { HttpDataAddress } from "@think-it-labs/edc-connector-client/dist/src/entities/data-address";
-import { readValue } from "@think-it-labs/edc-connector-ui/json-ld";
+import { readValue } from "@/utilities/json-ld-value";
 import jsonld from "jsonld";
 import { useCallback } from "react";
 import {
