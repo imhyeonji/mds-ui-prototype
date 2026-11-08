@@ -150,6 +150,9 @@ export const en = {
           fix: "Fix {{item}}",
         },
         points: "+{{points}}",
+        indicator: {
+          showPanel: "Metadata quality {{score}}/100, {{band}}: show the details",
+        },
         notCountedTitle: "Not counted",
         reasons: {
           placeholder: "{{item}} looks like a placeholder.",

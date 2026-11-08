@@ -23,7 +23,7 @@ import { AssetTransportMode } from "@/components/molecules/asset-transport-mode.
 import { AssetVersion } from "@/components/molecules/asset-version.tsx";
 import { Snackbar } from "@/components/molecules/snackbar.tsx";
 import { FormDataAddressStep } from "@/components/organisms/form-data-address-step.tsx";
-import { MetadataQualityPanel } from "@/components/organisms/metadata-quality-panel";
+import { AssetFormMetadataQuality } from "@/components/organisms/asset-form-metadata-quality";
 import SideDrawer from "@/components/organisms/side-drawer.tsx";
 import { DATA_OFFER_TYPE_DATA_SOURCE } from "@/constants/data-address-types.ts";
 import { useMetadataQualityGuidance } from "@/hooks/use-metadata-quality-guidance";
@@ -256,7 +256,7 @@ export default function EditAssetPage() {
 
             <Divider />
 
-            <MetadataQualityPanel quality={quality} onFollowSuggestion={onFollowSuggestion} />
+            <AssetFormMetadataQuality quality={quality} onFollowSuggestion={onFollowSuggestion} />
 
             <div className="grid sm:grid-cols-3 gap-2 sm:gap-6">
               <div className="sm:col-span-1">

@@ -24,7 +24,7 @@ import { AssetTransportMode } from "@/components/molecules/asset-transport-mode"
 import { AssetVersion } from "@/components/molecules/asset-version";
 import { Snackbar } from "@/components/molecules/snackbar";
 import { FormDataAddressStep } from "@/components/organisms/form-data-address-step";
-import { MetadataQualityPanel } from "@/components/organisms/metadata-quality-panel";
+import { AssetFormMetadataQuality } from "@/components/organisms/asset-form-metadata-quality";
 import PolicyExpression from "@/components/organisms/policy-expression";
 import SideDrawer from "@/components/organisms/side-drawer";
 import {
@@ -440,7 +440,7 @@ export default function CreateDataOfferPage() {
 
             <Divider />
 
-            <MetadataQualityPanel quality={quality} onFollowSuggestion={onFollowSuggestion} />
+            <AssetFormMetadataQuality quality={quality} onFollowSuggestion={onFollowSuggestion} />
 
             <div className="grid sm:grid-cols-3 gap-2 sm:gap-6">
               <div className="sm:col-span-1">
