@@ -16,7 +16,7 @@ import { cn } from "./translations/cn";
 import { de } from "./translations/de";
 import { en } from "./translations/en";
 
-type TranslatorFn = (key: string) => string;
+type TranslatorFn = (key: string, values?: Record<string, string>) => string;
 
 interface TranslatorContextType {
   translator: TranslatorFn;

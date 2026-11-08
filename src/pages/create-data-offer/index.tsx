@@ -24,6 +24,7 @@ import { AssetTransportMode } from "@/components/molecules/asset-transport-mode"
 import { AssetVersion } from "@/components/molecules/asset-version";
 import { Snackbar } from "@/components/molecules/snackbar";
 import { FormDataAddressStep } from "@/components/organisms/form-data-address-step";
+import { MetadataQualityPanel } from "@/components/organisms/metadata-quality-panel";
 import PolicyExpression from "@/components/organisms/policy-expression";
 import SideDrawer from "@/components/organisms/side-drawer";
 import {
@@ -33,6 +34,7 @@ import {
   PUBLISH_MODES,
 } from "@/constants/data-address-types";
 import { proxyConnectorManagement } from "@/constants/proxy";
+import { useMetadataQualityGuidance } from "@/hooks/use-metadata-quality-guidance";
 import { useParticipantConnectorState } from "@/hooks/use-participant-connector-state";
 import { T, useTranslator } from "@/i18n";
 import { ASSET_TITLE, ASSET_VERSION } from "@/jsonld/asset";
@@ -91,7 +93,6 @@ export default function CreateDataOfferPage() {
   const { push, connector } = useParticipantConnectorState();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const [showAdvancedFields, setShowAdvancedFields] = useState(false);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   const { translator } = useTranslator();
@@ -113,6 +114,9 @@ export default function CreateDataOfferPage() {
   const [publishMode, setPublishMode] = useState(
     PUBLISH_MODE_PUBLISH_UNRESTRICTED.value as string,
   );
+
+  const { quality, showAdvancedFields, onToggleAdvancedFields, onFollowSuggestion } =
+    useMetadataQualityGuidance(formData.asset.properties);
 
   const [errors, setErrors] = useState({
     properties: {},
@@ -436,6 +440,8 @@ export default function CreateDataOfferPage() {
 
             <Divider />
 
+            <MetadataQualityPanel quality={quality} onFollowSuggestion={onFollowSuggestion} />
+
             <div className="grid sm:grid-cols-3 gap-2 sm:gap-6">
               <div className="sm:col-span-1">
                 <label className="inline-block text-sm text-black mt-2.5">
@@ -517,7 +523,7 @@ export default function CreateDataOfferPage() {
                     <MuiCheckbox
                       color="secondary"
                       checked={showAdvancedFields}
-                      onChange={() => setShowAdvancedFields((value) => !value)}
+                      onChange={onToggleAdvancedFields}
                     />
                   }
                 />
