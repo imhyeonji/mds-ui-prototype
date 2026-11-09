@@ -1,0 +1,11 @@
+export function transferPresentation(state: string, type: string, method: string, hasError = false) {
+  const canPreview = !hasError && type === "CONSUMER" && state === "STARTED" && method === "HttpData-PULL";
+  if (hasError) return { label: "Needs attention", tone: "error" as const, description: "The connector reported an error. Review the transfer with your connector administrator.", canPreview };
+  if (state === "STARTED") return { label: "Transfer active", tone: "success" as const, description: canPreview ? "Open Preview to retrieve data. An active transfer does not guarantee that the provider will respond successfully." : type === "PROVIDER" ? "You are providing this dataset. Preview is available for incoming HTTP Pull transfers." : "This transfer method does not support the HTTP Pull preview.", canPreview };
+  if (state === "COMPLETED") return { label: "Transfer completed", tone: "info" as const, description: "The connector reports completion. This does not confirm that data has been opened or downloaded in this UI.", canPreview };
+  if (["SUSPENDING", "SUSPENDED"].includes(state)) return { label: "Transfer paused", tone: "warning" as const, description: "Data preview is unavailable while this transfer is paused.", canPreview };
+  if (["TERMINATING", "TERMINATED", "DEPROVISIONING", "DEPROVISIONING_REQUESTED", "DEPROVISIONED"].includes(state)) return { label: "Transfer ended", tone: "default" as const, description: "This transfer is closing or has ended. Use an active HTTP Pull transfer to preview data.", canPreview };
+  if (["INITIAL", "PROVISIONING", "PROVISIONING_REQUESTED", "PROVISIONED", "REQUESTING", "REQUESTED", "STARTING"].includes(state)) return { label: "Preparing access", tone: "info" as const, description: "The connector is preparing the transfer. Refresh to check whether it is ready.", canPreview };
+  if (state === "COMPLETING") return { label: "Finishing transfer", tone: "info" as const, description: "The connector is finishing this transfer. Preview is not available in this state.", canPreview };
+  return { label: "Status unavailable", tone: "default" as const, description: "This status is not recognised. Technical details include the connector's original state.", canPreview };
+}

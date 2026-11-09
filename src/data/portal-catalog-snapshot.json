@@ -1,0 +1,2924 @@
+{
+  "availableFilters": {
+    "fields": [
+      {
+        "id": "dataCategory",
+        "title": "Data Category",
+        "displayType": "TITLE_ONLY",
+        "values": [
+          {
+            "id": "CYCLE_NETWORK_DATA",
+            "title": "CYCLE_NETWORK_DATA",
+            "numTotal": 1
+          },
+          {
+            "id": "FILLING_AND_CHARGING_STATIONS",
+            "title": "FILLING_AND_CHARGING_STATIONS",
+            "numTotal": 7
+          },
+          {
+            "id": "FREIGHT_AND_LOGISTICS",
+            "title": "FREIGHT_AND_LOGISTICS",
+            "numTotal": 1
+          },
+          {
+            "id": "GENERAL_INFORMATION_FOR_TRIP-PLANNING",
+            "title": "GENERAL_INFORMATION_FOR_TRIP-PLANNING",
+            "numTotal": 3
+          },
+          {
+            "id": "OTHER",
+            "title": "OTHER",
+            "numTotal": 43
+          },
+          {
+            "id": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+            "title": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+            "numTotal": 10
+          },
+          {
+            "id": "PEDESTRIAN_NETWORK_DATA",
+            "title": "PEDESTRIAN_NETWORK_DATA",
+            "numTotal": 1
+          },
+          {
+            "id": "PUBLIC_TRANSPORT_SCHEDULED_TRANSPORT",
+            "title": "PUBLIC_TRANSPORT_SCHEDULED_TRANSPORT",
+            "numTotal": 5
+          },
+          {
+            "id": "REAL_TIME_TRAFFIC_DATA",
+            "title": "REAL_TIME_TRAFFIC_DATA",
+            "numTotal": 7
+          },
+          {
+            "id": "ROAD_EVENTS_AND_CONDITIONS",
+            "title": "ROAD_EVENTS_AND_CONDITIONS",
+            "numTotal": 26
+          },
+          {
+            "id": "ROAD_WORK_INFORMATION",
+            "title": "ROAD_WORK_INFORMATION",
+            "numTotal": 5
+          },
+          {
+            "id": "SHARING_AND_HIRING_SERVICES",
+            "title": "SHARING_AND_HIRING_SERVICES",
+            "numTotal": 4
+          },
+          {
+            "id": "STATIC_ROAD_NETWORK_DATA",
+            "title": "STATIC_ROAD_NETWORK_DATA",
+            "numTotal": 12
+          },
+          {
+            "id": "",
+            "title": "",
+            "numTotal": 7
+          }
+        ]
+      },
+      {
+        "id": "dataSubcategory",
+        "title": "Sub Category",
+        "displayType": "TITLE_ONLY",
+        "values": [
+          {
+            "id": "ACCIDENTS_AND_INCIDENTS",
+            "title": "ACCIDENTS_AND_INCIDENTS",
+            "numTotal": 1
+          },
+          {
+            "id": "BIKE_PARKING_LOCATIONS",
+            "title": "BIKE_PARKING_LOCATIONS",
+            "numTotal": 1
+          },
+          {
+            "id": "CAR_PARKING_AVAILABILITY",
+            "title": "CAR_PARKING_AVAILABILITY",
+            "numTotal": 2
+          },
+          {
+            "id": "GRADIENTS",
+            "title": "GRADIENTS",
+            "numTotal": 1
+          },
+          {
+            "id": "HAZARD_WARNINGS",
+            "title": "HAZARD_WARNINGS",
+            "numTotal": 9
+          },
+          {
+            "id": "POINTS_OF_INTERESTS",
+            "title": "POINTS_OF_INTERESTS",
+            "numTotal": 2
+          },
+          {
+            "id": "POOR_ROAD_CONDITIONS",
+            "title": "POOR_ROAD_CONDITIONS",
+            "numTotal": 1
+          },
+          {
+            "id": "ROAD_WEATHER_CONDITIONS",
+            "title": "ROAD_WEATHER_CONDITIONS",
+            "numTotal": 2
+          },
+          {
+            "id": "SHORT_TERM_ROAD_WORKS",
+            "title": "SHORT_TERM_ROAD_WORKS",
+            "numTotal": 1
+          },
+          {
+            "id": "TRAFFIC_VOLUME",
+            "title": "TRAFFIC_VOLUME",
+            "numTotal": 2
+          },
+          {
+            "id": "",
+            "title": "",
+            "numTotal": 110
+          }
+        ]
+      },
+      {
+        "id": "transportMode",
+        "title": "Transport Mode",
+        "displayType": "TITLE_ONLY",
+        "values": [
+          {
+            "id": "BICYCLE",
+            "title": "BICYCLE",
+            "numTotal": 1
+          },
+          {
+            "id": "BUS",
+            "title": "BUS",
+            "numTotal": 1
+          },
+          {
+            "id": "CAR",
+            "title": "CAR",
+            "numTotal": 1
+          },
+          {
+            "id": "Road",
+            "title": "Road",
+            "numTotal": 6
+          },
+          {
+            "id": "ROAD",
+            "title": "ROAD",
+            "numTotal": 1
+          },
+          {
+            "id": "",
+            "title": "",
+            "numTotal": 122
+          }
+        ]
+      },
+      {
+        "id": "dataModel",
+        "title": "Data Model",
+        "displayType": "TITLE_ONLY",
+        "values": [
+          {
+            "id": "to be defined",
+            "title": "to be defined",
+            "numTotal": 132
+          }
+        ]
+      },
+      {
+        "id": "geoReferenceMethod",
+        "title": "Geo Reference Method",
+        "displayType": "TITLE_ONLY",
+        "values": [
+          {
+            "id": "GeoJSON",
+            "title": "GeoJSON",
+            "numTotal": 1
+          },
+          {
+            "id": "Lat/Lon",
+            "title": "Lat/Lon",
+            "numTotal": 1
+          },
+          {
+            "id": "Latitude / Longitude",
+            "title": "Latitude / Longitude",
+            "numTotal": 1
+          },
+          {
+            "id": "latitude 55°40′48.00″ North, longitude 12°35′24.00″ East",
+            "title": "latitude 55°40′48.00″ North, longitude 12°35′24.00″ East",
+            "numTotal": 1
+          },
+          {
+            "id": "Latitude/Longitude",
+            "title": "Latitude/Longitude",
+            "numTotal": 3
+          },
+          {
+            "id": "N/A",
+            "title": "N/A",
+            "numTotal": 1
+          },
+          {
+            "id": "WGS84",
+            "title": "WGS84",
+            "numTotal": 1
+          },
+          {
+            "id": "",
+            "title": "",
+            "numTotal": 123
+          }
+        ]
+      },
+      {
+        "id": "organization",
+        "title": "Organisation",
+        "displayType": "ID_AND_TITLE",
+        "values": [
+          {
+            "id": "MDSLMP360A",
+            "title": "Bayern Tourismus Marketing GmbH",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSLW30JNM",
+            "title": "BMW AG",
+            "numTotal": 7
+          },
+          {
+            "id": "MDSLOISOYW",
+            "title": "Centre for Research and Technology Hellas (CERTH)",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSL0WJHGU",
+            "title": "City of Copenhagen",
+            "numTotal": 8
+          },
+          {
+            "id": "MDSLQ9BZTB",
+            "title": "Cluj-Napoca City Hall",
+            "numTotal": 3
+          },
+          {
+            "id": "MDSLGP4CE1",
+            "title": "DEKRA Automobil GmbH",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSLE74Y7T",
+            "title": "Dinycon Sistemas S.L.",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSLSKNVL3",
+            "title": "Fraunhofer IEE",
+            "numTotal": 6
+          },
+          {
+            "id": "MDSLKSDTEA",
+            "title": "Gemeente Enschede",
+            "numTotal": 2
+          },
+          {
+            "id": "MDSL6V4R6A",
+            "title": "Gemeente Zwolle",
+            "numTotal": 6
+          },
+          {
+            "id": "MDSLON9YRS",
+            "title": "HAAS, Inc., DBA HAAS Alert",
+            "numTotal": 9
+          },
+          {
+            "id": "MDSLECJ4PT",
+            "title": "HERE Global B. V.",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSL2NZSXL",
+            "title": "Hochschule Mainz",
+            "numTotal": 2
+          },
+          {
+            "id": "MDSLWQIMJK",
+            "title": "Hochschule Osnabrück",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSLVT64MC",
+            "title": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+            "numTotal": 26
+          },
+          {
+            "id": "MDSLGEUQ49",
+            "title": "Initiative für sichere Straßen GmbH",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSLV9P5Z3",
+            "title": "Korea Association for Land, Infrastructure transport Data Advancement",
+            "numTotal": 2
+          },
+          {
+            "id": "MDSLXYYTFW",
+            "title": "Le Havre Seine Métropole",
+            "numTotal": 2
+          },
+          {
+            "id": "MDSL6EX8DA",
+            "title": "Luxembourg Institute of Science and Technology",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSLR67WHG",
+            "title": "Mercedes-Benz Connectivity Services GmbH",
+            "numTotal": 6
+          },
+          {
+            "id": "MDSLTL4VU9",
+            "title": "Mobilithek",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSL5WB4V8",
+            "title": "Mobito Technology SRL",
+            "numTotal": 4
+          },
+          {
+            "id": "MDSLPKUSSI",
+            "title": "NOI SpA",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSL4R9Q11",
+            "title": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+            "numTotal": 12
+          },
+          {
+            "id": "MDSL2ZEPYL",
+            "title": "POST Luxembourg",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSL0OPWUM",
+            "title": "Province of Antwerp",
+            "numTotal": 7
+          },
+          {
+            "id": "MDSL5T27NS",
+            "title": "Robert Bosch GmbH",
+            "numTotal": 2
+          },
+          {
+            "id": "MDSLZVSQT8",
+            "title": "Smart City System Parking Solutions GmbH",
+            "numTotal": 3
+          },
+          {
+            "id": "MDSLB4CFI4",
+            "title": "TÜV-Verband e.V.",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSLGIA2RT",
+            "title": "Universidad de Alicante",
+            "numTotal": 4
+          },
+          {
+            "id": "MDSL5CAG6R",
+            "title": "Universität Potsdam",
+            "numTotal": 1
+          },
+          {
+            "id": "MDSLOQXDPS",
+            "title": "Virtual Vehicle Research GmbH",
+            "numTotal": 2
+          },
+          {
+            "id": "MDSL8ER695",
+            "title": "VW GIS AG",
+            "numTotal": 4
+          },
+          {
+            "id": "MDSLDGW498",
+            "title": "Škoda Auto Vysoká škola z.ú.",
+            "numTotal": 2
+          }
+        ]
+      },
+      {
+        "id": "dataSourceAvailability",
+        "title": "Data Offer Type",
+        "displayType": "TITLE_ONLY",
+        "values": [
+          {
+            "id": "Available",
+            "title": "Available",
+            "numTotal": 112
+          },
+          {
+            "id": "On Request",
+            "title": "On Request",
+            "numTotal": 20
+          }
+        ]
+      }
+    ]
+  },
+  "availableSortings": [
+    {
+      "sorting": "MOST_RECENT",
+      "title": "Most Recent"
+    },
+    {
+      "sorting": "TITLE",
+      "title": "By Title"
+    },
+    {
+      "sorting": "ORIGINATOR",
+      "title": "By Connector"
+    },
+    {
+      "sorting": "VIEW_COUNT",
+      "title": "By Popularity"
+    }
+  ],
+  "paginationMetadata": {
+    "numTotal": 132,
+    "numVisible": 10,
+    "pageOneBased": 1,
+    "pageSize": 10
+  },
+  "dataOffers": [
+    {
+      "assetId": "mds-local-hazard-prod-fleet",
+      "assetTitle": "BMW SRTI feed for DFRS",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Dataset containing all data that **BMW AG** is providing towards www.dataforroadsafety.eu \\n\\nEach event is generated out of respective vehicle signals in a completely anonymized way. The data format is www.sensoris.org V1.6.0 \\n\\nThe feed contains data from various vehicle generations comprising several million actively contributing vehicles in Europe . \\nAll location information in the field dataMessage.eventGroup.localizationCategory.vehiclePositionAndOrientation is a list of 3 vehiclePositions in ascending order (from oldest to youngest), the one in the middle is closest to the timestamp, the first and third one are the vehiclePositions right before and after this one, unless the timestamp is less than one second - then the next ones are taken. \\ndataMessage.eventGroup.localizationCategory.vehiclePositionAndOrientation.timestamp.posixTime (Int64Value) is rounded to the nearest 5 minute interval, and only set for one vehicle position: the one closest to the timestamp, \\ndataMessage.eventGroup.localizationCategory.vehiclePositionAndOrientation.positionAndAccuracy.geographicWgs84.longitude (Int64Value) is restricted to -180 to 180, scaled to 10**8 \\ndataMessage.eventGroup.localizationCategory.vehiclePositionAndOrientation.positionAndAccuracy.geographicWgs84.latitude (Int64Value) is restricted to -90 to 90, scaled to 10**8 \\ndataMessage.eventGroup.localizationCategory.vehiclePositionAndOrientation.orientationAndAccuracy.eulerVehicle.yaw (Int64Value) is restricted to 0 to 360, scaled to 10**2, can be null, north is 0, east is 90 \\ndataMessage.eventGroup.trafficEventsCategory.hazard.envelope.timestamp.posixTime (Int64Value) is rounded to the closest even 5 min multiple in the past (consumers are advised to use their reception time to get a more precise generation time) \\ndataMessage.eventGroup.trafficEventsCategory.hazard.envelope.detectionType.type (enum) is set to various values according to the usecase, indicating the algorithmic logic applied in generating the event according to the SENSORIS specification \\ndataMessage.eventGroup.trafficEventsCategory.hazard.typeAndConfidence.type (enum) is set to various values according to the usecases. The mapping to the usecases described in delegated regulation 886/2013, which is the base for www.dataforroadsafety.eu, is: \\nSRTI category | BMW Usecase Temporary slippery road | SLIPPERY_ROAD Animal, people, obstacles, debris on the road | BROKEN_DOWN_VEHICLE, ACCIDENT (meaning the ego-vehicle) Unprotected accident area | BROKEN_DOWN_VEHICLE, ACCIDENT Unmanaged blockage of a road | BROKEN_DOWN_VEHICLE, ACCIDENT (meaning the ego-vehicle) Wrong-way driver | WRONG_WAY_VEHICLE (meaning the ego vehicle) \\n\\nThe weather type usecases are encoded in dataMessage.eventGroup.visibilitycondition.typeandconfidence.type \\nSRTI category | BMW Usecase Reduced visibility | LOW_HEAVY_RAIN, LOW_FOG Exceptional weather conditions | LOW_HEAVY_RAIN, LOW_FOG SRTI category 'Short-term road works' is currently not implemented",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLW30JNM.CSYI9O8",
+      "organizationId": "MDSLW30JNM",
+      "organizationName": "BMW AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-09T06:05:05.77557Z",
+      "dataCategory": "",
+      "connectorEndpoint": "https://connector-mds-prod.edc.aws.bmw.cloud/api/dsp"
+    },
+    {
+      "assetId": "data.mds.localHazardInformation.accident_T",
+      "assetTitle": "BMW Accident",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Dataset for the **'Accident'** provided by **BMW AG**.\n\nEach event is generated out of respective vehicle signals (e.g. Emergency-Call trigger) in a completely anonymized way. The position information given consists of up to three consecutive points sorted by time, only one point has a timestamp, that is rounded to 5 minutes.\n\nThe events are provided for the geographic rectangle given by **northLatitude** = 71.5, **southLatitude** = 34.5, **eastLongitude** = 65.0, **westLongitude** = -11.0 .\n\nThe dataset contains events of the last 30 minutes and gets updated every 5 minutes.\n\nPlease note that the datasets are deactivated between von 7 pm - 6 am CEST and during the weekend.",
+      "version": "1.0",
+      "keywords": [],
+      "connectorId": "MDSLW30JNM.CSYI9O8",
+      "organizationId": "MDSLW30JNM",
+      "organizationName": "BMW AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-09T06:05:05.77557Z",
+      "dataCategory": "",
+      "connectorEndpoint": "https://connector-mds-prod.edc.aws.bmw.cloud/api/dsp"
+    },
+    {
+      "assetId": "data.mds.localHazardInformation.slipperyRoad_T",
+      "assetTitle": "BMW Slippery Road",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Dataset for the **'Slippery Road'** provided by **BMW AG**.\n\nEach event is generated out of respective vehicle signals (e.g. dynamic stabilization control (DSC)) in a completely anonymized way. The position information given consists of up to three consecutive points sorted by time, only one point has a timestamp, that is rounded to 5 minutes.\n\nThe events are provided for the geographic rectangle given by **northLatitude** = 71.5, **southLatitude** = 34.5, **eastLongitude** = 65.0, **westLongitude** = -11.0 .\n\nThe dataset contains events of the last 30 minutes and gets updated every 5 minutes.\n\nPlease note that the datasets are deactivated between von 7 pm - 6 am CEST and during the weekend.",
+      "version": "1.0",
+      "keywords": [],
+      "connectorId": "MDSLW30JNM.CSYI9O8",
+      "organizationId": "MDSLW30JNM",
+      "organizationName": "BMW AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-09T06:05:05.77557Z",
+      "dataCategory": "",
+      "connectorEndpoint": "https://connector-mds-prod.edc.aws.bmw.cloud/api/dsp"
+    },
+    {
+      "assetId": "data.mds.localHazardInformation.tjtail_T",
+      "assetTitle": "BMW Dangerous Slowdown",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Dataset for the **'Dangerous Slowdown'** provided by **BMW AG**.\n\nEach event is generated out of respective vehicle signals (e.g. dynamic stabilization control (DSC)) in a completely anonymized way. The position information given consists of up to three consecutive points sorted by time, only one point has a timestamp, that is rounded to 5 minutes.\n\nThe events are provided for the geographic rectangle given by **northLatitude** = 71.5, **southLatitude** = 34.5, **eastLongitude** = 65.0, **westLongitude** = -11.0 . \n\nThe dataset contains events of the last 30 minutes and gets updated every 5 minutes.\n\nPlease note that the datasets are deactivated between von 7 pm - 6 am CEST and during the weekend.",
+      "version": "1.0",
+      "keywords": [],
+      "connectorId": "MDSLW30JNM.CSYI9O8",
+      "organizationId": "MDSLW30JNM",
+      "organizationName": "BMW AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-09T06:05:05.77557Z",
+      "dataCategory": "",
+      "connectorEndpoint": "https://connector-mds-prod.edc.aws.bmw.cloud/api/dsp"
+    },
+    {
+      "assetId": "data.mds.localHazardInformation.fog_T",
+      "assetTitle": "BMW Fog",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Dataset for the **'Fog'** provided by **BMW AG**. \n\nEach event is generated out of respective vehicle signals (e.g. vehicle fog light) in a completely anonymized way. The position information given consists of up to three consecutive points sorted by time, only one point has a timestamp, that is rounded to 5 minutes. \n\nThe events are provided for the geographic rectangle given by **northLatitude** = 71.5, **southLatitude** = 34.5, **eastLongitude** = 65.0, **westLongitude** = -11.0.\n\nThe dataset contains events of the last 30 minutes and gets updated every 5 minutes.\n\nPlease note that the datasets are deactivated between von 7 pm - 6 am CEST and during the weekend.",
+      "version": "1.0",
+      "keywords": [],
+      "connectorId": "MDSLW30JNM.CSYI9O8",
+      "organizationId": "MDSLW30JNM",
+      "organizationName": "BMW AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-09T06:05:05.77557Z",
+      "dataCategory": "",
+      "connectorEndpoint": "https://connector-mds-prod.edc.aws.bmw.cloud/api/dsp"
+    },
+    {
+      "assetId": "data.mds.localHazardInformation.breakdown_T",
+      "assetTitle": "BMW Breakdown",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Dataset for the **'Breakdown'** provided by **BMW AG**.\n\nEach event is generated out of respective vehicle signals in a completely anonymized way. The position information given consists of up to three consecutive points sorted by time, only one point has a timestamp, that is rounded to 5 minutes.\n\nThe events are provided for the geographic rectangle given by **northLatitude** = 71.5, **southLatitude** = 34.5, **eastLongitude** = 65.0, **westLongitude** = -11.0 .\n\nThe dataset contains events of the last 30 minutes and gets updated every 5 minutes.\n\nPlease note that the datasets are deactivated between von 7 pm - 6 am CEST and during the weekend.",
+      "version": "1.0",
+      "keywords": [],
+      "connectorId": "MDSLW30JNM.CSYI9O8",
+      "organizationId": "MDSLW30JNM",
+      "organizationName": "BMW AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-09T06:05:05.77557Z",
+      "dataCategory": "",
+      "connectorEndpoint": "https://connector-mds-prod.edc.aws.bmw.cloud/api/dsp"
+    },
+    {
+      "assetId": "data.mds.localHazardInformation.heavyRain_T",
+      "assetTitle": "BMW Heavy Rain",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Dataset for the **'Heavy Rain'** provided by **BMW AG**. \n\nEach event is generated out of respective vehicle signals (e.g. wiper speed) in a completely anonymized way. The position information given consists of up to three consecutive points sorted by time, only one point has a timestamp, that is rounded to 5 minutes. \n\nThe events are provided for the geographic rectangle given by **northLatitude** = 71.5, **southLatitude** = 34.5, **eastLongitude** = 65.0, **westLongitude** = -11.0 . \n\nThe dataset contains events of the last 30 minutes and gets updated every 5 minutes. \n\nPlease note that the datasets are deactivated between von 7 pm - 6 am CEST and during the weekend.",
+      "version": "1.0",
+      "keywords": [],
+      "connectorId": "MDSLW30JNM.CSYI9O8",
+      "organizationId": "MDSLW30JNM",
+      "organizationName": "BMW AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-09T06:05:05.77557Z",
+      "dataCategory": "",
+      "connectorEndpoint": "https://connector-mds-prod.edc.aws.bmw.cloud/api/dsp"
+    },
+    {
+      "assetId": "987654321147852",
+      "assetTitle": "Mobilithek Test Asset",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLTL4VU9.CBGUMPQ",
+      "organizationId": "MDSLTL4VU9",
+      "organizationName": "Mobilithek",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-05T18:09:12.468027Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://preprod.mobilithek.info/api/dsp"
+    },
+    {
+      "assetId": "list-nextlogic-test",
+      "assetTitle": "LIST NEXTLOGIC TEST",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSL6EX8DA.CCSWCVZ",
+      "organizationId": "MDSL6EX8DA",
+      "organizationName": "Luxembourg Institute of Science and Technology",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-02T16:37:18.436524Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://list-prod-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "volvo-cars-2-0",
+      "assetTitle": "Volvo Cars",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "# Volvo Road Events\n\nKafka topic for consuming road event data published by Volvo",
+      "version": "",
+      "keywords": [
+        "DFRS",
+        "volvo",
+        "hazard"
+      ],
+      "connectorId": "MDSL2ZEPYL.C8PN0S9",
+      "organizationId": "MDSL2ZEPYL",
+      "organizationName": "POST Luxembourg",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-11-02T15:22:17.381688Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://edc-mds.post.lu/api/dsp"
+    },
+    {
+      "assetId": "mobito-anonymized-vehicle-origin-destination-data-product",
+      "assetTitle": "Mobito Anonymized Vehicle Origin-Destination Data Product",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "# What is Origin-Destination Data?\n\n## Description\n\nOrigin-Destination Data provides insights into the start and end location of individual vehicle trips.\n\n---\n\n## Data Source\n\nThe data is sourced from millions of vehicles globally via vetted partners, including:\n\n- **Automotive OEMs**:  \n  Vehicles with embedded connectivity from the car manufacturer.\n\n- **Fleets with after-sales telematics devices**:  \n  In-vehicle hardware installed post-manufacturing.\n\n---\n\n## Use Cases\n\n- **Transportation analytics**:  \n  Used by traffic consultants, road operators, municipalities, and SaaS analytics platforms to analyze road usage, people movement, and perform targeted before-and-after assessments of infrastructure or signage changes.\n\n- **Emission analysis**:  \n  Enables stakeholders to estimate emissions based on traffic information.\n\n---\n\n## Origin-Destination Data Schema\n\n**Main Attributes**\n\n- **`trip_id`** (string):  \n  Hashed ID for a single trip.\n\n- **`start_time`** (string):  \n  Time when the trip started (datetime UTC / seconds) in ISO 8601 format.\n\n- **`end_time`** (string):  \n  Time when the trip ended (datetime UTC / seconds) in ISO 8601 format.\n\n- **`duration`** (integer):  \n  Duration of the trip in seconds.\n\n- **`start_point`** (string):  \n  H3 hash of the trip’s starting location at H3 resolution 11.\n\n- **`start_latitude`** (double):  \n  Latitude of the center of the H3 grid at the trip start point.\n\n- **`start_longitude`** (double):  \n  Longitude of the center of the H3 grid at the trip start point.\n\n- **`end_point`** (string):  \n  H3 hash of the trip’s ending location at H3 resolution 11.\n\n- **`end_latitude`** (double):  \n  Latitude of the center of the H3 grid at the trip end point.\n\n- **`end_longitude`** (double):  \n  Longitude of the center of the H3 grid at the trip end point.\n\n- **`distance`** (double):  \n  Total distance covered during the trip in meters.\n\n- **`avg_speed`** (double):  \n  Average vehicle speed during the trip in km/h.\n\n- **`vehicle_type`** (string):  \n  Vehicle category (passenger, light van, heavy truck, bus, other).\n\n- **`fuel_type`** (string):  \n  Fuel type used by the vehicle.\n\n---\n\n## Origin-Destination Data Specs\n\n### Historicity\n\nHistorical data is available as of 2024. Availability differs by country.\n\n---\n\n### Trip Types\n\nThe dataset can include any of the following trip types:\n\n- All trips within a selected geographical area  \n- Trips that start within a selected area  \n- Trips that end within a selected area\n\n---\n\n### Vehicle Types\n\nThe following vehicle types are available in the datasets (availability varies by country):\n\n- **Passenger car**\n\n- **Light commercial vehicle (LCV)**  \n  These are van-type vehicles.  \n  Examples include: Renault Master, Renault Trafic, Mercedes-Benz Sprinter, Peugeot B**o**xer, V**o**lkswagen Crafter, Fiat Ducato, Opel Crossland, Citroën Berlingo\n\n- **Heavy truck**  \n  Vehicles with a gross weight above three and a half tonnes.\n\n- **Bus**\n\n- **Other**  \n  Unclassified vehicle types.\n\n---\n\n## Data Anonymisation\n\nData anonymisation techniques are applied to ensure privacy. Key features include:\n\n- **No exact locations**:  \n  Instead of precise coordinates, Mobito uses the **[H3 hexagonal grid system](https://h3geo.org/)** to generalize locations.\n\n- **[H3 Resolution 11 precision](https://h3geo.org/docs/core-library/restable/#average-area-in-m2)**:  \n  Each location is mapped to a hexagonal area to ensure privacy while preserving analytical value.",
+      "version": "",
+      "keywords": [
+        "vehicle trips",
+        "origin-destination",
+        "connected car data"
+      ],
+      "connectorId": "MDSL5WB4V8.CV901RD",
+      "organizationId": "MDSL5WB4V8",
+      "organizationName": "Mobito Technology SRL",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.630916Z",
+      "dataCategory": "REAL_TIME_TRAFFIC_DATA",
+      "connectorEndpoint": "https://anonymized-data.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "mobito-anonymized-aggregated-standstill-events-data",
+      "assetTitle": "Mobito Anonymized Aggregated Standstill Events Data",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "# What is Standstill Events Data?\n\n## Description\n\nStandstill Events Data provides insights into where and for how long vehicles remain stationary. This data helps analyze stop locations and durations, offering valuable context for traffic and mobility trends.\n\n---\n\n## Data Source\n\nThe data is sourced from millions of vehicles globally via vetted partners, including:\n\n- **Automotive OEMs**:  \n  Vehicles with embedded connectivity from the car manufacturer.\n\n- **Fleets with after-sales telematics devices**:  \n  In-vehicle hardware installed post-manufacturing.\n\n---\n\n## Use Cases\n\nStandstill Events Data becomes even more powerful when combined with Probe Data, allowing for a deeper understanding of trip patterns, traffic volumes, and stop durations. Key applications include:\n\n- **Site selection**:  \n  Identify optimal locations for retail store expansions and EV charging station deployments based on vehicle stop frequency and dwell times.\n\n- **Route planning**:  \n  Companies with large vehicle fleets (e.g., transportation companies) use this data to optimise routes, reduce fuel consumption, and improve operational efficiency.\n\n- **Transportation analytics**:  \n  Used by traffic consultants, road operators, municipalities, and SaaS analytics platforms to analyze road safety, road usage, and people movement. Also supports before-and-after studies to assess infrastructure and signage changes.\n\n---\n\n## Standstill Events Data Schema\n\n**Main Attributes**\n\n- **`start_time`** (string):  \n  The time when the standstill event started (datetime UTC / seconds).\n\n- **`end_time`** (string):  \n  The time when the standstill event ended (datetime UTC / seconds).\n\n- **`h3`** (string):  \n  H3 hash of the standstill event location in H3 resolution 11.\n\n- **`latitude`** (double):  \n  Latitude of the center of the H3 grid.\n\n- **`longitude`** (double):  \n  Longitude of the center of the H3 grid.\n\n- **`duration`** (double):  \n  Full duration of the standstill event in seconds.\n\n- **`fuel_type`** (string):  \n  Fuel type used by the vehicle.\n\n- **`vehicle_type`** (string):  \n  Vehicle category (passenger, light van, heavy truck, bus, other).\n\n---\n\n## Standstill Events Data Specs\n\n### Historicity\n\nHistorical data is available as of 2025\n\n---\n\n### Geographical Granularity\n\nData can be delivered at the following levels:\n\n- Custom polygon area  \n- Specific road segment\n\n---\n\n### Vehicle Types\n\nThe following vehicle types are available in the datasets (availability varies per country):\n\n- **Passenger car**\n\n- **Light commercial vehicle (LCV)**  \n  These are van-type vehicles.  \n  Examples include: Renault Master, Renault Trafic, Mercedes-Benz Sprinter, Peugeot B**o**xer, V**o**lkswagen Crafter, Fiat Ducato, Opel Crossland, Citroën Berlingo\n\n- **Heavy truck**  \n  Vehicles with a gross weight above three and a half tonnes.\n\n- **B us**\n\n- **Miscellaneous**  \n  Unclassified vehicle types.\n\n---\n\n## Data Anonymisation\n\nData anonymisation techniques are applied to ensure privacy. Key features include:\n\n- **No exact locations**:  \n  Instead of precise coordinates, Mobito uses the **[H3 hexagonal grid system](https://h3geo.org/)** to generalize locations.\n\n- **[H3 Resolution 11 precision](https://h3geo.org/docs/core-library/restable/#average-area-in-m2)**:  \n  Each location is mapped to a hexagonal area to ensure privacy while preserving analytical value.",
+      "version": "",
+      "keywords": [
+        "standstill events",
+        "vehicle stops",
+        "stop locations",
+        "retail site selection",
+        "EV charging infrastructure planning"
+      ],
+      "connectorId": "MDSL5WB4V8.CV901RD",
+      "organizationId": "MDSL5WB4V8",
+      "organizationName": "Mobito Technology SRL",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.630916Z",
+      "dataCategory": "REAL_TIME_TRAFFIC_DATA",
+      "connectorEndpoint": "https://anonymized-data.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "mobito-anonymized-driving-events-data",
+      "assetTitle": "Mobito Anonymized Driving Events Data",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "# What is Driving Events Data?\n\n## Description\n\nThe Mobito Driving Events Data provides anonymized insights into harsh driving behaviors, including harsh braking, acceleration/deceleration, sharp cornering (left/right), and crash events.\n\n---\n\n## Data Source\n\nThe data is sourced from millions of vehicles globally via vetted partners, including:\n\n- **Automotive OEMs**:  \n  Vehicles with embedded connectivity from the car manufacturer.\n\n- **Fleets with after-sales telematics devices**:  \n  In-vehicle hardware installed post-manufacturing.\n\n---\n\n## Driving Event Types\n\nCommon event types used to characterize driving behavior include:\n\n- Braking  \n- Cornering (left/right)  \n- Speeding up / acceleration  \n- Crash (while driving or parked)\n\n---\n\n## Use Cases\n\nMobito’s driving event data enables road safety analysis, infrastructure planning, and driver behavior profiling.\n\n- **Road safety**:  \n  Identify high-risk road segments based on driving behavior and near-miss incidents. Supports better maintenance planning and prioritization.\n\n- **Road infrastructure**:  \n  Assess and plan the impact of infrastructure improvements on traffic flow and safety.\n\n- **Driving behavior analysis**:  \n  Help automotive engineers develop driver personas to inform the design of next-generation vehicles.\n\n---\n\n## Driving Events Data Schema\n\n**Main Attributes**\n\n- **`unique_id`** (string):  \n  Hashed ID for a vehicle that rotates every few minutes, up to a maximum of 24 hours.\n\n- **`start_time`** (string):  \n  Timestamp at the start of the event (UTC, ISO 8601 format).\n\n- **`end_time`** (string):  \n  Timestamp at the end of the event (UTC, ISO 8601 format).\n\n- **`latitude`** (double):  \n  Latitude position at the start of the event (±10 m accuracy).\n\n- **`longitude`** (double):  \n  Longitude position at the start of the event (±10 m accuracy).\n\n- **`start_speed`** (integer):  \n  Vehicle speed at the start of the event.\n\n- **`end_speed`** (integer):  \n  Vehicle speed at the end of the event.\n\n- **`acceleration_direction`** (integer):  \n  Direction of acceleration in degrees.\n\n- **`vehicle_type`** (string):  \n  Vehicle category (passenger, light van, heavy truck, bus, other).\n\n- **`event_type`** (string):  \n  Type of event (e.g., cornering_left, cornering_right, brake, speedup, crash_driving, crash_parked).\n\n---\n\n## Data Sample\n\nA small sample is available at the link below, which helps illustrate the data schema.\n\n**[MOBITO Anonymized Driving Events Data Sample Schema](https://docs.google.com/spreadsheets/d/1KES9cwuoAoLQ3TCethAhWHJDt4RTK2-L-BhskoYLE0M/edit?usp=sharing)**\n\n---\n\n## Driving Events Data Specs\n\n### Historicity\n\nHistorical data is available starting from November 2024. Availability varies by country.\n\n---\n\n### Geographical Granularity\n\nData can be delivered at the following levels:\n\n- Country  \n- State / Province  \n- City  \n- Custom polygon area  \n- Specific road segment\n\n---\n\n### Vehicle Types\n\nThe following vehicle types are included in the datasets (availability varies by country):\n\n- **Passenger car**\n\n- **Light commercial vehicle (LCV)**  \n  These are van-type vehicles.  \n  Examples include: Renault Master, Renault Trafic, Mercedes-Benz Sprinter, Peugeot B**o**xer, V**o**lkswagen Crafter, Fiat Ducato, Opel Crossland, Citroën Berlingo\n\n- **Heavy truck**  \n  Vehicles with a gross weight above three and a half tonnes.\n\n- **B us**\n\n- **Miscellaneous**  \n  Unclassified vehicle types.\n\n---\n\n## Car Brands and Models\n\nMOBITO offers multi-brand vehicle data. However, vehicle make and model details are only available for a limited portion of the total car park.",
+      "version": "",
+      "keywords": [
+        "driving events",
+        "driving behaviour",
+        "near miss",
+        "accidents",
+        "road safety"
+      ],
+      "connectorId": "MDSL5WB4V8.CV901RD",
+      "organizationId": "MDSL5WB4V8",
+      "organizationName": "Mobito Technology SRL",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.630916Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://anonymized-data.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "mobito-anonymized-aggregated-vehicle-probe-data",
+      "assetTitle": "Mobito Anonymized Aggregated Vehicle Probe Data",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "# What is Probe Data?\n\n## Description\n**Probe data**, or **Floating Car data** as it is often referred to, is anonymized, timestamped, trajectory-level vehicle location data.\n\n---\n\n## Data Source\n\nThe data is sourced by millions of vehicles globally from our vetted partners including:\n\n- **Automotive OEMs**: Vehicles with embedded connectivity from the car manufacturer  \n- **Fleets**: Vehicles with after-sales in-vehicle hardware telematics devices\n\n---\n\n## Use Cases\n\n- **Traffic management**  \n  Our data fuels dynamic traffic light systems, incident response management, and other ITS applications (Intelligent Transport Systems).\n\n- **Transportation analytics**  \n  Traffic consultants, road operators, municipalities, and SaaS analytics platforms use our data to understand road safety, road usage, people movement, and perform targeted before & after analytics to assess infrastructure and signage changes.\n\n- **Site-selection**  \n  Our data supports models that assess the best location for new retail store openings and EV charging station rollouts, based on footfall and cannibalization estimates.\n\n- **Event Planning**  \n  Organizers of concerts, sports, and similar events can analyze traffic patterns to optimize event start/end times and manage traffic in real-time.\n\n- **Route Planning**  \n  Companies with large vehicle fleets (e.g., delivery, taxi, or transportation companies) use this data to optimize routes, reduce fuel consumption, and improve operational efficiency.\n\n- **Emission Analysis**  \n  Stakeholders can estimate emission hotspots based on traffic information.\n\n---\n\n## Probe Data Schema\n\n**Main Attributes**\n\n- **`unique_id` or `trip_id`** (string):  \n  Hashed ID for a vehicle (rotating every few minutes up to a maximum of 24 hours), or hashed ID for a single trip.\n\n- **`timestamp`** (string):  \n  Date & time of the record (in UTC, ISO 8601 format).\n\n- **`latitude`** (double):  \n  Latitude position of the vehicle (±10m accuracy).\n\n- **`longitude`** (double):  \n  Longitude position of the vehicle (±10m accuracy).\n\n- **`speed`** (double):  \n  Speed of the vehicle in km/h.\n\n- **`heading`** (double):  \n  Direction of the vehicle in degrees (0–359, where 0 = North, 90 = East).\n\n- **`vehicle_type`** (string):  \n  Vehicle category (e.g., passenger, light van, heavy truck, bus, other).\n\n---\n\n### Extended Probe Data – Additional Attributes\n\nAdditional attributes might be available depending on the geography of interest. These attributes are offered at an additional cost.\n\n**Indicative list:**\n- Acceleration in X, Y, Z axis  \n- Fuel level  \n- Electrical consumption  \n- Wiper state  \n- Fog lights  \n- ESP  \n- Air temperature  \n- Fuel type  \n- Vehicle make & model  \n- Vehicle weight  \n- Road type and speed limit\n\n---\n\n## Data Sample\n\nA small sample is available at the link below for download, which can help you better understand the data schema.\n\n**[MOBITO Anonymized Probe Vehicle Data Sample Schema](https://docs.google.com/spreadsheets/d/1GBsILsEzrijtmaVa3KVvxW4AXNMCd02PRNPj2K3ezUM/edit?usp=sharing)**\n\n---\n\n## Probe Data Specs\n\n### Capturing Frequency\n\nCapturing frequency differs depending on the data source and the geography.  \nIt ranges from **3 seconds up to a minute**.\n\n**Indicative list:**\n\n- **Italy**:  \n  Average frequency – 3 seconds\n\n- **Germany**:  \n  Average frequency – 10 seconds\n\n- **France**:  \n  Average frequency – 10 seconds\n\n- **Netherlands**:  \n  Average frequency – 10 seconds\n\n- **United Kingdom**:  \n  Average frequency – 10 seconds\n\n- **Spain**:  \n  Average frequency – 10 seconds\n\n> Note: Long-distance uninterrupted travel on highways might reduce the capturing frequency.\n\n---\n\n### Geographical Granularity\n\nData can be delivered at the following geographical levels:\n\n- Country  \n- State/Province  \n- City  \n- Custom polygon area  \n- Specific road segment\n\n---\n\nMore details can be found here: **[MOBITO Anonymized Probe Vehicle Data](https://support.mobito.io/en/articles/10638625-probe-data-product)**",
+      "version": "",
+      "keywords": [
+        "Vehicle Probe Data",
+        "Trajectory Level Data",
+        "Floating Car Data",
+        "Connected Car Data",
+        "Traffic"
+      ],
+      "connectorId": "MDSL5WB4V8.CV901RD",
+      "organizationId": "MDSL5WB4V8",
+      "organizationName": "Mobito Technology SRL",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.630916Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://anonymized-data.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dfrs-incidents",
+      "assetTitle": "HERE - DFRS Incidents",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Incidents from HERE WeGo for DFRS.",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLECJ4PT.CD1ZYWL",
+      "organizationId": "MDSLECJ4PT",
+      "organizationName": "HERE Global B. V.",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.554601Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://here-dfrs.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "tüv-report-database",
+      "assetTitle": "TÜV-Report-Database",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "Access to TÜV-Verband’s globally unique database with millions of results from Germany-wide vehicle roadworthiness inspections (HU):\n\n- Real-world inspection data from all TÜV organisations\n- Structured, standardised, analysis-ready dataset\n- Defect details with severity levels, mileage & component insights, vehicle age group performance and more\n- Added value for manufacturers & suppliers: trend monitoring, quality improvement, early warning system for defects and product improvement, data-driven competitive analysis, warranty cost optimisation\n- Data also available for commercial vehicles and buses",
+      "version": "",
+      "keywords": [
+        "TÜV",
+        "TÜV-Verband",
+        "HU",
+        "HU-Data",
+        "HU",
+        "automotive benchmarking",
+        "vehicle inspection data",
+        "bus inspection data",
+        "car inspection data",
+        "early warning system",
+        "quality improvement",
+        "trend monitoring",
+        "OEM",
+        "car manufacturer",
+        "vehicle age group performance",
+        "component insights",
+        "defect severity analysis",
+        "real-world vehicle data",
+        "inspection database",
+        "vehicle defect analysis",
+        "automotive data analytics",
+        "roadworthiness inspections"
+      ],
+      "connectorId": "MDSLB4CFI4.CVICOE4",
+      "organizationId": "MDSLB4CFI4",
+      "organizationName": "TÜV-Verband e.V.",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.42141Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://tuev-verband-01.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "korean-flex-parking-usage-transactions-1.0",
+      "assetTitle": "Korean flex parking usage transactions",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "This dataset covers the usage of the flexible parking service and includes details such as sequence number, unique ID, member type (e.g., App, QR), subscription pass ID, entry time, exit time, duration of use, usage fee, parking pass usage time and amount, reduction category, reduction rate (%), discount amount, payment amount, payment status, and payment method.",
+      "version": "1.0",
+      "keywords": [
+        "Parking Usage History",
+        "Parking Fees",
+        "Flexible Parking",
+        "Smart Parking",
+        "South Korea",
+        "Daegu"
+      ],
+      "connectorId": "MDSLV9P5Z3.C6QF697",
+      "organizationId": "MDSLV9P5Z3",
+      "organizationName": "Korea Association for Land, Infrastructure transport Data Advancement",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.569638Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://kalda-prod-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "cheongju-city-eco-friendly-mobility-challenge-esg-indicators",
+      "assetTitle": "Cheongju City Eco-Friendly Mobility Challenge ESG Indicators",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "ESG metric dataset derived from participants’ daily walking and bus travel in the Cheongju Green Mobility Challenge; includes daily steps, walking distance (km), bus distance (km), CO2 reduction (kgCO2e), and pine tree equivalent.",
+      "version": "",
+      "keywords": [
+        "ESG",
+        "Carbon Reduction",
+        "Cheongju",
+        "South Korea",
+        "Walking Challenge",
+        "Public Transportation Challenge",
+        "Pine Tree Planting Effect"
+      ],
+      "connectorId": "MDSLV9P5Z3.C6QF697",
+      "organizationId": "MDSLV9P5Z3",
+      "organizationName": "Korea Association for Land, Infrastructure transport Data Advancement",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.569638Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://kalda-prod-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-demo-2-d177c878-54fd-459d-950c-cd7e267cd4ba",
+      "assetTitle": "Demo 2",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Demo 2",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-demo-1-81bc46ad-1276-416e-a0a4-86eacc54ad67",
+      "assetTitle": "Demo 1",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Demo 1",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-test-mit-auto-publish-7da9f56d-2a02-4e47-93c1-de5198d4c3d5",
+      "assetTitle": "Test mit Auto Publish",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Test mit Auto Publish",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-asset-3-3de11dea-4166-4e44-9020-869e21bb2cff",
+      "assetTitle": "Asset 3",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Asset 3",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-asset-2-75ca5f41-f4c2-4050-bb1d-339a29040c68",
+      "assetTitle": "Asset 2",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Asset 2",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-asset-1-2a176810-e062-492e-85b1-7eadac548010",
+      "assetTitle": "Asset 1",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Asset 1",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-test-publish-true-2975d9c7-66e6-4470-acb7-c75dbbfd5aa0",
+      "assetTitle": "Test publish true",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Test publish true",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-test-a-536d24b3-1d2a-40fa-a517-37071d7acbd5",
+      "assetTitle": "Test A",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Test A",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-asset-test-published-e91c0b1c-a143-4819-9646-952bcb1a659b",
+      "assetTitle": "Asset Test - Published",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Test",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-iav-logo-267c7b3f-8b05-4230-bf6a-6f66e7e3e06c",
+      "assetTitle": "IAV Logo",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "miro-download-marcel-test-1785486503",
+      "assetTitle": "Marcel Download Test",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "HTTP download asset for validating the download flow on the test system.",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-iav-logo-19-82418f91-1251-4c73-a197-e6774cc73c64",
+      "assetTitle": "IAV Logo 19",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 19 desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-iav-logo-18-1fb574e5-a124-4d1c-9812-55d23225f8ad",
+      "assetTitle": "IAV Logo 18",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 18 desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-73c09db4-7218-4048-a348-c9ed8c0284a2",
+      "assetTitle": "IAV Logo 15",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 15 Desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-fe434810-f122-4d22-b30c-0a086fa785cf",
+      "assetTitle": "IAV Logo 13",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 13 desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-16ef9a68-7c61-46f4-bdbc-0e7c43d4d5c2",
+      "assetTitle": "IAV Logo 12",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 12 desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-1dfaf98b-e7ed-4beb-bc6b-97eb98d1f271",
+      "assetTitle": "IAV Logo 11",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 11 desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-e73e9ac8-6976-44c0-924c-9b99804415db",
+      "assetTitle": "IAV Logo 10",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 10 desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-88af202f-939c-4986-81fc-72fc3b9c3256",
+      "assetTitle": "IAV Logo 9",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 9 Desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-7e1f8933-b170-42fc-8db9-cced15763b01",
+      "assetTitle": "IAV Logo 8",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 8 Desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-0a5495a9-3211-460e-b442-930788c1fa2c",
+      "assetTitle": "IAV Logo 7",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 7 Desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-67199813-f4ba-413d-97df-484831ede793",
+      "assetTitle": "IAV Logo 6",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 6 Desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-bd09e7e7-e035-47e0-bc7a-4332ddeceff7",
+      "assetTitle": "ddtr_1751011857@BPNL00000000Q7M3",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IAV Logo 5 Desc",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "miro-oauth2-functional-test-1783537658",
+      "assetTitle": "Miro OAuth2 Functional Test",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "OAuth2 protected source test asset.",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "miro-download-success-test-1783343314",
+      "assetTitle": "Miro Successful Download Test",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Test asset for validating the local transfer download endpoint with a working source endpoint.",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "dsh-external-offer:EN99T4xI5D7mdYXXyqcNmx2Blk7W8eLvMcJ56T88hLU",
+      "assetTitle": "eacde66e-5bab-4af4-ad79-0171a07b1a2f",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLVT64MC.CND5JIV",
+      "organizationId": "MDSLVT64MC",
+      "organizationName": "IAV GmbH Ingenieurgesellschaft Auto und Verkehr",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.541461Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://iav-test-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "footfall-traffic",
+      "assetTitle": "Footfall Traffic",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "# Pedestrian Footfall Dataset\n\n## Details\n\nWe offer a comprehensive pedestrian footfall dataset, collected with high-precision people-counting sensors and cameras. This dataset captures the flow of pedestrian traffic across diverse environments.\n\nThe footfall data is derived from multiple sources, ensuring high accuracy and representativeness:\n\n- **Smart Sensors**: High-resolution people-counting devices installed at strategic entry and exit points.  \n- **Cameras with AI-based Analytics**: Video streams processed with computer vision to detect and count individuals without compromising privacy.  \n- **Event-based Sampling**: Temporary deployments during festivals, cultural events, and seasonal tourism peaks.  \n\n## Availability\n\nThe pedestrian dataset can be provided on a use case basis, depending on demand. Available cases include:  \n\n- Historic districts of major cities  \n- Shopping malls and commercial hubs  \n- Seasonal tourist hotspots such as beaches  \n- Cultural centers, museums, and exhibition venues  \n- Large-scale public events and festivals  \n- Others: just ask if you are interested \n\n## Technical details\n\nThe dataset contains:  \n\n- **Coordinates**: Latitude and longitude of counting points  \n- **Footfall Counts**: Integer values representing the number of people\n- **Timestamps**: CEST-based time series for historical analysis. Data granularity can range from 15 minutes to daily.\n- **Format**: CSV, Excel or JSON via API access  \n\n## Commercial details\n\nThis dataset is commercially licensed. The following process applies for obtaining the data:  \n\n1. Bilateral negotiation of contract terms with Dinycon SIstemas S.L.  \n2. After successful agreement, activation of your connector for the requested use case.  \n3. Access to the purchased dataset via secure API or file transfer.  \n\nFor inquiries or dataset access, please contact **pablo.cp@dinycon.com**",
+      "version": "",
+      "keywords": [
+        "pedestrian footfall",
+        "people counting",
+        "pedestrian traffic",
+        "footfall analytics",
+        "urban mobility footfall"
+      ],
+      "connectorId": "MDSLE74Y7T.CS6TY65",
+      "organizationId": "MDSLE74Y7T",
+      "organizationName": "Dinycon Sistemas S.L.",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.644312Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://dinycon-data-connector.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "road-hazard-score-1.0",
+      "assetTitle": "Road Hazard Score",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "# Hazard score dataset for the road network\n\n## Description \n\nWe offer a comprehensive \"hazard score\" dataset for the road network. This score evaluates the risk level for each road segment on a scale from 1 to 5, with 1 indicating lower risk and 5 indicating very high risk. The hazard score is calculated with a high level of geographical accuracy with road segments or nods being 10m or less.. Our data is designed to assist in risk assessment, road safety analysis, and urban planning. The dataset is provided in GeoJSON format, making it easy to integrate with various geographic information systems.\n\nThe hazard score is derived from multiple data sources, ensuring a robust and accurate risk assessment:\n\n- Accident Data: Historical records of traffic accidents.\n- User Reports: Real-time reports and feedback from users.\n- Vehicle Pulse Data: Sensor data from vehicles indicating road conditions and incidents.\n\n## Availability\n\nThe hazard score is offered on a regional basis for the desired areas. Cities, federal states, Germany-wide. \n\nAdditional information, such as detailed accident data, user hazard reports and much more can optionally be provided as structured data.\n\n---\n\n## Technical details\n\nThe data set contains:\n\n- Coordinates: Latitude and Longitude\n- Score: Integer value ranging from 1 to 5, where: 1 = Lower risk, 5 = Very high risk\n- Format: GeoJSON\n- Type: LineString\n\n\nA sample dataset can be found at: http://www.sichere-strassen.org/mds/mds-sample-hazard-score.json\n\n---\n\n## Commercial details\n\nThis data set is commercial target, the following procedure applies for obtaining the data:\n\nBilateral negotiation of the contract terms with **Initiative für sichere Straßen, kontakt@sichere-strassen.org**.\n\nAfter successful contract negotiation, activation of your connector for the negotiated area.\n\nAccess to the purchased data set via Connector.\n\nIf you have any questions, please contact us **kontakt@sichere-strassen.org**",
+      "version": "",
+      "keywords": [
+        "road safety",
+        "hazard score",
+        "traffic safety",
+        "safety score",
+        "road risk",
+        "safety rating",
+        "accident prevention",
+        "road risk assessment",
+        "safe routes",
+        "risk detection",
+        "urban planning",
+        "city infrastructure bicycle",
+        "infrastructure bicycle",
+        "safe cycling",
+        "infrastructure design",
+        "urban bike planning"
+      ],
+      "connectorId": "MDSLGEUQ49.CHRJ0BI",
+      "organizationId": "MDSLGEUQ49",
+      "organizationName": "Initiative für sichere Straßen GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.548565Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://ifss-connector.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "road-register-1.1",
+      "assetTitle": "Road Register",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Shows the road status in Copenhagen Municipality. Municipal roads are public roads maintained and operated by Copenhagen Municipality. National roads are public roads maintained and operated by the Danish Road Directorate. Private shared roads are owned by private individuals. Maintenance and cleaning responsibilities lie with the property owner. The municipality is the authority and supervises private shared roads under the Private Roads Act. Private roads/Internal traffic areas are owned by private individuals. The municipality does not supervise these. Road stationing shows stationing in meters along the road register's road centers.",
+      "version": "1.1",
+      "keywords": [
+        "road",
+        "status"
+      ],
+      "connectorId": "MDSL0WJHGU.C87ZUJX",
+      "organizationId": "MDSL0WJHGU",
+      "organizationName": "City of Copenhagen",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.61942Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://annualtrafficnumbers.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "traffic-speeds-1.1",
+      "assetTitle": "Traffic Speeds",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Data shows the maximum speed a vehicle is allowed to travel on the specified road stretch in Copenhagen, as well as any recommended speed.",
+      "version": "1.1",
+      "keywords": [
+        "speed"
+      ],
+      "connectorId": "MDSL0WJHGU.C87ZUJX",
+      "organizationId": "MDSL0WJHGU",
+      "organizationName": "City of Copenhagen",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.61942Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://annualtrafficnumbers.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "counts,-traffic-1.1",
+      "assetTitle": "Counts, Traffic",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "The dataset indicates where traffic, pedestrian, runner, and stay counts have been made.",
+      "version": "1.1",
+      "keywords": [
+        "pedestriants"
+      ],
+      "connectorId": "MDSL0WJHGU.C87ZUJX",
+      "organizationId": "MDSL0WJHGU",
+      "organizationName": "City of Copenhagen",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.61942Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://annualtrafficnumbers.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "counts,-stay-1.1",
+      "assetTitle": "Counts, Stay",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Stay counts. It is a snapshot. The space is counted every quarter hour, and then an average is calculated per hour from 10 AM to 6 PM. Based on the idea of the Danish architect Jan Gehl.",
+      "version": "1.1",
+      "keywords": [],
+      "connectorId": "MDSL0WJHGU.C87ZUJX",
+      "organizationId": "MDSL0WJHGU",
+      "organizationName": "City of Copenhagen",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.61942Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://annualtrafficnumbers.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "counts,-intersections-1.1",
+      "assetTitle": "Counts, Intersections",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Count of pedestrians, bicycles, motorcycles, cars, and heavy vehicles for selected intersections. The dataset is divided into Excel files for each intersection. The counting station number indicates the location of the counting station, and the street names indicate which streets the intersection is on. It is noted in each data file when the counting was done. Note that each resource contains both illustrations and multiple sheets with data.",
+      "version": "1.1",
+      "keywords": [
+        "pedestrians",
+        "bicycles",
+        "motorcycles",
+        "cars",
+        "and heavy vehicles"
+      ],
+      "connectorId": "MDSL0WJHGU.C87ZUJX",
+      "organizationId": "MDSL0WJHGU",
+      "organizationName": "City of Copenhagen",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.61942Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://annualtrafficnumbers.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "counts,-pedestrians-1,1",
+      "assetTitle": "Counts, Pedestrians",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Number of pedestrians counted on a weekday from 7 AM to 7 PM in both directions",
+      "version": "1,1",
+      "keywords": [
+        "pedestriants"
+      ],
+      "connectorId": "MDSL0WJHGU.C87ZUJX",
+      "organizationId": "MDSL0WJHGU",
+      "organizationName": "City of Copenhagen",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.61942Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://annualtrafficnumbers.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "counting-stations,-traffic-counts-1.1",
+      "assetTitle": "Counting Stations, Traffic Counts",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "The dataset indicates where traffic, pedestrian, runner, and stay counts have been made.",
+      "version": "1.1",
+      "keywords": [
+        "pedestrians"
+      ],
+      "connectorId": "MDSL0WJHGU.C87ZUJX",
+      "organizationId": "MDSL0WJHGU",
+      "organizationName": "City of Copenhagen",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.61942Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://annualtrafficnumbers.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "counts,-bicycle-parking-1.1",
+      "assetTitle": "Counts, Bicycle Parking",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Bicycles are counted in areas considered publicly accessible to the city's residents. The count therefore includes both public racks and private racks that are publicly accessible. Each point represents a count where bike rack spaces, bicycles in racks, bicycles outside racks, and cargo bikes are counted. The count was made in all districts on weekdays between 8 AM and 5 PM from July to September 2017",
+      "version": "1.1",
+      "keywords": [
+        "bicycles"
+      ],
+      "connectorId": "MDSL0WJHGU.C87ZUJX",
+      "organizationId": "MDSL0WJHGU",
+      "organizationName": "City of Copenhagen",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.61942Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://annualtrafficnumbers.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "puurs-2024-results-participation",
+      "assetTitle": "Puurs 2024 results participation",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "#MegaBITS #ProvincieAntwerpen #Puurs #Verkeer #Traffic #Crossroad #Kruispunt #Participation #Survey",
+      "version": "",
+      "keywords": [
+        "MegaBITS",
+        "Crossroad",
+        "Safety",
+        "Puurs",
+        "Provincie Antwerpen"
+      ],
+      "connectorId": "MDSL0OPWUM.CDSRBQY",
+      "organizationId": "MDSL0OPWUM",
+      "organizationName": "Province of Antwerp",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.60439Z",
+      "dataCategory": "ROAD_WORK_INFORMATION",
+      "connectorEndpoint": "https://mobility.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "f106-participation-results-2025",
+      "assetTitle": "F106 participation Results-2025",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Results of a public survey on the quality and obstacles of an outdated cycle route to be updated to a full quality cycle highway (F106) between the cities of Herentals and Aarschot in Flanders, Belgium\n#provincieantwerpen #MegaBITS #cycling #participation #survey #cyclehighways #fietssnelwegen #fietsostrades",
+      "version": "1.0",
+      "keywords": [
+        "Cycling",
+        "Survey",
+        "F106",
+        "MegaBITS",
+        "Antwerp"
+      ],
+      "connectorId": "MDSL0OPWUM.CDSRBQY",
+      "organizationId": "MDSL0OPWUM",
+      "organizationName": "Province of Antwerp",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.60439Z",
+      "dataCategory": "ROAD_WORK_INFORMATION",
+      "connectorEndpoint": "https://mobility.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "quality-measurements-of-cycling-infrastructure-by-the-comfortbike-in-the-province-of-antwerp",
+      "assetTitle": "Quality measurements of cycling infrastructure by the Comfortbike in the Province of Antwerp",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "#meetfiets #comfortbike #quality #cyclepath #mixedtraffic #obstacles #priority #scores #width #buffer #MegaBITS #ProvincieAntwerpen #Flanders #Belgium #fietsersbond",
+      "version": "",
+      "keywords": [
+        "meetfiets",
+        "comfortbike",
+        "cyclepath",
+        "MegaBITS",
+        "Provincie Antwerpen",
+        "Fiets",
+        "Fietspad",
+        "Gemengd Verkeer",
+        "Knelpunten",
+        "Voorrang",
+        "Breedte",
+        "Buffer"
+      ],
+      "connectorId": "MDSL0OPWUM.CDSRBQY",
+      "organizationId": "MDSL0OPWUM",
+      "organizationName": "Province of Antwerp",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.60439Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://mobility.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "toeristisch-recreatief-fietsnetwerk-vlaanderen",
+      "assetTitle": "Toeristisch recreatief fietsnetwerk Vlaanderen",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "De dataset 'toeristisch recreatief fietsnetwerk Vlaanderen is een geïntegreerde datalaag en bevat de genummerde fietsknooppunten en de segmenten die deze knooppunten met elkaar verbindt. De brongegevens worden aangeleverd door de 5 Provinciale Toeristische Organisaties en samengebracht tot 1 dataset door Toerisme Vlaanderen. Volgende informatie wordt als attribuut meegegeven: - het knooppuntnummer - de naam van het fietsnetwerk - de website waar je de fietskaart kan kopen - de contactgegevens van het meldpunt in geval van onregelmatigheden op het terrein - de website van de toeristische regio - de beheerder van het fietsnetwerk.",
+      "version": "",
+      "keywords": [
+        "Toerisme Vlaanderen",
+        "Toerisme",
+        "Recreatie",
+        "Fietsroutenetwerk",
+        "Fietsen",
+        "Knooppunt",
+        "MegaBITS",
+        "Cycling"
+      ],
+      "connectorId": "MDSL0OPWUM.CDSRBQY",
+      "organizationId": "MDSL0OPWUM",
+      "organizationName": "Province of Antwerp",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.60439Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://mobility.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "near-accidents-antwerp/bornem/puursesteenweg",
+      "assetTitle": "Near accidents Antwerp/Bornem/Puursesteenweg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "#Safety\n#Speed\n#ModalSplit\n#Junction\n#Accident\n#Reliability\n#Monitoring\n#Security\n#AllModes\n#CSV\n#JSON\n#Camera\n#ArtificialIntelligence",
+      "version": "",
+      "keywords": [
+        "safety",
+        "speed",
+        "modalsplit",
+        "junction",
+        "accident",
+        "reliability",
+        "monitoring",
+        "security",
+        "allmodes",
+        "camera",
+        "AI"
+      ],
+      "connectorId": "MDSL0OPWUM.CDSRBQY",
+      "organizationId": "MDSL0OPWUM",
+      "organizationName": "Province of Antwerp",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.60439Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://mobility.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "fietssnelwegen-vlaanderen-wfs",
+      "assetTitle": "Fietssnelwegen Vlaanderen WFS",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "#Fiets\n#Cycling\n#Network\n#Flanders\n#Vlaanderen\n#MegaBITS",
+      "version": "1.0",
+      "keywords": [
+        "Cycling",
+        "Vlaanderen",
+        "Flanders",
+        "Infrastructure",
+        "Fiets",
+        "MegaBITS"
+      ],
+      "connectorId": "MDSL0OPWUM.CDSRBQY",
+      "organizationId": "MDSL0OPWUM",
+      "organizationName": "Province of Antwerp",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.60439Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://mobility.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bff-bovenlokale-functionele-fietsroutes-van-de-provincie-antwerpen",
+      "assetTitle": "BFF-Bovenlokale functionele fietsroutes van de Provincie Antwerpen",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "#BFF\n#ProvincieAntwerpen\n#Fiets\n#MegaBITS",
+      "version": "1.0",
+      "keywords": [
+        "BFF",
+        "Fiets",
+        "Provincie Antwerpen",
+        "Infrastructure",
+        "Cycling"
+      ],
+      "connectorId": "MDSL0OPWUM.CDSRBQY",
+      "organizationId": "MDSL0OPWUM",
+      "organizationName": "Province of Antwerp",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.60439Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://mobility.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "camera-parking-lot-state-1.0",
+      "assetTitle": "Camera Parking Lot State",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Occupation list of parking lots equipped with scs lpr cameras.",
+      "version": "1.0",
+      "keywords": [
+        "parking",
+        "smart_city_system"
+      ],
+      "connectorId": "MDSLZVSQT8.C158LQW",
+      "organizationId": "MDSLZVSQT8",
+      "organizationName": "Smart City System Parking Solutions GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.562118Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://parking-pilot.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "sensor-parking-lot-occupancy-state-1.0",
+      "assetTitle": "Sensor Parking Lot Occupancy State",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Detailed Occupation list of parking lots equipped with the scs parking pilot sensors. Groups occupancy by special parking spaces like family, disabled and electrochargers.",
+      "version": "1.0",
+      "keywords": [
+        "parking",
+        "smart_city_system"
+      ],
+      "connectorId": "MDSLZVSQT8.C158LQW",
+      "organizationId": "MDSLZVSQT8",
+      "organizationName": "Smart City System Parking Solutions GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.562118Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://parking-pilot.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "sensor-parking-lot-state-1.0",
+      "assetTitle": "Sensor Parking Lot State",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Occupation list of parking lots equipped with the scs parking pilot sensors.",
+      "version": "1.0",
+      "keywords": [
+        "parking",
+        "smart_city_system"
+      ],
+      "connectorId": "MDSLZVSQT8.C158LQW",
+      "organizationId": "MDSLZVSQT8",
+      "organizationName": "Smart City System Parking Solutions GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.562118Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://parking-pilot.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "air-quality-in-cluj-napoca-1.0",
+      "assetTitle": "Air Quality in Cluj-Napoca",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Air Quality in Cluj-Napoca",
+      "version": "1.0",
+      "keywords": [
+        "Air",
+        "Quality",
+        "in",
+        "Cluj-Napoca"
+      ],
+      "connectorId": "MDSLQ9BZTB.CB6C1SF",
+      "organizationId": "MDSLQ9BZTB",
+      "organizationName": "Cluj-Napoca City Hall",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.413623Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://clujnapoca.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "cluj-bike-1.0-1.0",
+      "assetTitle": "Cluj Bike 1.0",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "cluj bike",
+      "version": "1.0",
+      "keywords": [
+        "cluj",
+        "bike"
+      ],
+      "connectorId": "MDSLQ9BZTB.CB6C1SF",
+      "organizationId": "MDSLQ9BZTB",
+      "organizationName": "Cluj-Napoca City Hall",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.413623Z",
+      "dataCategory": "PUBLIC_TRANSPORT_SCHEDULED_TRANSPORT",
+      "connectorEndpoint": "https://clujnapoca.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "cluj-parking-1.0",
+      "assetTitle": "Cluj Parking 1.0",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "cluj parking free spots",
+      "version": "",
+      "keywords": [
+        "cluj",
+        "parking",
+        "free",
+        "spots"
+      ],
+      "connectorId": "MDSLQ9BZTB.CB6C1SF",
+      "organizationId": "MDSLQ9BZTB",
+      "organizationName": "Cluj-Napoca City Hall",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.413623Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://clujnapoca.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bosch-dfrs-lowVisibility-nl",
+      "assetTitle": "Bosch LowVisibility NL for DFRS",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "",
+      "version": "",
+      "keywords": [
+        "Bosch",
+        "Road Hazard",
+        "Hazard",
+        "Gefahrenwarnung",
+        "Low Visibility",
+        "Netherlands"
+      ],
+      "connectorId": "MDSL5T27NS.C7B81YX",
+      "organizationId": "MDSL5T27NS",
+      "organizationName": "Robert Bosch GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.427881Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://bosch-dfrs-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bosch-road-hazard-services",
+      "assetTitle": "Bosch Road Hazard Services",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "Bosch road hazard services \nLive alerts for greater safety in road traffic\nSome hazards are not visible to drivers. Bosch connects vehicles with swarm, map, and weather data. This creates predictive services that warn drivers early about slippery conditions, heavy rain, obstacles, or wrong-way drivers, and with connected speed-limit information, always provide valid speed limits. In this way, we increase safety, comfort, and support assisted as well as automated driving.\n\nHazards contain: Road Conditions (e.g. slippery road), Weather conditions (e.g. heavy rain), Road obstacles (e.g. Accident)\nService Coverage: EU30\nHigh Quality, incl. monthly KPI Reports\nBased on various data types and data partners\n\nBosch Road Hazard Services \nLive-Warnungen für mehr Sicherheit im Straßenverkehr \nManche Gefahren sind für Fahrer nicht sichtbar. Bosch vernetzt Fahrzeuge mit Schwarm , Karten  und Wetterdaten. So entstehen vorausschauende Services, die frühzeitig vor Glätte, Starkregen, Hindernissen oder Falschfahrern warnen und mit Connected Speed Limit Information stets gültige Tempolimits liefern. So erhöhen wir Sicherheit, Komfort und unterstützen assistiertes sowie automatisiertes Fahren.\n\nGefahren umfassen: Straßenverhältnisse (z. B. rutschige Fahrbahn), Witterungsbedingungen (z. B. Starkregen), Hindernisse auf der Fahrbahn (z. B. Unfall)\nService-Abdeckung: EU30\nHohe Qualität, inkl. monatlicher KPI-Berichte\nBasierend auf verschiedenen Datentypen und Datenpartnern",
+      "version": "",
+      "keywords": [
+        "Bosch",
+        "Road Hazard",
+        "Hazard",
+        "Gefahrenwarnung"
+      ],
+      "connectorId": "MDSL5T27NS.C7B81YX",
+      "organizationId": "MDSL5T27NS",
+      "organizationName": "Robert Bosch GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.427881Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://bosch-dfrs-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "public-transport-realtime-data-baden-württemberg",
+      "assetTitle": "Public Transport Realtime Data Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Access to the nationwide timetable information system via the EFA JSON API.\n\nThe current API version: 10.6.14.22.\n\nIt does not have a strict standardization of response structures, which allows for regional differences. The focus is on ease of use with ready-made functions such as stop search, connections and departure monitor. Integration into local applications and projects is therefore comparatively straightforward.\n\nAn example request could look like this:\n\nhttps://www.efa-bw.de/mobidata-bw/XML_STOPFINDER_REQUEST?outputFormat=rapidJSON&type_sf=any&name_sf=de:08111:6115\n\n\nThe stop Stuttgart Hauptbahnhof is queried here with the information that the stop type can be any. Unlike TRIAS, the query parameters are included in the URL and not determined in the body with the same URL.\n\nThe TRIAS terms of use apply to the use of the EFA JSON API; you can take note of these in advance.",
+      "version": "1.0",
+      "keywords": [
+        "PublicTransport",
+        "Realtime",
+        "Baden-Württemberg",
+        "OpenData"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "PUBLIC_TRANSPORT_SCHEDULED_TRANSPORT",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bundled-bike-counting-data-baden-württemberg",
+      "assetTitle": "Bundled Bike Counting Data Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Bundled bicycle counting data from the current Eco-Counter bicycle counting stations in cities and communities in Baden-Wuerttemberg. The locally collected bicycle counting data is retrieved via the Eco Visio domain and the API store of the bicycle counting station operator EcoCounter and converted into the output formats mentioned here.\n\nSince Juy 2024 the data is offered bundled and hourly, divided into directions (IN/OUT/ALL), for the last seven days. \n\nOther aggregations back until 2013 are also possible (hourly, daily, monthly): https://mobidata-bw.de/dataset/eco-counter-fahrradzahler",
+      "version": "1.0",
+      "keywords": [
+        "Bike",
+        "Counting",
+        "Baden-Württemberg",
+        "OpenData"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "charging-data-baden-württemberg",
+      "assetTitle": "Charging Data Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "The Federal Network Agency publishes the data reported on the publicly accessible charging infrastructure in Germany as part of the Charging Column Ordinance (LSV).\n\nStatic data of the locations of charging infrastucture.",
+      "version": "1.0",
+      "keywords": [
+        "Charging",
+        "OpenData",
+        "Baden-Württemberg",
+        "OCPDB"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "FILLING_AND_CHARGING_STATIONS",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bundled-bikesharing-data-baden-württemberg",
+      "assetTitle": "Bundled Bikesharing Data Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Data on the locations of the stations, available rental bikes at the stations and free-floating bikes from various bike-sharing offers in Baden-Wuerttemberg, Switzerland and France (Grand Est region).\n\nHere, you find the feed which contains all the sharing feeds. Each provider generates its own feed: https://api.mobidata-bw.de/sharing/gbfs/v2/PROVIDER/gbfs/\n\nExample: https://api.mobidata-bw.de/sharing/gbfs/v2/regiorad_stuttgart/gbfs/\n\nInformation about vehicle types: https://api.mobidata-bw.de/sharing/gbfs/v2/regiorad_stuttgart/vehicle_types\n\nPlease note, that it is an parameterized offer. \n*https://api.mobidata-bw.de/sharing/gbfs/v2/* is already set as base URL on the provider side.",
+      "version": "1.0",
+      "keywords": [
+        "Bikesharing",
+        "OpenData",
+        "Baden-Wurttemberg",
+        "GBFS",
+        "Realtime"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "SHARING_AND_HIRING_SERVICES",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "traffic-reports-baden-württemberg",
+      "assetTitle": "Traffic Reports Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "The traffic reports include information on: Traffic jams, Construction sites, Accidents, Events, Demonstrations, Hazard reports, Other closures and other events in the road space.\n\nThe updates take place every 10 minutes.\n\nThe data is made available here in TIC 3 XML format.",
+      "version": "1.0",
+      "keywords": [
+        "Baden-Württemberg",
+        "OpenData",
+        "TIC3",
+        "TrafficReports"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bundled-bike-parking-data-baden-württemberg-(parkapi)",
+      "assetTitle": "Bundled Bike Parking Data Baden-Württemberg (ParkAPI)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "The data profile bundles data on locations and for bike parking spaces and B+R facilities in Baden-Wuerttemberg.\n\nAlways use the purpose: BIKE\n\nIn the endpoint doku you can find the query parameters, for example: https://api.mobidata-bw.de/park-api/api/public/v3/parking-sites?name=Bahnhof&purpose=BIKE\n\nPlease note, that it is an parameterized offer. \n*https://api.mobidata-bw.de/park-api/api/public/v3/* is already set as base URL on the provider side.\n\nTo obtain the data in the example mentioned above you as consumer should choose “Show Http DataSource Parameterization Fields“ and set in following fields *GET* as Custom Method, *parking-sites* as Custom Subpath, *name* as Custom Query Param Name and *Bahnhof* as Value.",
+      "version": "1.0",
+      "keywords": [
+        "Bike-Parking",
+        "Baden-Wuerttemberg",
+        "ParkAPI",
+        "OpenData",
+        "Realtime"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bundled-cargo-bikesharing-data-baden-württemberg",
+      "assetTitle": "Bundled Cargo-Bikesharing Data Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Realtime data on station locations and available cargo bikes at the stations of various bike sharing services in Baden-Wuerttemberg and Switzerland.\n\nHere, you find the feed which contains all the sharing feeds. Each provider generates its own feed: https://api.mobidata-bw.de/sharing/gbfs/v2/PROVIDER/gbfs/\n\nExample: https://api.mobidata-bw.de/sharing/gbfs/v2/lastenvelo_fr/gbfs/\n\nInformation about vehicle types: https://api.mobidata-bw.de/sharing/gbfs/v2/lastenvelo_fr/vehicle_types\n\nPlease note, that it is an parameterized offer. \n*https://api.mobidata-bw.de/sharing/gbfs/v2/* is already set as base URL on the provider side.",
+      "version": "1.0",
+      "keywords": [
+        "Cargo-Bikesharing",
+        "Baden-Wurttemberg",
+        "OpenData",
+        "GBFS",
+        "Realtime"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "SHARING_AND_HIRING_SERVICES",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "road-construction-information-baden-württemberg",
+      "assetTitle": "Road Construction Information Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Realtime information of road construction, traffic information and events.\n\nThe data is already visualized on VerkehrsInfo BW: https://www.verkehrsinfo-bw.de/",
+      "version": "1.0",
+      "keywords": [
+        "Baden-Wuerttemberg",
+        "Realtime",
+        "Construction",
+        "OpenData"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "ROAD_WORK_INFORMATION",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "public-transport-data-baden-württemberg",
+      "assetTitle": "Public Transport Data Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Public Transport timetable data and other data, like stop locations or line courses.",
+      "version": "1.0",
+      "keywords": [
+        "PublicTransport",
+        "Baden-Württemberg",
+        "OpenData",
+        "GTFS"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "PUBLIC_TRANSPORT_SCHEDULED_TRANSPORT",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bundled-parking-data-baden-württemberg-(parkapi)",
+      "assetTitle": "Bundled Parking Data Baden-Württemberg (ParkAPI)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "The data profile bundles data on locations and real-time occupancy data for parking spaces, P+R facilities and parking garages in Baden-Wuerttemberg.\n\nIn the endpoint dokumentation you can find the query parameters, for example:\nhttps://api.mobidata-bw.de/park-api/api/public/v3/parking-sites?ignore_duplicates=true\n\nPlease note, that it is an parameterized offer. \n*https://api.mobidata-bw.de/park-api/api/public/v3/* is already set as base URL on the provider side.\n\nTo obtain the data in the example mentioned above you as consumer should choose “Show Http DataSource Parameterization Fields“ and set in following fields *GET* as Custom Method, *parking-sites* as Custom Subpath, *ignore_duplicates* as Custom Query Param Name and *true* as Value.",
+      "version": "1.0",
+      "keywords": [
+        "Parking",
+        "Baden-Wuerttemberg",
+        "ParkAPI",
+        "OpenData",
+        "Realtime"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bundled-e-scooter-data-baden-württemberg",
+      "assetTitle": "Bundled E-Scooter Sharing Data Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Dynamic data on locations and availability of e-scooters in Baden-Wuerttemberg, Switzerland and France.\n\nHere, you find the feed which contains all the sharing feeds. Each provider generates its own feed: https://api.mobidata-bw.de/sharing/gbfs/v2/PROVIDER/gbfs/\n\nExample: https://api.mobidata-bw.de/sharing/gbfs/v2/voi_de/gbfs/\n\nInformation about vehicle types: https://api.mobidata-bw.de/sharing/gbfs/v2/voi_de/vehicle_types\n\nPlease note, that it is an parameterized offer. \n*https://api.mobidata-bw.de/sharing/gbfs/v2/* is already set as base URL on the provider side.",
+      "version": "1.0",
+      "keywords": [
+        "Scootersharing",
+        "Baden-Wuerttemberg",
+        "OpenData",
+        "GBFS",
+        "Realtime"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "SHARING_AND_HIRING_SERVICES",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bundled-carsharing-data-baden-württemberg",
+      "assetTitle": "Bundled Carsharing Data Baden-Württemberg",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "The data profile bundles data form different carsharing providers in Baden-Württemberg, mostly location data of stations, but it also contains realtime data.\n\nHere, you find the feed which contains all the sharing feeds. Each provider generates its own feed: \nhttps://api.mobidata-bw.de/sharing/gbfs/v2/PROVIDER/gbfs/\n\nExample: \nhttps://api.mobidata-bw.de/sharing/gbfs/v2/teilauto_biberach/gbfs/\n\nInformation about vehicle types:\nhttps://api.mobidata-bw.de/sharing/gbfs/v2/teilauto_biberach/vehicle_types\n\nPlease note, that it is an parameterized offer. \n*https://api.mobidata-bw.de/sharing/gbfs/v2/* is already set as base URL on the provider side.",
+      "version": "1.0",
+      "keywords": [
+        "Carsharing",
+        "Baden-Wuerttemberg",
+        "OpenData",
+        "GBFS",
+        "Realtime"
+      ],
+      "connectorId": "MDSL4R9Q11.C4FS7U0",
+      "organizationId": "MDSL4R9Q11",
+      "organizationName": "NVBW - Nahverkehrsgesellschaft Baden-Württemberg mbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:59:30.466108Z",
+      "dataCategory": "SHARING_AND_HIRING_SERVICES",
+      "connectorEndpoint": "https://mobidatabw-caas.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "nextlogic-demo-freight-traffic",
+      "assetTitle": "NEXTLOGIC DEMO Freight traffic (synthetic)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Synthetic demo dataset for testing data sharing in the NEXTLOGIC project. 8 fictional freight traffic records (CSV), no real or personal data. Not for analysis.",
+      "version": "1.0",
+      "keywords": [
+        "NEXTLOGIC",
+        "demo",
+        "synthetic"
+      ],
+      "connectorId": "MDSLDGW498.CMP7TPJ",
+      "organizationId": "MDSLDGW498",
+      "organizationName": "Škoda Auto Vysoká škola z.ú.",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.615174Z",
+      "dataCategory": "FREIGHT_AND_LOGISTICS",
+      "connectorEndpoint": "https://nextlogic-data-space.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "nextlogic-demo-parking-occupancy",
+      "assetTitle": "NEXTLOGIC DEMO Parking occupancy (synthetic)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Synthetic demo dataset for testing data sharing in the NEXTLOGIC project. 4 fictional parking records, no real or personal data. Not for analysis.",
+      "version": "1.0",
+      "keywords": [
+        "NEXTLOGIC",
+        "demo",
+        "synthetic"
+      ],
+      "connectorId": "MDSLDGW498.CMP7TPJ",
+      "organizationId": "MDSLDGW498",
+      "organizationName": "Škoda Auto Vysoká škola z.ú.",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.615174Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://nextlogic-data-space.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "vin-specification",
+      "assetTitle": "VIN Specification",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Data product with 41 data points to describe a vehicle extensively. Available for various purposes of use to speed up business workflows.",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSL8ER695.C1S82T5",
+      "organizationId": "MDSL8ER695",
+      "organizationName": "VW GIS AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.656601Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://vw-gis.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "vehicle-images",
+      "assetTitle": "Vehicle Images",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "OEM-sourced, VIN-based vehicle images for instant, precise, and high-quality vehicle presentation",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSL8ER695.C1S82T5",
+      "organizationId": "MDSL8ER695",
+      "organizationName": "VW GIS AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.656601Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://vw-gis.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "functions-on-demand",
+      "assetTitle": "Functions on Demand",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Original data on available functions on demand in the vehicle and their status. For 3 different user groups with different purposes of use.",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSL8ER695.C1S82T5",
+      "organizationId": "MDSL8ER695",
+      "organizationName": "VW GIS AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.656601Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://vw-gis.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "vehicle-identity-data",
+      "assetTitle": "Vehicle Identity",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "For damage assessors only. Use vehicle master and equipment data for a quick analysis and reliable diagnosis of vehicle damage.",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSL8ER695.C1S82T5",
+      "organizationId": "MDSL8ER695",
+      "organizationName": "VW GIS AG",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.656601Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://vw-gis.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "strooiroute-hoofdwegen",
+      "assetTitle": "Strooiroute hoofdwegen",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "De strooiroute van de gemeentelijke wegen\n\nPeildatum: De strooiroutes worden jaarlijks gecontroleerd en waar nodig aangepast aan een gewijzigde situatie.\n\nOmschrijving: Wegen in beheer van de Gemeente Zwolle waar gestrooid wordt op het moment dat er gladheid voorspeld is. In woonwijken worden alleen de ontsluitingswegen gestrooid en niet de kleine wegen.\n\n# Data freely available at: https://smart-zwolle.opendata.arcgis.com/datasets/053855ffeebe40c782b7cb03bd3f8c4a_1",
+      "version": "",
+      "keywords": [
+        "zwolle",
+        "gritting"
+      ],
+      "connectorId": "MDSL6V4R6A.C4XNAGY",
+      "organizationId": "MDSL6V4R6A",
+      "organizationName": "Gemeente Zwolle",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.499357Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://prodconnector-zwolle.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "fietsdashboard",
+      "assetTitle": "Fietsdashboard",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "<b>Doel</b><div>Het fietsdashboard geeft informatie over het fietsgebruik en voorzieningen in Gemeente Zwolle</div><div><br /></div><div><b>Inhoud</b></div><div>Het dashboard bevat informatie over fietspaden en wegen, bezetting van fietsenstallingen, fietstellingen, strooiroutes en fietsnetwerken.</div><div><br /></div><div><br /></div>\n# Data freely available at: https://zwolle.maps.arcgis.com/apps/instant/sidebar/index.html?appid=7526b0fc2cc740ad956230b55f7865c7&webmap=a84dca1e279740f198789dff6d77e8e7",
+      "version": "",
+      "keywords": [
+        "bicycle",
+        "dashboard",
+        "zwolle"
+      ],
+      "connectorId": "MDSL6V4R6A.C4XNAGY",
+      "organizationId": "MDSL6V4R6A",
+      "organizationName": "Gemeente Zwolle",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.499357Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://prodconnector-zwolle.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "digitale-tweelingstad-zwolle",
+      "assetTitle": "Digitale Tweelingstad Zwolle",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "3D visualisation of infrastructure from Municipality Zwolle.\n# Data freely available at: https://zwolle.maps.arcgis.com/apps/instant/sidebar/index.html?appid=7526b0fc2cc740ad956230b55f7865c7&webmap=03d590b1de534bd193ba83cf815b4584",
+      "version": "",
+      "keywords": [
+        "zwolle",
+        "infrastructure",
+        "streetlight",
+        "light poles",
+        "bridges",
+        "trees",
+        "buildings"
+      ],
+      "connectorId": "MDSL6V4R6A.C4XNAGY",
+      "organizationId": "MDSL6V4R6A",
+      "organizationName": "Gemeente Zwolle",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.499357Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://prodconnector-zwolle.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "strooiroute-fietspaden",
+      "assetTitle": "Strooiroute fietspaden",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "Strooiroute van de gemeentelijke fietspaden\n\nPeildatum:  De strooiroutes worden jaarlijks gecontroleerd en waar nodig aangepast aan een gewijzigde situatie.\n\nOmschrijving: Fietspaden in beheer van de Gemeente Zwolle waar gestrooid wordt als er gladheid voorspeld is. In woonwijken worden alleen de ontsluitingswegen gestrooid en niet de kleine wegen.\n# Data freely available at: https://smart-zwolle.opendata.arcgis.com/datasets/44a9fb09f3b24ec3867647ecf8a128fa_0",
+      "version": "",
+      "keywords": [
+        "bicycle",
+        "zwolle",
+        "gritting"
+      ],
+      "connectorId": "MDSL6V4R6A.C4XNAGY",
+      "organizationId": "MDSL6V4R6A",
+      "organizationName": "Gemeente Zwolle",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.499357Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://prodconnector-zwolle.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bicycle-counts---city-centre-zwolle",
+      "assetTitle": "Bicycle counts - City Centre Zwolle",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "This dateset contains counting-data of cyclists and pedestrians with bicycle in hand in the centre of Zwolle. The counts take place at two types of locations, updated every 5 minutes.\nAccess roads in the centre of Zwolle\n* Vispoortbrug\n* Diezerkaderbrug\n* Kerkstraat \n* Sassenpoort. \nBicycle parking locations\n* Gasthuisplein\n* Meerminneplein\n* Rodetorenplein\n* Plettestraat.\nExplanation column names:\n* Forward: number entering town centre\n* Backward: number leaving town centre\n# Data freely available at: https://smart-zwolle.opendata.arcgis.com/maps/717943c6ad1544e99db409be00e77bdf/about",
+      "version": "",
+      "keywords": [
+        "bicycle",
+        "zwolle",
+        "pedestrians"
+      ],
+      "connectorId": "MDSL6V4R6A.C4XNAGY",
+      "organizationId": "MDSL6V4R6A",
+      "organizationName": "Gemeente Zwolle",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.499357Z",
+      "dataCategory": "REAL_TIME_TRAFFIC_DATA",
+      "connectorEndpoint": "https://prodconnector-zwolle.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "wegvakonderdelen",
+      "assetTitle": "Wegvakonderdelen",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "Wegvakken die beheerd worden in opdracht van de Gemeente Zwolle, met daarbij informatie over:\n* type verharding, zoals asfaltbeton, klinkers en tegels \n* afmetingen \n* jaar van aanleg \n* ligging \n* onderdeeltype, zoals voetpad, fietspad, rijbaan, woonerf en parkeerstraat\n# Data freely available at: https://smart-zwolle.opendata.arcgis.com/datasets/32ae63c1f59c4819b3e385d4d1083aa7_17",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSL6V4R6A.C4XNAGY",
+      "organizationId": "MDSL6V4R6A",
+      "organizationName": "Gemeente Zwolle",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.499357Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://prodconnector-zwolle.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "adas&me-eu-project-motorcycle-study-1",
+      "assetTitle": "ADAS&ME EU Project Motorcycle Study 1",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "ADAS&ME: Experiments for the development of a rider condition monitoring system",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLOISOYW.C77Q54N",
+      "organizationId": "MDSLOISOYW",
+      "organizationName": "Centre for Research and Technology Hellas (CERTH)",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.53697Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://certh-hit-01.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bike-counter-province-bozen-bolzano",
+      "assetTitle": "Bike Counter Province Bozen-Bolzano",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "This dataset contains data of the bike counter service provided by several municipalities of the Autonomous Province of Bozen-Bolzano.\n\nAll publicly (without a login) available data is under license CC0.\n\nDocumentation available [here](https://swagger.opendatahub.com/?url=https://mobility.api.opendatahub.com/v2/apispec#/Mobility%20V2) and web preview (tabular view) [here](https://databrowser.opendatahub.com/dataset/table/mobility/v2/flat/BikeCounter?language=en)",
+      "version": "2.0",
+      "keywords": [
+        "bycicle",
+        "Bozen",
+        "Bolzano",
+        "South Tyrol",
+        "Italy"
+      ],
+      "connectorId": "MDSLPKUSSI.C9CI013",
+      "organizationId": "MDSLPKUSSI",
+      "organizationName": "NOI SpA",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.540042Z",
+      "dataCategory": "REAL_TIME_TRAFFIC_DATA",
+      "connectorEndpoint": "https://opendatahub-prod-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "custom-high-frequency-vehicle-telemetry-data",
+      "assetTitle": "Custom high-frequency vehicle telemetry data",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "We offer custom high-frequency telemetry data captured directly from various test vehicles in Graz, Austria (manual vehicle with internal combustion engine or hybrid-electric vehicle with advanced AD/ADAS functions). Signals of interest can be defined depending on the partners needs and the availability.",
+      "version": "",
+      "keywords": [
+        "Vehice Telemetry",
+        "Live Test Vehicle Signals",
+        "Automated Driving",
+        "ADAS",
+        "Car Data",
+        "In-Vehicle Sensor Data",
+        "Trip Data"
+      ],
+      "connectorId": "MDSLOQXDPS.COEANPG",
+      "organizationId": "MDSLOQXDPS",
+      "organizationName": "Virtual Vehicle Research GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.583407Z",
+      "dataCategory": "REAL_TIME_TRAFFIC_DATA",
+      "connectorEndpoint": "https://vivautomotiveprod.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "vehicle-generated-driving-signals",
+      "assetTitle": "High-frequency telemetry data generated by a test vehicle",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "This dataset offers **high-frequency telemetry data** captured directly **from one of our test vehicles** in Graz, Austria (manual vehicle with internal combustion engine). It includes critical signals such as steering wheel angle, vehicle speed, and other available signals. For a comprehensive list of all accessible signals, please see the data sample. Our data offer provides the latest 1000 data points measured by the test vehicle over a defined time period.",
+      "version": "",
+      "keywords": [
+        "Vehicle Telemetry",
+        "Live Test Vehicle Signals",
+        "Car Data",
+        "In-Vehicle Sensor Data",
+        "Trip Data"
+      ],
+      "connectorId": "MDSLOQXDPS.COEANPG",
+      "organizationId": "MDSLOQXDPS",
+      "organizationName": "Virtual Vehicle Research GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.583407Z",
+      "dataCategory": "REAL_TIME_TRAFFIC_DATA",
+      "connectorEndpoint": "https://vivautomotiveprod.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "mercedes-benz-dfrs-data-offer",
+      "assetTitle": "Mercedes-Benz DFRS data offer",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Mercedes-Benz fleet generates hazard events which are provided for DFRS partners. Based on manual approval we allow the hazard data for DFRS partners only. \n\nTechnical note: In order to be able to receive data, the OIDC Access token requires the following scopes: \"sasl.oauthbearer.scope=openid groups profile\".",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLR67WHG.CLZEETW",
+      "organizationId": "MDSLR67WHG",
+      "organizationName": "Mercedes-Benz Connectivity Services GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.476202Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://mercedes-next-dfrs.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "pidmo--interoperables-datex-ii-datenmodell-zur-vernetzung-von-parkhäusern-im-mobility-data-space-1.0",
+      "assetTitle": "PidMo: Interoperables DATEX II-Datenmodell zur Vernetzung von Parkhäusern im Mobility Data Space",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "# Datensatz-Spezifikation: PidMo\n**Parkhäuser im Datenraum Mobilität**\n\nDieser Datensatz enthält die technische Spezifikation des im Forschungsprojekt **PidMo** entwickelten Datenmodells. Das primäre Ziel ist es, die technologische Isolation von Parkhaus-Infrastrukturen aufzubrechen und eine souveräne sowie interoperable Einbindung in nationale Mobilitätsdatenräume (**Mobility Data Space (MDS)** und **Mobilithek**) zu ermöglichen.\n\n---\n\n### 🛠 Kerninhalte und Struktur\n\n* **Standardisierung:** Die Modellierung basiert auf dem europäischen Standard **DATEX II (CEN/TS 16157)**. Es wurden spezifische Profile entwickelt, die exakt auf moderne Mobilitätsszenarien zugeschnitten sind.\n* **Differenzierung der Datenarten:** Das Modell unterscheidet systematisch zwischen:\n    * **Statischen Stammdaten:** z. B. Standorte, Kapazitäten oder Zertifizierungen für Landeflächen.\n    * **Dynamischen Prozessdaten:** z. B. Echtzeit-Belegungsraten oder automatisierte Buchungsvorgänge.\n\n---\n\n### 🌐 Domänenspezifische Erweiterungen (Use-Cases)\n\nDas Modell beinhaltet spezialisierte Attribute und Funktionen für vier zentrale Anwendungsfelder:\n\n1.  **Automated Valet Parking (AVP Typ 2):** Infrastrukturbasierte Unterstützung für vollautomatisierte, fahrerlose Parkvorgänge.\n2.  **Intermodale Shuttle-Anbindung:** Synchronisation von autonomen Shuttlesystemen mit dem Individualverkehr.\n3.  **Urban Air Mobility (UAM):** Qualifizierung von Parkhausdächern als Start- und Landeplätze für Flugdrohnen (**Vertiports**).\n4.  **Urban Hubs:** Integration von Logistikflächen zur Optimierung des städtischen Warenumschlags.\n\n---\n\n### 🚀 Technischer & Strategischer Nutzen\n\n* **Plattformfähigkeit:** Das Datenset ermöglicht es Betreibern, ihre Infrastruktur als aktive **Mobility Hubs** in das urbane Verkehrsnetz zu integrieren.\n* **Implementierung:** Durch die Bereitstellung als **UML-Spezifikation** und **XML-Schema** wird eine direkte technische Umsetzung für Software-Entwickler und Systemintegratoren ermöglicht.\n\n---\n\n### 📂 Download & Zugriff\n\nDas vollständige Datenmodell inklusive aller Spezifikationen steht unter folgendem Link zur Verfügung:\n\n> **[Zum Datensatz auf Zenodo: 18890553](https://zenodo.org/records/18890553)**",
+      "version": "1.0",
+      "keywords": [
+        "Automated Valet Parking (AVP)",
+        "Urban Air Mobility (UAM)",
+        "Vertiports",
+        "Mobility Hubs",
+        "Shuttle on Demand",
+        "Mobilithek",
+        "mFUND",
+        "PidMo"
+      ],
+      "connectorId": "MDSL5CAG6R.CMQQ961",
+      "organizationId": "MDSL5CAG6R",
+      "organizationName": "Universität Potsdam",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.451016Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://lswi-prod-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "parkplatzauslastungen-bayern",
+      "assetTitle": "Parkplatzauslastungen Bayern",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Verschiedene Touristische Parkplätze mit aktueller Auslastung. Der Datensatz enthält alle über die BayernCloud Tourismus verfügbaren Auslastungsdaten.",
+      "version": "",
+      "keywords": [
+        "parking",
+        "toursim",
+        "occupancy"
+      ],
+      "connectorId": "MDSLMP360A.CDZVO88",
+      "organizationId": "MDSLMP360A",
+      "organizationName": "Bayern Tourismus Marketing GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-29T07:29:28.592955Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://bavaria-tourism.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "public-fast-charging-timeseries-for-electric-vehicles",
+      "assetTitle": "Public Fast Charging Timeseries for Electric Vehicles",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "This dataset provides a realistic and representative hourly charging power time series over one year for 100 electric vehicles (EVs) charging in public with a power of 150 kW. The time series includes daily driving patterns such as commuting to work, recreational activities, and weekend activities for a car situated in a metropolitan area. In addition, the dataset accounts for seasonal effects, such as temperature effects on consumption, and holiday travel. Different spatial types and other aggregation levels higher time resolutions and varying charging power are available.",
+      "version": "",
+      "keywords": [
+        "Electric Vehicles",
+        "Charging Timeseries",
+        "Seasonality",
+        "Metropolitan Area",
+        "Charging Infrastructure"
+      ],
+      "connectorId": "MDSLSKNVL3.C5EXHVU",
+      "organizationId": "MDSLSKNVL3",
+      "organizationName": "Fraunhofer IEE",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.444143Z",
+      "dataCategory": "FILLING_AND_CHARGING_STATIONS",
+      "connectorEndpoint": "https://fraunhofer-iee.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "public-charging-timeseries-for-electric-vehicles",
+      "assetTitle": "Public Charging Timeseries for Electric Vehicles",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "This dataset provides a realistic and representative hourly charging power time series over one year for 100 electric vehicles (EVs) charging in public with a power of 11 kW. The time series includes daily driving patterns such as commuting to work, recreational activities, and weekend activities for a car situated in a metropolitan area. In addition, the dataset accounts for seasonal effects, such as temperature effects on consumption, and holiday travel. Different spatial types and other aggregation levels higher time resolutions and varying charging power are available.",
+      "version": "",
+      "keywords": [
+        "Electric Vehicles",
+        "Charging Timeseries",
+        "Seasonality",
+        "Metropolitan Area",
+        "Charging Infrastructure"
+      ],
+      "connectorId": "MDSLSKNVL3.C5EXHVU",
+      "organizationId": "MDSLSKNVL3",
+      "organizationName": "Fraunhofer IEE",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.444143Z",
+      "dataCategory": "FILLING_AND_CHARGING_STATIONS",
+      "connectorEndpoint": "https://fraunhofer-iee.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "work-charging-timeseries-for-electric-vehicles",
+      "assetTitle": "Work Charging Timeseries for Electric Vehicles",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "This dataset provides a realistic and representative hourly charging power time series over one year for 100 electric vehicles (EVs) charging at work with a power of 11 kW. The time series includes daily driving patterns such as commuting to work, recreational activities, and weekend activities for a car situated in a metropolitan area. In addition, the dataset accounts for seasonal effects, such as temperature effects on consumption, and holiday travel. Different spatial types and other aggregation levels higher time resolutions and varying charging power are available.",
+      "version": "",
+      "keywords": [
+        "Electric Vehicles",
+        "Charging Timeseries",
+        "Seasonality",
+        "Metropolitan Area",
+        "Charging Infrastructure"
+      ],
+      "connectorId": "MDSLSKNVL3.C5EXHVU",
+      "organizationId": "MDSLSKNVL3",
+      "organizationName": "Fraunhofer IEE",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.444143Z",
+      "dataCategory": "FILLING_AND_CHARGING_STATIONS",
+      "connectorEndpoint": "https://fraunhofer-iee.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "home-charging-timeseries-for-electric-vehicles",
+      "assetTitle": "Home Charging Timeseries for Electric Vehicles",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "This dataset provides a realistic and representative hourly charging power time series over one year for 100 electric vehicles (EVs) charging at home with a power of 11 kW. The time series includes daily driving patterns such as commuting to work, recreational activities, and weekend activities for a car situated in a metropolitan area. In addition, the dataset accounts for seasonal effects, such as temperature effects on consumption, and holiday travel. Different spatial types and other aggregation levels higher time resolutions and varying charging power are available.",
+      "version": "",
+      "keywords": [
+        "Charging Timeseries",
+        "Seasonality",
+        "Metropolitan Area",
+        "Charging Infrastructure",
+        "Electric vehicles"
+      ],
+      "connectorId": "MDSLSKNVL3.C5EXHVU",
+      "organizationId": "MDSLSKNVL3",
+      "organizationName": "Fraunhofer IEE",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.444143Z",
+      "dataCategory": "FILLING_AND_CHARGING_STATIONS",
+      "connectorEndpoint": "https://fraunhofer-iee.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "forecast-data-day-ahead-pv",
+      "assetTitle": "Forecast Data Day-Ahead PV",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Electricity forecast data for day-ahead photovoltaic (PV) production in Germany on a 15-min time resolution and per German postal code areas. Updates are available twice a day. Reduction to 1-hour resolution and other regions is possible, as well as updating up to 96 times per day based on recent weather information for the next hours. \nForecast data assets may be adapted to specific application needs including further renewable generation with data consumers on demand.",
+      "version": "",
+      "keywords": [
+        "power forecast",
+        "photovoltaic",
+        "renewables",
+        "carbon-footprint",
+        "charging optimization"
+      ],
+      "connectorId": "MDSLSKNVL3.C5EXHVU",
+      "organizationId": "MDSLSKNVL3",
+      "organizationName": "Fraunhofer IEE",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.444143Z",
+      "dataCategory": "FILLING_AND_CHARGING_STATIONS",
+      "connectorEndpoint": "https://fraunhofer-iee.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "forecast-data-day-ahead-pv-sample",
+      "assetTitle": "Forecast Data Day-Ahead PV Sample",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Electricity forecast data for day-ahead photovoltaic (PV) production in Germany on a 15-min time resolution and per German postal code areas. Updates are available twice a day. Reduction to 1-hour resolution and other regions is possible, as well as updating up to 96 times per day based on recent weather information for the next hours. \nForecast data assets may be adapted to specific application needs including further renewable generation with data consumers on demand. \nThis is a sample to show how the data looks like.",
+      "version": "",
+      "keywords": [
+        "power forecast",
+        "photovolatic",
+        "renewables",
+        "carbon-footprint",
+        "charging optimization"
+      ],
+      "connectorId": "MDSLSKNVL3.C5EXHVU",
+      "organizationId": "MDSLSKNVL3",
+      "organizationName": "Fraunhofer IEE",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.444143Z",
+      "dataCategory": "FILLING_AND_CHARGING_STATIONS",
+      "connectorEndpoint": "https://fraunhofer-iee.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "smart-bike-park",
+      "assetTitle": "Smart Bike park",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "IA cameras permit to have data on :\n- Bike Park Rotation\n- Occupency rate\n- Identify the \"leech\" bikes",
+      "version": "",
+      "keywords": [
+        "Bike",
+        "park",
+        "occupency"
+      ],
+      "connectorId": "MDSLXYYTFW.CEI3AZ1",
+      "organizationId": "MDSLXYYTFW",
+      "organizationName": "Le Havre Seine Métropole",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.544076Z",
+      "dataCategory": "PARKING_SERVICE_AND_REST_AREA_INFORMATION",
+      "connectorEndpoint": "https://counters.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "bike-data-counter",
+      "assetTitle": "Bike Data Counter",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "CSV Field to collect counters informations on 2025 :\n- Location\n- Bikes numbers per day ",
+      "version": "",
+      "keywords": [
+        "Bike",
+        "Counter"
+      ],
+      "connectorId": "MDSLXYYTFW.CEI3AZ1",
+      "organizationId": "MDSLXYYTFW",
+      "organizationName": "Le Havre Seine Métropole",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.544076Z",
+      "dataCategory": "CYCLE_NETWORK_DATA",
+      "connectorEndpoint": "https://counters.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "pedestrian-flow-estimation-alc-1.0",
+      "assetTitle": "Pedestrian Flow Estimation ALC",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Service that estimates pedestrian footfall using mobility and geospatial data to support urban planning and mobility management.",
+      "version": "1.0",
+      "keywords": [
+        "flow",
+        "traffic",
+        "estimation"
+      ],
+      "connectorId": "MDSLGIA2RT.CXK8RRP",
+      "organizationId": "MDSLGIA2RT",
+      "organizationName": "Universidad de Alicante",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.47568Z",
+      "dataCategory": "PEDESTRIAN_NETWORK_DATA",
+      "connectorEndpoint": "https://ua-mds-prod-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "mobility-comunidadvalenciana",
+      "assetTitle": "Mobility-ComunidadValenciana",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "",
+      "version": "",
+      "keywords": [
+        "mobility",
+        "routes"
+      ],
+      "connectorId": "MDSLGIA2RT.CXK8RRP",
+      "organizationId": "MDSLGIA2RT",
+      "organizationName": "Universidad de Alicante",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.47568Z",
+      "dataCategory": "GENERAL_INFORMATION_FOR_TRIP-PLANNING",
+      "connectorEndpoint": "https://ua-mds-prod-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "POIs-Alicante-0.1",
+      "assetTitle": "Urban Points of Interest - Alicante [Test]",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "## Description\n\nGeolocated Points of Interest (POI) dataset covering the metropolitan area of Alicante and surroundings, referenced on 24/03/2026. Includes sports facilities, cultural venues, social centres, green spaces, and heritage elements. Each record contains geographic coordinates (lat/lon), facility type (amenity), postal address, postcode, neighbourhood, county, and country, enriched with descriptions from Wikipedia and Wikidata.\n\n## Format\n\nCSV (UTF-8 encoding).\n\n## Source\n\nOpenStreetMap + semantic enrichment.",
+      "version": "0.1",
+      "keywords": [],
+      "connectorId": "MDSLGIA2RT.CXK8RRP",
+      "organizationId": "MDSLGIA2RT",
+      "organizationName": "Universidad de Alicante",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.47568Z",
+      "dataCategory": "GENERAL_INFORMATION_FOR_TRIP-PLANNING",
+      "connectorEndpoint": "https://ua-mds-prod-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "sustainable-route-alc-1.0",
+      "assetTitle": "Sustainable Route ALC",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Service that generates optimized routes to reduce emissions, travel time, and environmental impact.",
+      "version": "1.0",
+      "keywords": [
+        "Sustainable",
+        "Routes"
+      ],
+      "connectorId": "MDSLGIA2RT.CXK8RRP",
+      "organizationId": "MDSLGIA2RT",
+      "organizationName": "Universidad de Alicante",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:19:47.47568Z",
+      "dataCategory": "GENERAL_INFORMATION_FOR_TRIP-PLANNING",
+      "connectorEndpoint": "https://ua-mds-prod-1.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "fleetvehicles-0.1",
+      "assetTitle": "FleetVehicles",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "List of vehicles in fleet with basic data",
+      "version": "0.1",
+      "keywords": [],
+      "connectorId": "MDSLGP4CE1.C4I14JI",
+      "organizationId": "MDSLGP4CE1",
+      "organizationName": "DEKRA Automobil GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.507128Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://dekra-next-mds.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "lc-activation-aggregator",
+      "assetTitle": "LC Activation Aggregator",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Real-time activation/closure intervals of railway level crossings within a geographic bounding box (current 2-hour window).\n\nQuery parameters: minLon, minLat, maxLon, maxLat (bounding box); onlyNonEmpty (filter empty crossings).",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSL2NZSXL.CPHU3RC",
+      "organizationId": "MDSL2NZSXL",
+      "organizationName": "Hochschule Mainz",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.550202Z",
+      "dataCategory": "PUBLIC_TRANSPORT_SCHEDULED_TRANSPORT",
+      "connectorEndpoint": "https://minos-0.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "gb-haas-alert-dfrs-all-hazards",
+      "assetTitle": "HAAS Alert - Hazard Warnings (GB)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "All road hazard events from HAAS Alert in the United Kingdom.",
+      "version": "",
+      "keywords": [
+        "Blue Light Vehicles",
+        "Emergency Vehicles",
+        "EVA",
+        "Amber Light Vehicles",
+        "Maintenance Vehicles",
+        "Road Work Warnings",
+        "HAAS Alert",
+        "United Kingdom",
+        "DFRS"
+      ],
+      "connectorId": "MDSLON9YRS.C18XHNE",
+      "organizationId": "MDSLON9YRS",
+      "organizationName": "HAAS, Inc., DBA HAAS Alert",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.473829Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://haas-alert-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "eu-haas-alert-dfrs-stopped-trucks",
+      "assetTitle": "HAAS Alert - Stopped Trucks (EU)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Commercial vehicles (trucks) that are stopped in or along the roadway.",
+      "version": "",
+      "keywords": [
+        "Broken Down Vehicles",
+        "BDV",
+        "Stopped Truck",
+        "HAAS Alert",
+        "DFRS"
+      ],
+      "connectorId": "MDSLON9YRS.C18XHNE",
+      "organizationId": "MDSLON9YRS",
+      "organizationName": "HAAS, Inc., DBA HAAS Alert",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.473829Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://haas-alert-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "gb-haas-alert-dfrs-emergency-vehicle-approaching",
+      "assetTitle": "HAAS Alert - Emergency Vehicles Approaching (GB)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Fire trucks, ambulances, and other emergency response vehicles that are driving to an emergency response event in the United Kingdom.",
+      "version": "",
+      "keywords": [
+        "Blue Light Vehicles",
+        "Emergency Vehicles",
+        "EVA",
+        "HAAS Alert",
+        "United Kingdom",
+        "DFRS"
+      ],
+      "connectorId": "MDSLON9YRS.C18XHNE",
+      "organizationId": "MDSLON9YRS",
+      "organizationName": "HAAS, Inc., DBA HAAS Alert",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.473829Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://haas-alert-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "nl-haas-alert-dfrs-emergency-vehicle-approaching",
+      "assetTitle": "HAAS Alert - Emergency Vehicles Approaching (NL)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Fire trucks, ambulances, and other emergency response vehicles that are driving to an emergency response event in The Netherlands.",
+      "version": "",
+      "keywords": [
+        "Blue Light Vehicles",
+        "Emergency Vehicles",
+        "EVA",
+        "HAAS Alert",
+        "Netherlands",
+        "DFRS"
+      ],
+      "connectorId": "MDSLON9YRS.C18XHNE",
+      "organizationId": "MDSLON9YRS",
+      "organizationName": "HAAS, Inc., DBA HAAS Alert",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.473829Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://haas-alert-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "nl-haas-alert-dfrs-all-hazards",
+      "assetTitle": "HAAS Alert - Hazard Warnings (NL)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "All road hazard events from HAAS Alert in The Netherlands.",
+      "version": "",
+      "keywords": [
+        "Blue Light Vehicles",
+        "Emergency Vehicles",
+        "EVA",
+        "Amber Light Vehicles",
+        "Maintenance Vehicles",
+        "Road Work Warnings",
+        "HAAS Alert",
+        "Netherlands",
+        "DFRS"
+      ],
+      "connectorId": "MDSLON9YRS.C18XHNE",
+      "organizationId": "MDSLON9YRS",
+      "organizationName": "HAAS, Inc., DBA HAAS Alert",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.473829Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://haas-alert-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "gb-haas-alert-dfrs-rww-stationary",
+      "assetTitle": "HAAS Alert - Road Work Warnings Stationary (GB)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Road maintenance vehicles that are stopped performing road work activities in the United Kingdom.",
+      "version": "",
+      "keywords": [
+        "Amber Light Vehicles",
+        "Maintenance Vehicles",
+        "Road Work Warnings",
+        "HAAS Alert",
+        "United Kingdom",
+        "DFRS"
+      ],
+      "connectorId": "MDSLON9YRS.C18XHNE",
+      "organizationId": "MDSLON9YRS",
+      "organizationName": "HAAS, Inc., DBA HAAS Alert",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.473829Z",
+      "dataCategory": "ROAD_WORK_INFORMATION",
+      "connectorEndpoint": "https://haas-alert-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "gb-haas-alert-dfrs-emergency-scenes",
+      "assetTitle": "HAAS Alert - Emergency Vehicles On Scene (GB)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Fire trucks, ambulances, and other emergency response vehicles that are stopped at an active emergency response event in the United Kingdom.",
+      "version": "",
+      "keywords": [
+        "Blue Light Vehicles",
+        "Emergency Vehicles",
+        "HAAS Alert",
+        "United Kingdom",
+        "DFRS"
+      ],
+      "connectorId": "MDSLON9YRS.C18XHNE",
+      "organizationId": "MDSLON9YRS",
+      "organizationName": "HAAS, Inc., DBA HAAS Alert",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.473829Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://haas-alert-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "gb-haas-alert-dfrs-tow",
+      "assetTitle": "HAAS Alert - Broken Down Vehicles (GB)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Broken down vehicles and roadside assistance vehicles in the United Kingdom.",
+      "version": "",
+      "keywords": [
+        "Broken Down Vehicles",
+        "BDV",
+        "Roadside Assistance",
+        "HAAS Alert",
+        "United Kingdom",
+        "DFRS"
+      ],
+      "connectorId": "MDSLON9YRS.C18XHNE",
+      "organizationId": "MDSLON9YRS",
+      "organizationName": "HAAS, Inc., DBA HAAS Alert",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.473829Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://haas-alert-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "gb-haas-alert-dfrs-rww-moving",
+      "assetTitle": "HAAS Alert - Road Work Warnings Moving (GB)",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Road maintenance vehicles that are moving performing mobile road work activities in the United Kingdom.",
+      "version": "",
+      "keywords": [
+        "Amber Light Vehicles",
+        "Maintenance Vehicles",
+        "Road Work Warnings",
+        "HAAS Alert",
+        "United Kingdom",
+        "DFRS"
+      ],
+      "connectorId": "MDSLON9YRS.C18XHNE",
+      "organizationId": "MDSLON9YRS",
+      "organizationName": "HAAS, Inc., DBA HAAS Alert",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.473829Z",
+      "dataCategory": "ROAD_WORK_INFORMATION",
+      "connectorEndpoint": "https://haas-alert-next.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "romo2-microweather-1.0",
+      "assetTitle": "RoMo2-Microweather",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "# RoMo2 Microweather\n\nThis is a Microweather API offering Netherlands data in the context of RoMo2 project. \n\nOnly RoMo2 Partners can susbscribe to this Asset. ",
+      "version": "1.0",
+      "keywords": [
+        "RoMo2",
+        "microweather",
+        "anoveda"
+      ],
+      "connectorId": "MDSLR67WHG.CJCHJBZ",
+      "organizationId": "MDSLR67WHG",
+      "organizationName": "Mercedes-Benz Connectivity Services GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.517185Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://mercedes-next-mds-one.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "romo2-roadsafetyhotspots-1.0",
+      "assetTitle": "RoMo2-RoadSafetyHotspots",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "# RoMo2 Road Safety Hotspots\n\nThis is a Road Safety Hotspots API offering Netherlands data in the context of RoMo2 project.\n\nOnly RoMo2 Partners can susbscribe to this Asset.",
+      "version": "1.0",
+      "keywords": [
+        "RoMo2",
+        "RoadSafetyHotspots",
+        "anoveda"
+      ],
+      "connectorId": "MDSLR67WHG.CJCHJBZ",
+      "organizationId": "MDSLR67WHG",
+      "organizationName": "Mercedes-Benz Connectivity Services GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.517185Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://mercedes-next-mds-one.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "romo2-surfaceevents-1.0",
+      "assetTitle": "RoMo2-SurfaceEvents",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "This is a Microweather API offering Netherlands data in the context of RoMo2 project.\n\nOnly RoMo2 Partners can susbscribe to this Asset.",
+      "version": "1.0",
+      "keywords": [
+        "RoMo2",
+        "SurfaceEvents",
+        "anoveda"
+      ],
+      "connectorId": "MDSLR67WHG.CJCHJBZ",
+      "organizationId": "MDSLR67WHG",
+      "organizationName": "Mercedes-Benz Connectivity Services GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.517185Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://mercedes-next-mds-one.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "romo2-waviness-1.0",
+      "assetTitle": "RoMo2-Waviness",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "# RoMo2 Waviness\n\nThis is a Road Waviness API offering Netherlands data in the context of RoMo2 project.\n\nOnly RoMo2 Partners can susbscribe to this Asset.",
+      "version": "1.0",
+      "keywords": [
+        "RoMo2",
+        "waviness",
+        "anoveda"
+      ],
+      "connectorId": "MDSLR67WHG.CJCHJBZ",
+      "organizationId": "MDSLR67WHG",
+      "organizationName": "Mercedes-Benz Connectivity Services GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.517185Z",
+      "dataCategory": "STATIC_ROAD_NETWORK_DATA",
+      "connectorEndpoint": "https://mercedes-next-mds-one.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "minimalwebhook",
+      "assetTitle": "minimalWebhook",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLR67WHG.CJCHJBZ",
+      "organizationId": "MDSLR67WHG",
+      "organizationName": "Mercedes-Benz Connectivity Services GmbH",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-10-16T01:14:47.517185Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://mercedes-next-mds-one.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "osnabrueck-traffic-sensor-dataset-v1.0",
+      "assetTitle": "Osnabrueck Traffic Sensor Dataset",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "# Osnabrück Traffic Sensor Dataset\n\nThe dataset contains timeseries data from 66 **Traffic Eye Universal (TEU)** traffic sensors measuring traffic count and speed. The sensors are located as pairs on streets of the city of Osnabrück. One sensor of a pair measures into one traffic direction and the second sensor in the opposite direction. Traffic is categorized into car, truck, truck_with_trailer, and unclassified. The data is provided raw without preprocessing.\n\n## Timeframe\n\n- **Startdate:** 03.01.2022\n- **Enddate:** 09.11.2023\n- **Timeresolution:** 5 Min\n- **Theorethical number of samples per timeseries/sensor:** 194,400\n\n## Acknowledgments\n\nWe want to thank all internal and external project partners of [Intelligent Pendeln](https://www.hs-osnabrueck.de/iip/) for their tireless support and cooperation. Their expertise, insights, discussions, and commitment are invaluable. Especially, we want to thank the municipality of Osnabrück for providing the static and dynamic raw traffic data.\n\nThis work is part of the *Intelligenter Intermodaler Pendlerverkehr* project, also known as *Intelligent Pendeln*. Intelligent Pendeln has received funding from the German Federal Ministry of Research, Technology and Space (BMFTR) program “[Forschungsnetzwerk Anonymisierung für eine sichere Datennutzung](https://www.forschungsnetzwerk-anonymisierung.de/index.php/tagungsband-2025)” under grant agreement No 16KISA120.\n\nSome computation of this research was carried out using computing resources of the High Performance Computing (HPC) cluster of the Osnabrück University of Applied Sciences, which were provided by the German Federal Ministry of Education and Research (BMBF) within the [HiPer4All@HSOS](https://www.hs-osnabrueck.de/hpc-cluster/) project.\n\n## Cite\n\nIf you use this dataset please cite:\n\nA. Schaffland and J. Schöning, “Urban traffic forecasting, urban data platforms and urban foundations models,” in *2025 7th Experiment@ International Conference (exp.at’25)*, 2025.\n\n## Links\n\n* [Hochschule Osnabrück NTP](https://www.hs-osnabrueck.de/en/research/structure/research-fields/sustainable-technologies-and-processes/)\n* [Hochschule Osnabrück NTP GitLab](https://gitlab.edvsz.hs-osnabrueck.de/NTP)\n* [Urban traffic forecasting, urban data platforms and urban foundations models](http://dx.doi.org/10.1109/exp.at2565440.2025.11348320)",
+      "version": "1.0",
+      "keywords": [
+        "Traffic Count",
+        "Timeseries",
+        "Car",
+        "Truk",
+        "Traffic Flow",
+        "Speed"
+      ],
+      "connectorId": "MDSLWQIMJK.C7ZLPI0",
+      "organizationId": "MDSLWQIMJK",
+      "organizationName": "Hochschule Osnabrück",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-07-13T11:56:08.906881Z",
+      "dataCategory": "ROAD_EVENTS_AND_CONDITIONS",
+      "connectorEndpoint": "https://hs-osnabrueck-prod-01.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "lc-activation-aggregator-test",
+      "assetTitle": "LC Activation Aggregator Test",
+      "assetDataSourceAvailability": "LIVE",
+      "descriptionShortText": "Light curtain activation data for a bounding box. Returns active crossings in the current 2-hour window. Query params: minLon, minLat, maxLon, maxLat, onlyNonEmpty.",
+      "version": "",
+      "keywords": [
+        "light-curtain",
+        "railway"
+      ],
+      "connectorId": "MDSL2NZSXL.CQ6EMFF",
+      "organizationId": "MDSL2NZSXL",
+      "organizationName": "Hochschule Mainz",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-07-13T11:56:08.614817Z",
+      "dataCategory": "PUBLIC_TRANSPORT_SCHEDULED_TRANSPORT",
+      "connectorEndpoint": "https://minos-test.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "enschede-bicycle-app",
+      "assetTitle": "Enschede Bicycle App",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "Users of the Enschede fietst app provide information on intensities, speeds, travel times, and O/D information.",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLKSDTEA.C0W0C11",
+      "organizationId": "MDSLKSDTEA",
+      "organizationName": "Gemeente Enschede",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-07-13T11:56:08.497068Z",
+      "dataCategory": "OTHER",
+      "connectorEndpoint": "https://enschedetlc.connector.mds.think-it.io/api/dsp"
+    },
+    {
+      "assetId": "tlc-data",
+      "assetTitle": "TLC data ",
+      "assetDataSourceAvailability": "ON_REQUEST",
+      "descriptionShortText": "Overview of all traffic lights including bicycle data from counting loops",
+      "version": "",
+      "keywords": [],
+      "connectorId": "MDSLKSDTEA.C0W0C11",
+      "organizationId": "MDSLKSDTEA",
+      "organizationName": "Gemeente Enschede",
+      "connectorOnlineStatus": "ONLINE",
+      "connectorOfflineSinceOrLastUpdatedAt": "2026-07-13T11:56:08.497068Z",
+      "dataCategory": "REAL_TIME_TRAFFIC_DATA",
+      "connectorEndpoint": "https://enschedetlc.connector.mds.think-it.io/api/dsp"
+    }
+  ],
+  "snapshotMetadata": {
+    "fetchedAt": "2026-11-09T10:27:08.613545+00:00",
+    "pagesFetched": 14,
+    "offersSaved": 132,
+    "totalAtCapture": 132,
+    "source": "MDS portal catalogue",
+    "mode": "saved"
+  }
+}

@@ -251,6 +251,7 @@ export default function SideDrawer(props: Props) {
         component="main"
         sx={{
           flexGrow: 1,
+          minWidth: 0,
           p: 3,
           width: { md: `calc(100% - ${drawerWidth}px)` },
         }}

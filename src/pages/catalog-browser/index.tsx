@@ -1,9 +1,9 @@
 import { Input } from "@/components/atoms/input";
 import { CounterPartyAddressDialog } from "@/components/molecules/counter-party-address-dialog";
-import { ErrorPopup } from "@/components/molecules/error-popup";
 import PaginationControls from "@/components/molecules/pagination-controls";
 import SearchBar from "@/components/molecules/search-bar";
-import DataOfferCard from "@/components/organisms/data-offer-card";
+import { CatalogResults } from "@/components/organisms/catalog-results";
+import { PortalCatalog } from "@/components/organisms/portal-catalog";
 import DataOfferDialog from "@/components/organisms/data-offer-dialog";
 import SideDrawer from "@/components/organisms/side-drawer";
 import { proxyConnectorManagement } from "@/constants/proxy";
@@ -12,7 +12,7 @@ import { useParticipantConnectorState } from "@/hooks/use-participant-connector-
 import { useSessionState } from "@/hooks/use-session-state";
 import { useUpdateQueryParams } from "@/hooks/use-update-query-params";
 import { T, useTranslator } from "@/i18n";
-import { Badge, Icon, IconButton, Tooltip, Typography } from "@mui/material";
+import { Icon, IconButton, Tooltip, Typography, Tabs, Tab } from "@mui/material";
 import {
   Dataset,
   EdcConnectorClientError,
@@ -33,6 +33,7 @@ export default function CatalogPage() {
   const { query } = useRouter();
   const updateQueryParams = useUpdateQueryParams();
   const [hasBadUrlError, setHasBadUrlError] = useState(false);
+  const [catalogMode, setCatalogMode] = useState("browse");
 
   const [listKey, setListKey] = useState(1);
   const [isDataOfferDialogOpen, setIsDataOfferDialogOpen] = useState(false);
@@ -82,6 +83,8 @@ export default function CatalogPage() {
   });
 
   useEffect(() => {
+    let active = true;
+    setCatalogParticipantId("");
     async function showCatalog(counterPartyAddress: string) {
       try {
         const catalog = await client.management.catalog.request({
@@ -89,11 +92,12 @@ export default function CatalogPage() {
           counterPartyAddress:
             counterPartyAddressWithDsp2025_1(counterPartyAddress),
         });
-        setCatalogParticipantId(
-          catalog["https://w3id.org/dspace/2025/1/participantId"][0]["@id"],
-        );
+        if (!active) return;
+        const identity = catalog["https://w3id.org/dspace/2025/1/participantId"]?.[0]?.["@id"];
+        setCatalogParticipantId(typeof identity === "string" ? identity : "");
         setHasBadUrlError(false);
       } catch (error) {
+        if (!active) return;
         const connectorError = error as EdcConnectorClientError;
 
         if (connectorError.type === EdcConnectorClientErrorType.BadGateway) {
@@ -112,6 +116,7 @@ export default function CatalogPage() {
     if (counterPartyAddress) {
       showCatalog(counterPartyAddress);
     }
+    return () => { active = false; };
   }, [counterPartyAddress, client, translator, showSnackbar]);
 
   const openDataOfferDialog = (dataset: Dataset) => {
@@ -137,7 +142,7 @@ export default function CatalogPage() {
         )}
         assetIsOwned={counterPartyAddress === connector.protocolUrl}
         onClose={() => setIsDataOfferDialogOpen(false)}
-        contentStyle={{ maxWidth: "90vw", minWidth: "1000px" }}
+        contentStyle={{ maxWidth: "90vw", width: "1000px" }}
         onNegotiateSuccess={() => setListKey((key) => key + 1)}
       />
 
@@ -148,7 +153,12 @@ export default function CatalogPage() {
       />
 
       <SideDrawer title={<T string="catalog.title" />}>
-        <div className="h-[70vh]">
+        <Tabs value={catalogMode} onChange={(_, value: string) => setCatalogMode(value)} textColor="secondary" indicatorColor="secondary" aria-label="Catalogue source" sx={{ mb: 4, borderBottom: "1px solid #e5e7eb" }}>
+          <Tab value="browse" label="Browse datasets" />
+          <Tab value="connector" label="Connector catalogue" />
+        </Tabs>
+        {catalogMode === "browse" ? <PortalCatalog /> : <div className="min-h-[70vh] space-y-5">
+          <p className="max-w-3xl text-sm leading-6 text-gray-500"><T string="catalog.browseIntro" /></p>
           <ContractOffersList
             managementUrl={proxyConnectorManagement}
             counterPartyAddress={counterPartyAddressWithDsp2025_1(
@@ -161,8 +171,8 @@ export default function CatalogPage() {
             firstPage={0}
             shouldFetch={!!counterPartyAddress}
           >
-            <div className="w-full grid grid-rows-1 grid-cols-5 gap-x-3.5 py-4 items-center">
-              <div className="col-span-2">
+            <div className="w-full grid grid-cols-1 gap-4 py-4 items-end xl:grid-cols-5">
+              <div className="xl:col-span-2">
                 <Input
                   id="catalog-url"
                   fullWidth
@@ -199,14 +209,14 @@ export default function CatalogPage() {
                   }}
                 />
               </div>
-              <div className="col-span-2">
+              <div className="xl:col-span-2">
                 <SearchBar
                   searchTarget="http://purl.org/dc/terms/title"
                   placeholder={translator("catalog.searchPlaceholder")}
                   searchOperator="ilike"
                 />
               </div>
-              <div className="justify-self-center">
+              <div className="xl:justify-self-end">
                 <ContractOffersList.Pagination>
                   {({
                     decrementPage,
@@ -230,45 +240,15 @@ export default function CatalogPage() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2.5" data-testid="catalog-list">
-              {counterPartyAddress ? (
-                <ContractOffersList.Items key={listKey} limit={MAX_ITEMS}>
-                  {({ item, index }) => (
-                    <DataOfferCard
-                      key={index}
-                      dataset={item}
-                      participantId={catalogParticipantId}
-                      onClick={() => openDataOfferDialog(item)}
-                      dataTestId="catalog-item"
-                    />
-                  )}
-                </ContractOffersList.Items>
-              ) : (
-                <div
-                  className={
-                    "size-full flex flex-col items-start justify-center"
-                  }
-                >
-
-                  <Typography variant="h6" fontSize="16px" component="h6" color="info">
-                    <T string="catalog.emptyCounterPartyUrl" />
-                  </Typography>
-                </div>
-              )}
-              <ContractOffersList.Loading>
-                <div className="max-w-20 mx-auto mt-4 flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 self-start">
-                  <span
-                    className="animate-spin mx-auto inline-block size-8 border-[3px] border-current border-t-transparent text-blue-600 rounded-full"
-                    role="status"
-                    aria-label="loading"
-                  >
-                    <span className="sr-only">Loading...</span>
-                  </span>
-                </div>
-              </ContractOffersList.Loading>
-            </div>
+            {counterPartyAddress ? (
+              <CatalogResults key={`${counterPartyAddress}-${query.page || 0}-${listKey}`} participantId={catalogParticipantId} onSelect={openDataOfferDialog} />
+            ) : (
+              <div className="rounded-xl border border-dashed border-gray-300 bg-gray-50 px-6 py-16 text-center">
+                <Typography color="textSecondary"><T string="catalog.emptyCounterPartyUrl" /></Typography>
+              </div>
+            )}
           </ContractOffersList>
-        </div>
+        </div>}
       </SideDrawer>
     </>
   );

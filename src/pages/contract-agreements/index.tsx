@@ -241,8 +241,8 @@ export default function ContractAgreementsListPage() {
           )}
         </ContractAgreementsList.Error>
 
-        <div className="flex gap-6 py-4" data-testid="contract-agreements-list">
-          <div className="flex flex-wrap gap-4 flex-1 min-h-[60vh]">
+        <div className="flex flex-col gap-6 py-4 xl:flex-row" data-testid="contract-agreements-list">
+          <div className="flex min-w-0 flex-1 flex-col gap-3">
             <ContractAgreementsList.Items
               limit={MAX_ITEMS}
               sortOrder="DESC"
@@ -278,7 +278,7 @@ export default function ContractAgreementsListPage() {
             </ContractAgreementsList.Loading>
           </div>
 
-          <div className="w-56 shrink-0">
+          <div className="w-full shrink-0 xl:w-56">
             <RadioButtonsGroup
               name="ownershipFilter"
               id="ownershipFilter"
