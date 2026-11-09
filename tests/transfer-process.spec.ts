@@ -48,14 +48,14 @@ test.describe("Transfer Processes Page Tests", () => {
 
       if (initialCount > 0) {
         const firstTransferProcess = initialTransferProcesses.first();
-        const transferProcessText = await firstTransferProcess.locator("td").nth(2).textContent();
+        const transferProcessText = await firstTransferProcess.getAttribute("data-asset-id");
         const searchTerm = transferProcessText || 'test';
         await transferProcessesPage.searchTransferProcesses(searchTerm);
 
         const searchResults = (await transferProcessesPage.getTransferProcessRows());
         expect(await searchResults.count()).toBeGreaterThanOrEqual(1);
 
-        const results = await searchResults.first().locator("td").nth(2).allTextContents();
+        const results = [await searchResults.first().getAttribute("data-asset-id") || ""];
         const hasMatchingResult = results.some((result: string) =>
           result.toLowerCase().includes(searchTerm.toLowerCase())
         );

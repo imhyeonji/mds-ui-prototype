@@ -12,6 +12,7 @@ import { Dataset } from "@think-it-labs/edc-connector-client";
 import { readValue } from "@think-it-labs/edc-connector-ui/json-ld";
 import { enqueueSnackbar } from 'notistack';
 import { MouseEvent, MouseEventHandler, useState } from "react";
+import { CatalogMetadataSummary } from "@/components/molecules/catalog-metadata-summary";
 
 const HAS_POLICY = "http://www.w3.org/ns/odrl/2/hasPolicy";
 
@@ -104,6 +105,9 @@ export default function DataOfferDialog({ open, onClose, dataset, onEditClick, d
           </div>
         </DialogTitle>
         <DialogContent style={contentStyle}>
+          <div className="mb-6 rounded-lg border border-gray-200 bg-gray-50 p-4">
+            <CatalogMetadataSummary dataset={dataset} participantId={participantId} />
+          </div>
           <div className="flex flex-col gap-y-2.5">
             <AssetDetails asset={datasetToAsset(dataset)} participantId={participantId} connectorEndpoint={counterPartyAddress} />
           </div>

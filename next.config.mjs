@@ -17,7 +17,7 @@ const nextConfig = {
       },
     ];
   },
-  allowedDevOrigins: ["127.0.0.1"],
+  allowedDevOrigins: ["127.0.0.1", "mds.hyeonji.me"],
 };
 
 export default nextConfig;

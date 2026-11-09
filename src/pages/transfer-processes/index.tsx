@@ -1,4 +1,3 @@
-import { Table } from "@/components/atoms/table";
 import PaginationControls from "@/components/molecules/pagination-controls";
 import SearchBar from "@/components/molecules/search-bar";
 import SideDrawer from "@/components/organisms/side-drawer";
@@ -7,14 +6,24 @@ import { useParticipantConnectorState } from "@/hooks/use-participant-connector-
 import { T, useTranslator } from "@/i18n";
 import { TransferProcessesList } from "@think-it-labs/edc-connector-ui/transfer-processes-list";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
+import { Alert, Button } from "@mui/material";
+import { DataPreviewDialog } from "@/components/organisms/data-preview-dialog";
 import { MAX_ITEMS } from "../../constants/lists";
 import { proxyConnectorManagement } from "@/constants/proxy";
+import { useListContext } from "@think-it-labs/edc-connector-ui/list";
+
+function TransferEmptyState() {
+  const { errors, isLoading } = useListContext();
+  if (isLoading || errors?.length) return <></>;
+  return <p className="rounded-xl border border-dashed border-gray-300 p-8 text-center text-gray-500">No transfers found. Try another dataset ID or start a transfer from an existing agreement.</p>;
+}
 
 export default function TransferProcessesListPage() {
   const router = useRouter();
   const { connector } = useParticipantConnectorState();
   const { translator } = useTranslator();
+  const [sampleOpen, setSampleOpen] = useState(false);
 
   const currentPage = parseInt(router.query.page as string) || 0;
 
@@ -32,7 +41,13 @@ export default function TransferProcessesListPage() {
   );
 
   return (
-    <SideDrawer title={<T string="transferProcesses.title" />}>
+    <SideDrawer title="Data transfers">
+      <div className="mb-6"><h1 className="text-2xl font-semibold text-gray-900">Your data transfers</h1><p className="mt-2 max-w-3xl text-sm leading-6 text-gray-500">See which datasets are ready to retrieve, check progress, and open a preview. Technical references are available in Details.</p></div>
+      <div className="mb-4 flex flex-wrap justify-end gap-2">
+        <Button color="secondary" onClick={() => window.dispatchEvent(new Event("transfer-processes-list-refetch"))}>Refresh transfers</Button>
+        <Button color="secondary" variant="outlined" onClick={() => setSampleOpen(true)}><T string="dataPreview.openSample" /></Button>
+      </div>
+      {sampleOpen && <DataPreviewDialog saved assetId="counts,-bicycle-parking-1.1" transferProcessId="" onClose={() => setSampleOpen(false)} />}
       <TransferProcessesList
         managementUrl={proxyConnectorManagement}
         usePagination
@@ -40,9 +55,14 @@ export default function TransferProcessesListPage() {
         currentPage={currentPage}
         firstPage={0}
       >
-        <div className="flex justify-between pb-6">
-          <div className="flex justify-start gap-x-5 items-center">
-            <div className="min-w-xl">
+        <TransferProcessesList.Error>
+          {({ errors }) => errors?.length ? <Alert severity="error" className="mb-4" action={<Button color="inherit" onClick={() => router.reload()}>Retry</Button>}>
+            Could not load transfers from the connector. Check that the existing connector is running, then retry. The saved sample is available separately.
+          </Alert> : <></>}
+        </TransferProcessesList.Error>
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-6">
+          <div className="min-w-0 flex-1">
+            <div className="w-full max-w-xl">
               <SearchBar
                 searchTarget="assetId"
                 placeholder={translator("transferProcesses.searchPlaceholder")}
@@ -75,49 +95,9 @@ export default function TransferProcessesListPage() {
           </div>
         </div>
 
-        <div
-          className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200"
-          data-testid="transfer-processes-list"
-        >
-          <Table>
-            <Table.Head>
-              <Table.Row>
-                <Table.Heading className="w-16">
-                  <T string="transferProcesses.direction" />
-                </Table.Heading>
-
-                <Table.Heading>
-                  <T string="transferProcesses.headingLastUpdated" />
-                </Table.Heading>
-
-                <Table.Heading>
-                  <T string="transferProcesses.headingAsset" />
-                </Table.Heading>
-
-                <Table.Heading>
-                  <T string="transferProcesses.headingState" />
-                </Table.Heading>
-
-                <Table.Heading>
-                  <T string="transferProcesses.headingCounterpartyParticipantId" />
-                </Table.Heading>
-
-                <Table.Heading>
-                  <T string="transferProcesses.headingCounterpartyConnectorEndpoint" />
-                </Table.Heading>
-
-                <Table.Heading>
-                  <T string="transferProcesses.headingContractDetails" />
-                </Table.Heading>
-
-                <Table.Heading>
-                  <T string="common.showDetails" />
-                </Table.Heading>
-              </Table.Row>
-            </Table.Head>
-
-            <Table.Body>
+        <div className="space-y-4" data-testid="transfer-processes-list">
               <TransferProcessesList.Items
+                emptyMessage={<TransferEmptyState />}
                 limit={MAX_ITEMS}
                 sortOrder="DESC"
                 sortField="stateTimestamp"
@@ -133,8 +113,6 @@ export default function TransferProcessesListPage() {
                   />
                 )}
               </TransferProcessesList.Items>
-            </Table.Body>
-          </Table>
         </div>
 
         <TransferProcessesList.Loading>
