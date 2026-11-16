@@ -18,6 +18,13 @@ const config = [
       "playwright/no-wait-for-selector": "warn",
     },
   },
+  {
+    // 4-layer acceptance tests: the specs check through the DSL's `provider.should…` methods.
+    files: ["tests/acceptance/**/*.ts"],
+    rules: {
+      "playwright/expect-expect": ["warn", { assertFunctionPatterns: ["^should"] }],
+    },
+  },
 ];
 
 export default config;

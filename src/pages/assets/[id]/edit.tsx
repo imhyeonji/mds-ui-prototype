@@ -23,8 +23,10 @@ import { AssetTransportMode } from "@/components/molecules/asset-transport-mode.
 import { AssetVersion } from "@/components/molecules/asset-version.tsx";
 import { Snackbar } from "@/components/molecules/snackbar.tsx";
 import { FormDataAddressStep } from "@/components/organisms/form-data-address-step.tsx";
+import { AssetFormMetadataQuality } from "@/components/organisms/asset-form-metadata-quality";
 import SideDrawer from "@/components/organisms/side-drawer.tsx";
 import { DATA_OFFER_TYPE_DATA_SOURCE } from "@/constants/data-address-types.ts";
+import { useMetadataQualityGuidance } from "@/hooks/use-metadata-quality-guidance";
 import { useParticipantConnectorState } from "@/hooks/use-participant-connector-state.ts";
 import { T, useTranslator } from "@/i18n";
 import {
@@ -69,7 +71,6 @@ export default function EditAssetPage() {
   const validateGeneralInfo = useValidateGeneralInfo();
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-  const [showAdvancedFields, setShowAdvancedFields] = useState(false);
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   const { translator } = useTranslator();
@@ -77,6 +78,9 @@ export default function EditAssetPage() {
   const [formData, setFormData] = useState<AssetInput>(
     defaultCreateAssetFormData,
   );
+
+  const { quality, showAdvancedFields, onToggleAdvancedFields, onFollowSuggestion } =
+    useMetadataQualityGuidance(formData.properties);
 
   const onChangeOfferType = (newOfferType: string) => {
     if (newOfferType === unchangedOfferType.value) {
@@ -252,6 +256,8 @@ export default function EditAssetPage() {
 
             <Divider />
 
+            <AssetFormMetadataQuality quality={quality} onFollowSuggestion={onFollowSuggestion} />
+
             <div className="grid sm:grid-cols-3 gap-2 sm:gap-6">
               <div className="sm:col-span-1">
                 <label className="inline-block text-sm text-black mt-2.5">
@@ -333,7 +339,7 @@ export default function EditAssetPage() {
                     <Checkbox
                       color="secondary"
                       checked={showAdvancedFields}
-                      onChange={() => setShowAdvancedFields((value) => !value)}
+                      onChange={onToggleAdvancedFields}
                     />
                   }
                 />

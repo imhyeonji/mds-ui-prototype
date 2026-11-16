@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
+import customParseFormat from "dayjs/plugin/customParseFormat.js";
 import TimeAgo from "javascript-time-ago";
 import { TIME_LOCALE } from "@/constants/time-locale.ts";
 

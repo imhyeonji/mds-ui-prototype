@@ -61,7 +61,7 @@ import {
   DataAddress,
 } from "@think-it-labs/edc-connector-client";
 import { HttpDataAddress } from "@think-it-labs/edc-connector-client/dist/src/entities/data-address";
-import { readValue } from "@think-it-labs/edc-connector-ui/json-ld";
+import { readValue } from "@/utilities/json-ld-value";
 import jsonld from "jsonld";
 import { useCallback } from "react";
 import {
@@ -976,40 +976,45 @@ export const validateAdvancedInfo = (formDataToValidate: AssetProperties) => {
   return newErrors;
 };
 
+export const validateGeneralInfo = (
+  formDataToValidate: AssetProperties,
+  translator: (str: string) => string,
+  existingAssetIds?: string[],
+) => {
+  const newErrors: { [key: string]: boolean | string } = {};
+  const required_properties = [ASSET_TITLE, "@id"];
+  required_properties.forEach((propertyName) => {
+    if (!formDataToValidate[propertyName]) {
+      newErrors[propertyName] = true;
+    }
+  });
+
+  const endpointDocumentation =
+    formDataToValidate[ASSET_ENDPOINT_DOCUMENTATION];
+  if (endpointDocumentation && !isUrl(endpointDocumentation)) {
+    newErrors[ASSET_ENDPOINT_DOCUMENTATION] = translator(
+      "assets.new.mustBeValidUrl",
+    );
+  }
+
+  if (typeof existingAssetIds === "undefined") return newErrors;
+
+  const idAlreadyExist = existingAssetIds.includes(formDataToValidate["@id"]);
+  if (!/^[^\s:]*$/.test(formDataToValidate["@id"])) {
+    newErrors["@id"] = translator("assets.new.invalidWhitespacesOrColons");
+  } else if (idAlreadyExist) {
+    newErrors["@id"] = translator("assets.new.fieldIdAlreadyExists");
+  }
+
+  return newErrors;
+};
+
 export const useValidateGeneralInfo = (existingAssetIds?: string[]) => {
   const { translator } = useTranslator();
 
   const validate = useCallback(
-    (formDataToValidate: AssetProperties) => {
-      const newErrors: { [key: string]: boolean | string } = {};
-      const required_properties = [ASSET_TITLE, "@id"];
-      required_properties.forEach((propertyName) => {
-        if (!formDataToValidate[propertyName]) {
-          newErrors[propertyName] = true;
-        }
-      });
-
-      const endpointDocumentation =
-        formDataToValidate[ASSET_ENDPOINT_DOCUMENTATION];
-      if (endpointDocumentation && !isUrl(endpointDocumentation)) {
-        newErrors[ASSET_ENDPOINT_DOCUMENTATION] = translator(
-          "assets.new.mustBeValidUrl",
-        );
-      }
-
-      if (typeof existingAssetIds === "undefined") return newErrors;
-
-      const idAlreadyExist = existingAssetIds.includes(
-        formDataToValidate["@id"],
-      );
-      if (!/^[^\s:]*$/.test(formDataToValidate["@id"])) {
-        newErrors["@id"] = translator("assets.new.invalidWhitespacesOrColons");
-      } else if (idAlreadyExist) {
-        newErrors["@id"] = translator("assets.new.fieldIdAlreadyExists");
-      }
-
-      return newErrors;
-    },
+    (formDataToValidate: AssetProperties) =>
+      validateGeneralInfo(formDataToValidate, translator, existingAssetIds),
     [translator, existingAssetIds],
   );
 
