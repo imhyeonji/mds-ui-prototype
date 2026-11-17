@@ -1,3 +1,6 @@
+import { JsonLdDialog } from "@/components/molecules/JsonLdDialog";
+import { useTransferProcessJsonLd } from "@/hooks/use-transfer-process-json-ld";
+import { edcValue } from "@/utilities/data-preview-policy";
 import AssetDialog from "@/components/organisms/asset-dialog.tsx";
 import { DataPreviewDialog } from "@/components/organisms/data-preview-dialog";
 import { T } from "@/i18n";
@@ -91,11 +94,26 @@ export default function TransferProcessTableRow({
   const title = catalogMetadata(asset).title || matchedOffer?.assetTitle || "Dataset name unavailable";
   const provider = matchedOffer?.organizationName || "Provider name unavailable";
   const updated = typeof stateTimestamp === "number" && Number.isFinite(stateTimestamp) && stateTimestamp > 0 ? stateTimestamp : undefined;
+  const jsonLdObject = useTransferProcessJsonLd(transferProcess, contractNegotiation);
+  const [rawDetailsOpen, setRawDetailsOpen] = useState(false);
+  const [tokenVisible, setTokenVisible] = useState(false);
+  const [copyMessage, setCopyMessage] = useState("");
+  const address = edcValue(transferProcess, "dataDestination");
+  const endpoint = edcValue(address, "endpoint");
+  const token = edcValue(address, "authorization") ?? edcValue(address, "authCode");
+  const copyValue = async (value: string) => {
+    try { await navigator.clipboard.writeText(value); setCopyMessage("Copied"); }
+    catch { setCopyMessage("Could not copy. Select and copy the value manually."); }
+  };
   const technicalFields = [
     ["Transfer ID", transferProcess.id], ["Dataset ID", transferProcess.assetId],
     ["Contract ID", transferProcess.contractId], ["Provider ID", providerId],
     ["Consumer ID", contractAgreement.consumerId], ["Connector state", transferProcess.state],
     ["Transfer method", method], ["Direction", transferProcess.type],
+    ["Provider Connector ID", contractNegotiation.counterPartyId],
+    ["Provider Connector address", contractNegotiation.counterPartyAddress],
+    ["Updated", updated ? formatDateTime(updated, { showSeconds: true }) : ""],
+    ["Error details", transferProcess.errorDetail],
   ];
 
   return <>
@@ -105,12 +123,12 @@ export default function TransferProcessTableRow({
         <div className="min-w-0 flex-1" style={{ flexBasis: 260 }}>
           <p className="mb-1 text-xs font-medium uppercase tracking-wide text-gray-500">{transferProcess.type === "CONSUMER" ? "Receiving data" : transferProcess.type === "PROVIDER" ? "Providing data" : "Data transfer"}</p>
           <h2 className="text-lg font-semibold text-gray-900 break-words">{title}</h2>
-          <p className="mt-1 text-sm text-gray-600">{provider}{matchedOffer && <span className="ml-2 text-xs text-gray-400">· Name from saved catalogue</span>}</p>
+          <p className="mt-1 text-sm text-gray-600">{provider}</p>
           {!matchedOffer && !catalogMetadata(asset).title && <p className="mt-1 break-all text-xs text-gray-500">Dataset reference: {transferProcess.assetId}</p>}
         </div>
         <Chip label={presentation.label} color={presentation.tone} size="small" />
       </div>
-      <p className="mt-2 max-w-3xl text-sm leading-5 text-gray-600">{presentation.description}</p>
+
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-gray-100 pt-2">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
           <span>{method === "HttpData-PULL" ? "HTTP Pull · retrieve on demand" : "Other transfer method"}</span>
@@ -128,13 +146,20 @@ export default function TransferProcessTableRow({
       <DialogContent>
         <Chip label={presentation.label} color={presentation.tone} size="small" />
         <p className="my-4 text-sm leading-6 text-gray-600">{presentation.description}</p>
+        <section className="mb-4 space-y-3 rounded-lg border border-gray-200 p-4">
+          <h3 className="font-semibold">Data access</h3>
+          <div><p className="text-sm text-gray-500">Data endpoint</p><p className="break-all font-mono text-xs">{typeof endpoint === "string" ? endpoint : "Not provided in this transfer"}</p>{typeof endpoint === "string" && <Button size="small" color="secondary" onClick={() => void copyValue(endpoint)}>Copy endpoint</Button>}</div>
+          <div><p className="text-sm text-gray-500">Access token</p>{typeof token === "string" ? <><p className="max-h-32 overflow-auto break-all font-mono text-xs">{tokenVisible ? token : "••••••••"}</p><Button size="small" color="secondary" onClick={() => setTokenVisible(v => !v)}>{tokenVisible ? "Hide token" : "Show token"}</Button><Button size="small" color="secondary" onClick={() => void copyValue(token)}>Copy token</Button></> : <p className="text-xs">Not provided in this transfer</p>}</div>
+          <p role="status" className="text-xs text-gray-500">{copyMessage}</p>
+        </section>
         <details className="rounded-lg border border-gray-200 p-4">
           <summary className="cursor-pointer font-medium">Technical details</summary>
           <dl className="mt-4 space-y-4 text-sm">{technicalFields.map(([label, value]) => <div key={label}><dt className="font-medium text-gray-500">{label}</dt><dd className="mt-1 break-all font-mono text-xs">{value || "Not available"}</dd></div>)}</dl>
         </details>
       </DialogContent>
-      <DialogActions><Button color="secondary" onClick={() => setTransferProcessDialogIsOpen(false)}>Close</Button></DialogActions>
+      <DialogActions><Button color="secondary" onClick={() => setRawDetailsOpen(true)}>Show full JSON</Button><Button color="secondary" onClick={() => { setTransferProcessDialogIsOpen(false); setTokenVisible(false); setCopyMessage(""); }}>Close</Button></DialogActions>
     </Dialog>
-    {canPreviewData && dataPreviewIsOpen && <DataPreviewDialog assetId={transferProcess.assetId} transferProcessId={transferProcess.id} onClose={() => setDataPreviewIsOpen(false)} />}
+    {rawDetailsOpen && <JsonLdDialog title="Transfer — full JSON" isOpen onClose={() => setRawDetailsOpen(false)} jsonLdObject={jsonLdObject} />}
+    {canPreviewData && dataPreviewIsOpen && <DataPreviewDialog title={title} assetId={transferProcess.assetId} transferProcessId={transferProcess.id} onClose={() => setDataPreviewIsOpen(false)} />}
   </>;
 }

@@ -1,3 +1,4 @@
+import { PipelineColumnProfile, type PipelineAnalysis } from "@/components/molecules/pipeline-column-profile";
 import { DatasetColumnProfile } from "@/components/molecules/dataset-column-profile";
 import { DatasetPreviewCharts } from "@/components/molecules/dataset-preview-charts";
 import { T, useTranslator } from "@/i18n";
@@ -12,11 +13,16 @@ interface DatasetExplorerProps {
   dataset: PreviewDataset;
   rawResponse: ReactNode;
   saved?: boolean;
+  previewOnly?: boolean;
+  dataLoading?: boolean;
+  ensureData?: () => Promise<void>;
+  analysis?: PipelineAnalysis;
+  downloadOptions?: { label: string; action: () => void; disabled?: boolean }[];
 }
 
-export function DatasetExplorer({ dataset, rawResponse, saved = false }: DatasetExplorerProps) {
+export function DatasetExplorer({ dataset, rawResponse, saved = false, downloadOptions, analysis, previewOnly = false, dataLoading = false, ensureData }: DatasetExplorerProps) {
   const { translator } = useTranslator();
-  const [tab, setTab] = useState("raw");
+  const [tab, setTab] = useState(analysis ? "columns" : "raw");
   const [search, setSearch] = useState("");
   const [filterField, setFilterField] = useState("");
   const [filterValue, setFilterValue] = useState("");
@@ -38,10 +44,8 @@ export function DatasetExplorer({ dataset, rawResponse, saved = false }: Dataset
   }), [filtered, sort]);
   const currentPage = Math.min(page, Math.max(0, Math.ceil(sorted.length / pageSize) - 1));
   const visibleRows = sorted.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
-  const fullCsv = useMemo(() => datasetCsv(dataset.rows, dataset.columns), [dataset]);
-  const missing = dataset.rows.reduce((sum, row) => sum + dataset.columns.filter((column) => row[column.key] == null || row[column.key] === "").length, 0);
-  const totalCells = dataset.rows.length * dataset.columns.length;
-  const completeness = totalCells ? Math.round((1 - missing / totalCells) * 100) : 0;
+  const [downloadMenu, setDownloadMenu] = useState<HTMLElement | null>(null);
+
 
   function downloadData() {
     const url = URL.createObjectURL(new Blob([datasetCsv(sorted, columns)], { type: "text/csv;charset=utf-8" }));
@@ -67,30 +71,30 @@ export function DatasetExplorer({ dataset, rawResponse, saved = false }: Dataset
           <div className="min-w-0">
             <div className="mb-2 flex items-center gap-2">
               <Chip size="small" label={saved ? "Saved sample" : translator("datasetExplorer.liveData")} sx={{ bgcolor: saved ? "#fff7ed" : "#ecfdf5", fontSize: 11 }} />
-              <span className="text-xs text-gray-500">CSV export · {(new TextEncoder().encode(fullCsv).length / 1024).toFixed(1)} kB</span>
+
             </div>
             <h2 className="text-2xl font-semibold tracking-tight text-gray-900">{dataset.title}</h2>
-            <p className="mt-1 text-xs text-gray-500">{dataset.filename}</p>
+
           </div>
-          <Button color="secondary" variant="outlined" onClick={downloadData} disabled={!filtered.length}>
-            <T string="datasetExplorer.download" />
-          </Button>
+          <Button color="secondary" variant="contained" onClick={e => setDownloadMenu(e.currentTarget)} aria-haspopup="menu" aria-expanded={!!downloadMenu}>Download ▾</Button>
+          <Menu anchorEl={downloadMenu} open={!!downloadMenu} onClose={() => setDownloadMenu(null)}>
+            {downloadOptions?.map(option => <MenuItem key={option.label} disabled={option.disabled} onClick={() => { setDownloadMenu(null); option.action(); }}>{option.label}</MenuItem>)}
+            <MenuItem disabled={!filtered.length || previewOnly || dataLoading} onClick={() => { setDownloadMenu(null); downloadData(); }}>CSV — filtered preview rows</MenuItem>
+          </Menu>
         </div>
-        <p className="max-w-4xl text-sm leading-6 text-gray-600">{dataset.description}</p>
-        {dataset.warnings?.map((warning) => <Alert key={warning} severity="warning">{warning}</Alert>)}
+        {!analysis && dataset.warnings?.map((warning) => <Alert key={warning} severity="warning">{warning}</Alert>)}
         <div className="flex flex-wrap gap-x-8 gap-y-3 border-t border-gray-100 pt-4 text-sm">
-          <div><strong>{dataset.rows.length.toLocaleString("en")}</strong> <span className="text-gray-500"><T string="datasetExplorer.rows" /></span></div>
-          <div><strong>{dataset.columns.length}</strong> <span className="text-gray-500"><T string="datasetExplorer.columns" /></span></div>
-          <div><strong>{completeness}%</strong> <span className="text-gray-500"><T string="datasetExplorer.complete" /></span></div>
-          <div className="text-gray-500">{dataset.period}</div>
+          <div><strong>{(analysis?.meta.rows ?? dataset.rows.length).toLocaleString("en")}</strong> <span className="text-gray-500"><T string="datasetExplorer.rows" /></span></div>
+          <div><strong>{analysis?.meta.cols ?? dataset.columns.length}</strong> <span className="text-gray-500"><T string="datasetExplorer.columns" /></span></div>
+          <div><span className="text-gray-500">Missing values </span><strong>{analysis ? `${analysis.health.missing_pct}%` : "—"}</strong></div>
         </div>
       </div>
 
-      <Tabs value={tab} onChange={(_, value: string) => setTab(value)} textColor="secondary" indicatorColor="secondary" variant="scrollable" aria-label={translator("datasetExplorer.views")} sx={{ px: 2, borderTop: "1px solid #e5e7eb", borderBottom: "1px solid #e5e7eb" }}>
+      <Tabs value={tab} onChange={(_, value: string) => { setTab(value); if (value !== "columns") void ensureData?.().catch(() => {}); }} textColor="secondary" indicatorColor="secondary" variant="scrollable" aria-label={translator("datasetExplorer.views")} sx={{ px: 2, borderTop: "1px solid #e5e7eb", borderBottom: "1px solid #e5e7eb" }}>
         {["data", "charts", "columns", "raw"].map((view) => <Tab key={view} id={`dataset-tab-${view}`} aria-controls={`dataset-panel-${view}`} value={view} label={translator(`datasetExplorer.${view}`)} />)}
       </Tabs>
 
-      {tab !== "raw" && (
+      {(tab === "data" || tab === "charts") && !previewOnly && (
         <div className="space-y-3 border-b border-gray-200 bg-gray-50 p-4">
           <div className="flex flex-wrap items-center gap-3">
             <TextField size="small" color="secondary" label={translator("datasetExplorer.search")} value={search} onChange={(event) => { setSearch(event.target.value); setPage(0); }} sx={{ flex: "1 1 220px", maxWidth: 380, bgcolor: "white" }} />
@@ -109,12 +113,12 @@ export function DatasetExplorer({ dataset, rawResponse, saved = false }: Dataset
                 <ToggleButton value="detail"><T string="datasetExplorer.detail" /></ToggleButton>
                 <ToggleButton value="compact"><T string="datasetExplorer.compact" /></ToggleButton>
               </ToggleButtonGroup>}
-              {(tab === "data" || tab === "columns") && <Button color="secondary" onClick={(event) => setColumnMenu(event.currentTarget)} aria-haspopup="menu" aria-expanded={!!columnMenu}>
+              {tab === "data" && <Button color="secondary" onClick={(event) => setColumnMenu(event.currentTarget)} aria-haspopup="menu" aria-expanded={!!columnMenu}>
                 {columns.length}/{dataset.columns.length} <span className="ml-1"><T string="datasetExplorer.columns" /></span>
               </Button>}
             </div>
           </div>
-          <p className="text-xs text-gray-500" aria-live="polite">{filtered.length.toLocaleString("en")} / {dataset.rows.length.toLocaleString("en")} <T string="datasetExplorer.matchingRows" /> · <T string="datasetExplorer.filterScope" /></p>
+          <p className="text-xs text-gray-500" aria-live="polite">{filtered.length.toLocaleString("en")} / {dataset.rows.length.toLocaleString("en")} <T string="datasetExplorer.matchingRows" /></p>
           <Menu anchorEl={columnMenu} open={!!columnMenu} onClose={() => setColumnMenu(null)}>
             {dataset.columns.map((column) => <MenuItem key={column.key}>
               <FormControlLabel label={column.label} control={<Checkbox color="secondary" checked={visibleKeys.includes(column.key)} disabled={visibleKeys.length === 1 && visibleKeys.includes(column.key)} onChange={(_, checked) => setVisibleKeys((previous) => checked ? [...previous, column.key] : previous.filter((key) => key !== column.key))} />}/>
@@ -123,18 +127,20 @@ export function DatasetExplorer({ dataset, rawResponse, saved = false }: Dataset
         </div>
       )}
 
+      {tab === "columns" && <div className="px-4 py-2"><Button color="secondary" onClick={event => setColumnMenu(event.currentTarget)}>Columns</Button><Menu anchorEl={columnMenu} open={!!columnMenu} onClose={() => setColumnMenu(null)}>{dataset.columns.map(column => <MenuItem key={column.key}><FormControlLabel label={column.label} control={<Checkbox color="secondary" checked={visibleKeys.includes(column.key)} disabled={visibleKeys.length === 1 && visibleKeys.includes(column.key)} onChange={(_, checked) => setVisibleKeys(previous => checked ? [...previous, column.key] : previous.filter(key => key !== column.key))} />} /></MenuItem>)}</Menu></div>}
+
       <div role="tabpanel" id={`dataset-panel-${tab}`} aria-labelledby={`dataset-tab-${tab}`}>
-        {tab === "raw" ? <div className="p-5">{rawResponse}</div> : !filtered.length ? (
+        {tab !== "columns" && (previewOnly || dataLoading) ? <div className="p-6" role="status">{dataLoading ? "Loading data…" : <Button onClick={() => void ensureData?.().catch(() => {})}>Load data</Button>}</div> : tab === "raw" ? <div className="p-5">{rawResponse}</div> : tab !== "columns" && !filtered.length ? (
           <div className="p-8"><Alert severity="info"><T string="datasetExplorer.noMatches" /></Alert></div>
         ) : tab === "charts" ? <DatasetPreviewCharts rows={filtered} columns={dataset.columns} /> : tab === "columns" ? (
           <div className="grid gap-4 p-5 sm:grid-cols-2 lg:grid-cols-3">
             {columns.map((column) => {
-              const profile = columnProfile(filtered, column);
+              const profile = analysis ? undefined : columnProfile(filtered, column);
               return <section key={column.key} className="space-y-4 rounded-lg border border-gray-200 p-5">
-                <div><h3 className="font-semibold">{column.label}</h3><code className="text-xs text-gray-500">{column.key} · {column.type}</code></div>
-                <p className="min-h-10 text-sm text-gray-500">{column.description}</p>
-                <DatasetColumnProfile rows={filtered} column={column} />
-                <p className="border-t border-gray-100 pt-3 text-xs text-gray-500">{profile.unique} <T string="datasetExplorer.unique" /> · {profile.missing} <T string="datasetExplorer.missing" /></p>
+                <div><h3 className="font-semibold">{column.label}</h3><code className="text-xs text-gray-500">{column.key}</code></div>
+                {!analysis && <p className="min-h-10 text-sm text-gray-500">{column.description}</p>}
+                {analysis ? <PipelineColumnProfile analysis={analysis} column={column} /> : <DatasetColumnProfile rows={filtered} column={column} />}
+                {profile && <p className="border-t border-gray-100 pt-3 text-xs text-gray-500">{profile.unique} <T string="datasetExplorer.unique" /> · {profile.missing} <T string="datasetExplorer.missing" /></p>}
               </section>;
             })}
           </div>
@@ -148,7 +154,7 @@ export function DatasetExplorer({ dataset, rawResponse, saved = false }: Dataset
                     <TableSortLabel active={sort.key === column.key} direction={sort.key === column.key ? sort.direction : "asc"} onClick={() => { setSort({ key: column.key, direction: sort.key === column.key && sort.direction === "asc" ? "desc" : "asc" }); setPage(0); }}>
                       <span className="mr-2 text-xs text-gray-400" aria-hidden="true">{column.type === "number" ? "#" : column.type === "datetime" ? "◷" : "Aa"}</span>{column.label}
                     </TableSortLabel>
-                    {detail && <><p className="mb-4 mt-2 min-h-14 max-w-60 text-xs font-normal leading-5 text-gray-500">{column.description}</p><DatasetColumnProfile rows={filtered} column={column} /></>}
+                    {detail && <><p className="mb-4 mt-2 min-h-14 max-w-60 text-xs font-normal leading-5 text-gray-500">{column.description}</p>{analysis ? <PipelineColumnProfile analysis={analysis} column={column} /> : <DatasetColumnProfile rows={filtered} column={column} />}</>}
                   </th>)}</tr>
                 </thead>
                 <tbody>{visibleRows.map((row, index) => <tr key={index} className="even:bg-gray-50 hover:bg-yellow-50">

@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getConnectorConfig } from "@/utilities/connector-config";
-import { edcValue, PreviewError } from "@/utilities/data-preview-policy";
-import { fetchProviderPreview } from "@/utilities/provider-data-preview";
+import { authorizationHeaders, edcValue, PreviewError } from "@/utilities/data-preview-policy";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -42,15 +41,15 @@ export async function POST(req: NextRequest) {
   const controller = new AbortController();
   const signal = controller.signal;
   const cancel = () => controller.abort();
-  const timer = setTimeout(cancel, 25000);
+  const timer = setTimeout(cancel, 600000);
   req.signal.addEventListener("abort", cancel, { once: true });
   if (req.signal.aborted) cancel();
   try {
-    const inputText = await boundedText(new Response(req.body), 1024, signal);
+    const inputText = await boundedText(new Response(req.body), 65536, signal);
     let input;
     try { input = JSON.parse(inputText); } catch { throw new PreviewError("Invalid JSON request."); }
     const id = input?.transferProcessId;
-    if (typeof id !== "string" || !/^[a-zA-Z0-9_-]{1,160}$/.test(id) || Object.keys(input).some((key) => key !== "transferProcessId")) {
+    if (typeof id !== "string" || !/^[a-zA-Z0-9_-]{1,160}$/.test(id) || Object.keys(input).some((key) => !["transferProcessId", "format", "schema"].includes(key))) {
       throw new PreviewError("Provide only a valid transfer process ID.");
     }
     const config = getConnectorConfig();
@@ -61,23 +60,16 @@ export async function POST(req: NextRequest) {
         body: body ? JSON.stringify(body) : undefined,
       });
       if (!response.ok) { await response.body?.cancel(); throw new PreviewError(`Connector metadata request failed (HTTP ${response.status}).`, response.status === 404 ? 404 : 502); }
-      return JSON.parse(await boundedText(response, 1024 * 1024, signal));
+      return JSON.parse(await boundedText(response, 1024 * 65536, signal));
     };
     const transfer = await management(`/v3/transferprocesses/${encodeURIComponent(id)}`);
     if (edcValue(transfer, "type") !== "CONSUMER" || edcValue(transfer, "state") !== "STARTED" || edcValue(transfer, "transferType") !== "HttpData-PULL") {
       throw new PreviewError("Preview requires a STARTED consumer HttpData-PULL transfer.", 409);
     }
-    // Use only a current EDR belonging to the selected transfer. A failed EDR lookup
-    // must not silently fall back to potentially expired transfer credentials.
-    const edrs = await management("/v3/edrs/request", {
-        "@context": { "@vocab": "https://w3id.org/edc/v0.0.1/ns/" }, "@type": "QuerySpec",
-        offset: 0, limit: 5, sortField: "createdAt", sortOrder: "DESC",
-        filterExpression: [{ operandLeft: "transferProcessId", operator: "=", operandRight: id }],
-      });
-    const edr = Array.isArray(edrs) ? edrs.find((entry) => edcValue(entry, "transferProcessId") === id) : undefined;
-    const edrId = edr?.["@id"];
-    if (typeof edrId !== "string") throw new PreviewError("No current EDR is available for this transfer. Check the transfer and retry.", 404);
-    const address = await management(`/v3/edrs/${encodeURIComponent(edrId)}/dataaddress`);
+    // Use the data address already included in the Transfer JSON shown by
+    // the original Show details flow. Do not make a separate EDR API request.
+    const address = edcValue(transfer, "dataDestination");
+    if (!edcValue(address, "endpoint")) throw new PreviewError("This transfer does not contain a data endpoint. Reload the transfer and retry.", 409);
     // Current EDC transfer responses omit counterPartyAddress. Resolve it from
     // the negotiation attached to this transfer's agreement, never from the client.
     let counterPartyAddress = edcValue(transfer, "counterPartyAddress");
@@ -88,8 +80,28 @@ export async function POST(req: NextRequest) {
       counterPartyAddress = edcValue(negotiation, "counterPartyAddress");
       if (typeof counterPartyAddress !== "string" || !counterPartyAddress) throw new PreviewError("The linked agreement does not provide a provider address.", 409);
     }
-    const result = await fetchProviderPreview(edcValue(address, "endpoint"), counterPartyAddress, address, signal);
-    return NextResponse.json({ ...result, fetchedAt: new Date().toISOString(), addressSource: "edr" }, { headers: noStore });
+    const pipelineUrl = process.env.PIPELINES_URL;
+    const pipelineKey = process.env.PIPELINES_API_KEY;
+    if (!pipelineUrl || !pipelineKey) throw new PreviewError("Pipeline connection is not configured.", 503);
+    const credentials = authorizationHeaders(address);
+    const [authKey, authValue] = Object.entries(credentials)[0];
+    const download = input.format !== undefined;
+    if (download && (!["csv", "tsv", "json", "xlsx", "parquet", "geojson", "xml", "zip"].includes(input.format) || !input.schema)) throw new PreviewError("Select a valid download format and explore the dataset first.");
+    const response = await fetch(`${pipelineUrl.replace(/\/$/, "")}/v1/${download ? "download" : "explore"}`, {
+      method: "POST", redirect: "error", cache: "no-store", signal,
+      headers: { "Content-Type": "application/json", "X-Pipelines-Key": pipelineKey },
+      body: JSON.stringify({ edr: { endpoint: edcValue(address, "endpoint"), auth_key: authKey, auth_value: authValue, counter_party_address: counterPartyAddress, asset_id: edcValue(transfer, "assetId") }, ...(download ? { format: input.format, schema: input.schema } : {}) }),
+    });
+    if (!response.ok) {
+      await response.body?.cancel();
+      throw new PreviewError(`Pipeline request failed (HTTP ${response.status}). Please retry.`, response.status);
+    }
+    if (download) {
+      const filename = String(edcValue(transfer, "assetId") || "dataset").replace(/[^a-zA-Z0-9_.-]/g, "_");
+      return new NextResponse(response.body, { headers: { ...noStore, "Content-Type": response.headers.get("content-type") || "application/octet-stream", "Content-Disposition": `attachment; filename="${filename}.${input.format}"`, ...(response.headers.get("x-export-warning") ? { "X-Export-Warning": response.headers.get("x-export-warning")! } : {}) } });
+    }
+    const analysis = JSON.parse(await boundedText(response, 8 * 1024 * 1024, signal));
+    return NextResponse.json({ status: 200, statusText: "OK", contentType: "application/json", body: JSON.stringify(analysis.head), bytes: Buffer.byteLength(JSON.stringify(analysis.head)), fetchedAt: new Date().toISOString(), addressSource: "pipeline", analysis, previewOnly: true }, { headers: noStore });
   } catch (error) {
     const known = error instanceof PreviewError;
     const timeout = signal.aborted || error instanceof Error && ["AbortError", "TimeoutError"].includes(error.name);

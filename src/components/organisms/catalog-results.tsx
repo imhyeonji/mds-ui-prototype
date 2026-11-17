@@ -21,7 +21,6 @@ export function CatalogResults({ participantId, onSelect }: { participantId: str
       <details open>
         <summary className="cursor-pointer font-semibold text-gray-900"><T string="catalog.refinePage" /></summary>
         <div className="mt-4 space-y-4">
-          <p className="text-xs leading-5 text-gray-500"><T string="catalog.filterScope" /></p>
           <TextField fullWidth size="small" color="secondary" label={translator("catalog.localSearch")} value={query} onChange={(event) => setQuery(event.target.value)} />
           <TextField select fullWidth size="small" color="secondary" label={translator("catalog.formatOrMethod")} value={format} onChange={(event) => setFormat(event.target.value)}>
             <MenuItem value=""><T string="catalog.allFormats" /></MenuItem>

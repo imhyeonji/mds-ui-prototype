@@ -34,7 +34,7 @@ export function DatasetPreviewCharts({ rows, columns }: { rows: DatasetRow[]; co
           {numeric.map((column) => <MenuItem key={column.key} value={column.key}>{column.label}</MenuItem>)}
         </TextField>}
       </div>
-      <p className="text-sm text-gray-500"><T string="datasetExplorer.chartScope" /> · {excluded} <T string="datasetExplorer.excluded" /></p>
+      <p className="text-sm text-gray-500">{excluded} <T string="datasetExplorer.excluded" /></p>
       {!distribution && grouped.omittedGroups > 0 && <Alert severity="info">{grouped.omittedGroups} <T string="datasetExplorer.omittedGroups" /></Alert>}
       {!data.length ? <Alert severity="info"><T string="datasetExplorer.noChartFields" /></Alert> : <>
         <div className="rounded-xl border border-gray-200 p-4">

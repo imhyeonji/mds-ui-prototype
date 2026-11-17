@@ -15,6 +15,5 @@ export function CatalogMetadataSummary({ dataset, participantId }: { dataset: un
         <dd className="mt-1 break-words text-gray-800">{value || <span className="text-gray-400"><T string="catalog.notProvided" /></span>}</dd>
       </div>)}
     </dl>
-    {metadata.methods.length > 0 && <p className="text-xs text-gray-500"><T string="catalog.advertisedNotice" /></p>}
   </div>;
 }

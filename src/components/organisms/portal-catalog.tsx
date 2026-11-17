@@ -64,8 +64,11 @@ export function PortalCatalog() {
       }
       setLiveOffer({ dataset: resolved.dataset, participantId: resolved.participantId, endpoint });
       setSelected(null);
-    } catch {
-      if (currentRequest === requestId.current) setLoadError("Could not retrieve current terms. Check that your local connector is running and the provider is available, then retry.");
+    } catch (error) {
+      const providerUnavailable = error instanceof Error && /was 503:/.test(error.message);
+      if (currentRequest === requestId.current) setLoadError(providerUnavailable
+        ? `${offer.organizationName}'s server is temporarily unavailable (HTTP 503). Please try again later.`
+        : "Could not retrieve current terms. The connector or provider could not complete the request. Please retry.");
     } finally {
       if (currentRequest === requestId.current) setLoading(false);
     }
@@ -86,14 +89,10 @@ export function PortalCatalog() {
     <div className="flex flex-wrap items-start justify-between gap-4">
       <div>
         <h2 className="text-2xl font-semibold tracking-tight text-gray-900">Discover mobility data</h2>
-        <p className="mt-2 max-w-3xl text-sm leading-6 text-gray-500">Browse datasets from MDS providers. Compare what is available before connecting to a provider.</p>
       </div>
       <Chip size="small" label="Saved portal catalogue" variant="outlined" />
     </div>
-    <Alert severity="info" icon={false}>
-      Saved from the MDS portal on {snapshot.snapshotMetadata.fetchedAt.slice(0, 10)}: {offers.length} of {snapshot.snapshotMetadata.totalAtCapture} offers across {organizations.length} providers. Search and filters cover this snapshot; it does not refresh automatically.
-    </Alert>
-    {statusError ? <Alert severity="warning" action={<Button color="inherit" onClick={() => setStatusRevision(v => v + 1)}>Retry</Button>}>Contract and request status could not be checked.</Alert> : <div className="flex items-center justify-between text-xs text-gray-500"><span aria-live="polite">{statusLoading ? "Checking your contracts and requests…" : "Your contracts and requests are marked on each dataset."}</span><Button size="small" color="secondary" disabled={statusLoading} onClick={() => setStatusRevision(v => v + 1)}>Refresh status</Button></div>}
+    {statusError ? <Alert severity="warning" action={<Button color="inherit" onClick={() => setStatusRevision(v => v + 1)}>Retry</Button>}>Contract and request status could not be checked.</Alert> : <div className="flex items-center justify-between text-xs text-gray-500"><span aria-live="polite">{statusLoading ? "Checking your contracts and requests…" : ""}</span><Button size="small" color="secondary" disabled={statusLoading} onClick={() => setStatusRevision(v => v + 1)}>Refresh status</Button></div>}
     <div className="flex flex-wrap items-end gap-4">
       <TextField fullWidth color="secondary" label="Search datasets" placeholder="Title, provider, asset ID or description" value={query} onChange={(event) => { setQuery(event.target.value); setPage(0); }} sx={{ flex: "1 1 320px" }} />
       <TextField select color="secondary" label="Sort by" value={sort} onChange={(event) => { setSort(event.target.value); setPage(0); }} sx={{ minWidth: 190 }}>
@@ -114,7 +113,6 @@ export function PortalCatalog() {
               {categories.map((value) => <MenuItem key={value} value={value}>{categoryLabel(value)}</MenuItem>)}
             </TextField>
             <Button color="secondary" size="small" onClick={clear} disabled={!query && !organization && !category}>Clear filters</Button>
-            <p className="text-xs leading-5 text-gray-500">Filter options and counts reflect the saved catalogue. Provider status may have changed since capture.</p>
           </div>
         </details>
       </aside>
@@ -156,10 +154,11 @@ export function PortalCatalog() {
           <dl className="grid gap-4 text-sm sm:grid-cols-2">
             {[["Provider", selected.organizationName], ["Asset ID", selected.assetId], ["Connector ID", selected.connectorId], ["Category", categoryLabel(selected.dataCategory)], ["Data format / model", "Not included in this saved response"], ["Terms / transfer methods", "Retrieve from the provider's connector"]].map(([label, value]) => <div key={label}><dt className="font-medium text-gray-500">{label}</dt><dd className="mt-1 break-all">{value}</dd></div>)}
           </dl>
-          <Alert severity="info">{selected.connectorEndpoint ? "Retrieve current terms directly from this provider. The provider address is already linked; no copying or pasting is needed." : "The provider address could not be retrieved for this dataset. Current terms are unavailable."}</Alert>
-        {loadError && <Alert severity="error" role="alert">{loadError}</Alert>}
-          {loading && <p role="status">Connecting to the provider and retrieving current terms…</p>}
         </DialogContent>
+        {(loadError || loading) && <div className="shrink-0 border-t border-gray-200 px-6 py-3" data-testid="catalog-lookup-status">
+          {loadError && <Alert severity="error" role="alert">{loadError}</Alert>}
+          {loading && <Alert severity="info" role="status">Connecting to {selected.organizationName} and retrieving current terms…</Alert>}
+        </div>}
         <DialogActions>
           <Button color="secondary" onClick={closeDetails}>Close</Button>
           <Button color="secondary" variant="outlined" disabled={loading || !selected.connectorEndpoint} onClick={() => void loadCurrentOffer(selected)}>{loading ? "Retrieving…" : loadError ? "Retry current terms" : "View current terms"}</Button>
