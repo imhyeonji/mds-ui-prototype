@@ -1,108 +1,119 @@
-import type { PipelineAnalysis } from "@/components/molecules/pipeline-column-profile";
-import { DataPreview, type DataPreviewResponse, type DataPreviewState } from "@/components/molecules/data-preview";
-import { DatasetExplorer } from "@/components/organisms/dataset-explorer";
-import { normalizeDataset, parsePreview, type ParsedPreview } from "@/utilities/normalize-preview";
+import { LoadingSpinner } from "@/components/atoms/loading-spinner";
+import { ExploreChartsTab } from "@/components/molecules/explore-charts-tab";
+import { ExploreColumnsTab } from "@/components/molecules/explore-columns-tab";
+import { ExploreDataTab } from "@/components/molecules/explore-data-tab";
 import { T, useTranslator } from "@/i18n";
-import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, Menu, MenuItem, TextField } from "@mui/material";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { jsonDownload } from "@/utilities/preview-download";
+import { downloadFormats, viewOf, type ExploreResponse } from "@/utilities/explore-types";
+import {
+  Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, Menu, MenuItem, Tab, Tabs, ToggleButton, ToggleButtonGroup,
+} from "@mui/material";
+import { useEffect, useState, type ReactNode } from "react";
 
+type LoadState = { kind: "loading" } | { kind: "error"; message: string } | { kind: "ready"; summary: ExploreResponse };
 
+function filenameFrom(disposition: string | null, fallback: string) {
+  const match = /filename="?([^";]+)"?/i.exec(disposition || "");
+  return match?.[1] || fallback;
+}
 
-type FetchedResponse = DataPreviewResponse & { fetchedAt: string; bytes: number; addressSource: string; source?: "saved"; analysis?: PipelineAnalysis; previewOnly?: boolean };
+function Fact({ label, children }: { label: string; children: ReactNode }) {
+  return <div><dt className="font-semibold"><T string={label} /></dt><dd>{children}</dd></div>;
+}
 
-function ReceivedData({ response: initialResponse, assetId, transferProcessId }: { response: FetchedResponse; assetId: string; transferProcessId: string }) {
-  const [response, setResponse] = useState(initialResponse);
-  const [dataLoading, setDataLoading] = useState(false);
-  const [dataError, setDataError] = useState("");
-  const pendingData = useRef<Promise<void> | null>(null);
-  const loadedResponse = useRef(initialResponse);
-  const ensureData = () => {
-    if (!loadedResponse.current.previewOnly) return Promise.resolve();
-    if (pendingData.current) return pendingData.current;
-    setDataLoading(true); setDataError("");
-    const operation = (async () => {
-      try {
-        const result = await fetch("/connector/data-preview", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ transferProcessId, format: initialResponse.analysis!.meta.format, schema: initialResponse.analysis!.schema }), cache: "no-store" });
-        if (!result.ok) { const error = await result.json(); throw new Error(error.error || "Could not load data."); }
-        const body = await result.text();
-        const full = { ...initialResponse, body, contentType: result.headers.get("content-type") || initialResponse.contentType, bytes: new TextEncoder().encode(body).length, previewOnly: false };
-        loadedResponse.current = full; setResponse(full);
-      } catch (error) { setDataError(error instanceof Error ? error.message : "Could not load data."); throw error; }
-      finally { setDataLoading(false); pendingData.current = null; }
-    })();
-    pendingData.current = operation;
-    return operation;
-  };
-  const { translator } = useTranslator();
-  const parsed = useMemo<ParsedPreview>(() => {
-    if (response.status < 200 || response.status >= 300) return { candidates: [], warnings: [] };
-    try { return parsePreview(response.body, response.contentType); }
-    catch (error) { return { candidates: [], warnings: [error instanceof Error ? error.message : "Could not interpret this response as a table."] }; }
-  }, [response]);
-  const schemaPath = response.analysis?.schema.source.json_record_path;
-  const preferredPath = schemaPath ? "/" + schemaPath.split(".").join("/") : "";
-  const [path, setPath] = useState(parsed.candidates.find(c => c.path === preferredPath)?.path || parsed.candidates[0]?.path || "");
-  const [busy, setBusy] = useState(false);
-  const [downloadError, setDownloadError] = useState("");
-  const [menu, setMenu] = useState<HTMLElement | null>(null);
-  const candidate = parsed.candidates.find((item) => item.path === path) || parsed.candidates.find(item => item.path === preferredPath) || parsed.candidates[0];
-  const dataset = useMemo(() => candidate ? normalizeDataset(candidate, assetId) : undefined, [candidate, assetId]);
-  const raw = <DataPreview state={{ kind: "response", response: candidate ? { ...response, body: JSON.stringify(candidate.values, null, 2), contentType: "application/json" } : response }} />;
-  const download = jsonDownload(response.body, assetId, response.source === "saved");
-  const downloadJson = async () => {
-    try { await ensureData(); } catch { return; }
-    const download = jsonDownload(loadedResponse.current.body, assetId, response.source === "saved");
-    if (!download) return;
-    const url = URL.createObjectURL(new Blob([download.body], { type: download.type }));
-    const link = document.createElement("a");
-    link.href = url; link.download = download.filename;
-    document.body.appendChild(link); link.click(); link.remove();
-    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-  };
+function DownloadMenu({ summary, transferProcessId, disabled }: { summary: ExploreResponse; transferProcessId: string; disabled: boolean }) {
+  const [anchor, setAnchor] = useState<HTMLElement | null>(null);
+  const [busy, setBusy] = useState<string>();
+  const [notice, setNotice] = useState<{ severity: "warning" | "error"; message: string }>();
 
-  const exportFile = async (format: string) => {
-    setBusy(true); setDownloadError("");
+  async function download(format: string) {
+    setAnchor(null); setBusy(format); setNotice(undefined);
     try {
-      const result = await fetch("/connector/data-preview", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ transferProcessId, format, schema: response.analysis?.schema }) });
-      if (!result.ok) { const error = await result.json(); throw new Error(error.error || "Download failed."); }
-      const url = URL.createObjectURL(await result.blob()); const link = document.createElement("a");
-      link.href = url; link.download = /filename="([^"]+)"/.exec(result.headers.get("content-disposition") || "")?.[1] || `dataset.${format}`; link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
-      const warning = result.headers.get("x-export-warning"); if (warning) setDownloadError(warning);
-    } catch (error) { setDownloadError(error instanceof Error ? error.message : "Download failed."); } finally { setBusy(false); }
-  };
-  const options = [
-    { label: "Original JSON", action: downloadJson, disabled: !download || response.status >= 300 },
-    ...(response.analysis ? [...new Set(["csv", "tsv", "json", "parquet", ...(response.analysis.meta.excel_allowed ? ["xlsx"] : []), ...(response.analysis.meta.container === "zip" ? ["zip"] : []), response.analysis.meta.format])].map(format => ({ label: `${format.toUpperCase()}`, action: () => void exportFile(format), disabled: busy })) : []),
-  ];
-  const meaningfulCandidates = parsed.candidates.filter(c => !/\/(fields|columns)$/.test(c.path));
+      const response = await fetch("/connector/data-preview", {
+        method: "POST", headers: { "Content-Type": "application/json" }, cache: "no-store",
+        body: JSON.stringify({ transferProcessId, format, schema: summary.schema }),
+      });
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({}));
+        throw new Error(typeof payload.error === "string" ? payload.error : "The download failed.");
+      }
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url; link.download = filenameFrom(response.headers.get("Content-Disposition"), `${summary.meta.asset_id}.${format}`);
+      document.body.appendChild(link); link.click(); link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      const warning = response.headers.get("X-Export-Warning");
+      if (warning) setNotice({ severity: "warning", message: warning });
+    } catch (error) {
+      setNotice({ severity: "error", message: error instanceof Error ? error.message : "The download failed." });
+    } finally { setBusy(undefined); }
+  }
+
+  const original = (format: string) => format === summary.meta.format || format === "zip";
   return (
-    <div className="space-y-3">
-      {response.source === "saved" && <Alert severity="warning"><T string="dataPreview.savedNotice" /></Alert>}
-      {response.analysis?.meta.partial_warning && <Alert severity="warning">Partial dataset: this preview contains only the records received from the provider.</Alert>}
-      {dataError && <Alert severity="error" action={<Button onClick={() => void ensureData().catch(() => {})}>Retry</Button>}>{dataError}</Alert>}
-      {busy && <p role="status" className="text-sm">Preparing download from the provider…</p>}
-      {downloadError && <Alert severity="warning">{downloadError}</Alert>}
-      <details className="rounded border border-gray-200 p-3 text-xs text-gray-500"><summary className="cursor-pointer">Technical details</summary>
-        <dl className="mt-3 flex flex-wrap gap-4">
-          {[["Asset ID", assetId], ["Transfer ID", transferProcessId], ["HTTP status", `${response.status} ${response.statusText}`], ["Content-Type", response.contentType], ["Retrieved at (UTC)", response.fetchedAt], ["Received", `${(response.bytes / 1024).toFixed(1)} KiB`], ["Source", response.addressSource]].map(([key,value]) => <div key={key}><dt>{key}</dt><dd className="break-all">{value}</dd></div>)}
-        </dl>
-        {response.analysis && <dl className="mt-3 flex flex-wrap gap-4"><div><dt>Missing cells</dt><dd>{response.analysis.health.missing_cells} / {response.analysis.health.total_cells}</dd></div><div><dt>Analysed at</dt><dd>{response.analysis.meta.generated_at}</dd></div></dl>}
-      </details>
-      {response.status >= 500 && <Alert severity="error">The data provider returned HTTP {response.status}. The provider was reached, but could not deliver the data. Retry later.</Alert>}
-      {response.status === 401 || response.status === 403 ? <Alert severity="warning"><T string="datasetExplorer.authFailed" /></Alert> : null}
-      {parsed.warnings.filter(w => !w.includes("pagination metadata")).map((warning) => <Alert key={warning} severity="warning">{warning}</Alert>)}
-      {meaningfulCandidates.length > 1 && <TextField select fullWidth size="small" color="secondary" label={translator("datasetExplorer.arrayPath")} value={path} onChange={(event) => setPath(event.target.value)}>
-        {meaningfulCandidates.map((item) => <MenuItem key={item.path} value={item.path}>{item.path} ({item.values.length} rows)</MenuItem>)}
-      </TextField>}
-      {dataset && dataset.columns.length ? <DatasetExplorer dataset={dataset} rawResponse={raw} saved={response.source === "saved"} downloadOptions={options} analysis={response.analysis} previewOnly={!!response.previewOnly} dataLoading={dataLoading} ensureData={ensureData} /> : <><Button color="secondary" onClick={e => setMenu(e.currentTarget)}>Download ▾</Button><Menu anchorEl={menu} open={!!menu} onClose={() => setMenu(null)}>{options.map(o => <MenuItem key={o.label} disabled={o.disabled} onClick={() => { setMenu(null); o.action(); }}>{o.label}</MenuItem>)}</Menu>{raw}</>}
+    <div className="flex flex-col items-end gap-2">
+      <Button variant="outlined" color="secondary" disabled={disabled || !!busy} onClick={(event) => setAnchor(event.currentTarget)} aria-haspopup="menu" aria-expanded={!!anchor} data-testid="download-menu">
+        {busy ? <><T string="explorePreview.downloading" /> {busy.toUpperCase()}…</> : <T string="explorePreview.download" />}
+      </Button>
+      <Menu anchorEl={anchor} open={!!anchor} onClose={() => setAnchor(null)}>
+        {downloadFormats(summary).map((format) => <MenuItem key={format} onClick={() => void download(format)}>
+          {format.toUpperCase()}{original(format) && <span className="ml-2 text-xs text-gray-500"><T string="explorePreview.original" /></span>}
+        </MenuItem>)}
+      </Menu>
+      {disabled && <span className="text-xs text-gray-500"><T string="explorePreview.downloadSaved" /></span>}
+      {notice && <Alert severity={notice.severity} onClose={() => setNotice(undefined)}>{notice.message}</Alert>}
     </div>
   );
 }
 
-function PreviewRequest({ transferProcessId, assetId, saved }: { transferProcessId: string; assetId: string; saved: boolean }) {
-  const [state, setState] = useState<DataPreviewState>({ kind: "loading" });
-  const [received, setReceived] = useState<FetchedResponse>();
+function Summary({ summary, transferProcessId, saved }: { summary: ExploreResponse; transferProcessId: string; saved: boolean }) {
+  const { translator } = useTranslator();
+  const [tab, setTab] = useState("data");
+  const [raw, setRaw] = useState(false);
+  const view = viewOf(summary, raw);
+  const { meta, health } = summary;
+
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <dl className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <Fact label="explorePreview.rows">{meta.rows.toLocaleString("en")}</Fact>
+          <Fact label="explorePreview.cols">{meta.cols}</Fact>
+          <Fact label="explorePreview.format">{meta.format.toUpperCase()}{meta.container ? ` (${meta.container.toUpperCase()})` : ""}</Fact>
+          <Fact label="explorePreview.pages">{meta.pages}</Fact>
+          <Fact label="explorePreview.missing">{health.missing_pct}% ({health.missing_cells.toLocaleString("en")} / {health.total_cells.toLocaleString("en")})</Fact>
+          <Fact label="explorePreview.generatedAt">{meta.generated_at}</Fact>
+        </dl>
+        <DownloadMenu summary={summary} transferProcessId={transferProcessId} disabled={saved} />
+      </div>
+      {saved && <Alert severity="warning"><T string="explorePreview.savedNotice" /></Alert>}
+      {meta.partial_warning && <Alert severity="warning"><T string="explorePreview.partial" /></Alert>}
+      {meta.excluded_columns.length > 0 && <Alert severity="info"><T string="explorePreview.excluded" /> {meta.excluded_columns.join(", ")}</Alert>}
+
+      <div className="overflow-hidden rounded-xl border border-gray-200 bg-white">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 px-2">
+          <Tabs value={tab} onChange={(_, value: string) => setTab(value)} textColor="secondary" indicatorColor="secondary" variant="scrollable" aria-label={translator("explorePreview.views")}>
+            {["data", "charts", "columns"].map((item) => <Tab key={item} value={item} id={`explore-tab-${item}`} aria-controls={`explore-panel-${item}`} label={translator(`explorePreview.tab_${item}`)} />)}
+          </Tabs>
+          <ToggleButtonGroup size="small" exclusive value={raw ? "raw" : "normalized"} onChange={(_, value: string | null) => { if (value) setRaw(value === "raw"); }} aria-label={translator("explorePreview.viewMode")}
+            sx={{ mr: 1, "& .MuiToggleButton-root.Mui-selected, & .MuiToggleButton-root.Mui-selected:hover": { bgcolor: "primary.main", color: "#000" } }}>
+            <ToggleButton value="normalized"><T string="explorePreview.normalized" /></ToggleButton>
+            <ToggleButton value="raw" disabled={!summary.raw}><T string="explorePreview.raw" /></ToggleButton>
+          </ToggleButtonGroup>
+        </div>
+        {raw && summary.raw && <Alert severity="info" sx={{ m: 2, mb: 0 }}>{summary.raw.info.note}</Alert>}
+        <div role="tabpanel" id={`explore-panel-${tab}`} aria-labelledby={`explore-tab-${tab}`}>
+          {tab === "data" ? <ExploreDataTab key={String(raw)} view={view} totalRows={meta.rows} />
+            : tab === "charts" ? <ExploreChartsTab view={view} />
+            : <ExploreColumnsTab view={view} />}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ExploreRequest({ transferProcessId, saved }: { transferProcessId: string; saved: boolean }) {
+  const [state, setState] = useState<LoadState>({ kind: "loading" });
   useEffect(() => {
     const controller = new AbortController();
     async function load() {
@@ -111,18 +122,23 @@ function PreviewRequest({ transferProcessId, assetId, saved }: { transferProcess
           method: saved ? "GET" : "POST", headers: { "Content-Type": "application/json" },
           body: saved ? undefined : JSON.stringify({ transferProcessId }), signal: controller.signal, cache: "no-store",
         });
-        const payload = await result.json();
-        if (!result.ok) throw new Error(typeof payload.error === "string" ? payload.error : "Data preview request failed.");
-        if (typeof payload.body !== "string" || typeof payload.status !== "number" || typeof payload.contentType !== "string") throw new Error("The preview server returned an invalid response.");
-        if (!controller.signal.aborted) setReceived(payload);
+        const payload = await result.json().catch(() => ({}));
+        if (!result.ok) throw new Error(typeof payload.error === "string" ? payload.error : "The dataset summary request failed.");
+        // Live route nests the explore summary under `analysis`; the saved sample is the summary itself.
+        const summary = payload?.analysis ?? payload;
+        if (!summary?.meta || !summary?.info || !summary?.schema) throw new Error("The pipelines returned an invalid summary.");
+        if (!controller.signal.aborted) setState({ kind: "ready", summary });
       } catch (error) {
-        if (!controller.signal.aborted) setState({ kind: "error", message: error instanceof Error ? error.message : "Data preview request failed." });
+        if (!controller.signal.aborted) setState({ kind: "error", message: error instanceof Error ? error.message : "The dataset summary request failed." });
       }
     }
     void load();
     return () => controller.abort();
   }, [transferProcessId, saved]);
-  return received ? <ReceivedData response={received} assetId={assetId} transferProcessId={transferProcessId} /> : <DataPreview state={state} />;
+
+  if (state.kind === "loading") return <div className="flex flex-col items-center gap-3 py-16"><LoadingSpinner /><p className="text-sm text-gray-500"><T string="explorePreview.loading" /></p></div>;
+  if (state.kind === "error") return <Alert severity="error">{state.message}</Alert>;
+  return <Summary summary={state.summary} transferProcessId={transferProcessId} saved={saved} />;
 }
 
 interface DataPreviewDialogProps {
@@ -130,10 +146,9 @@ interface DataPreviewDialogProps {
   transferProcessId: string;
   onClose: () => void;
   saved?: boolean;
-  title?: string;
 }
 
-export function DataPreviewDialog({ assetId, transferProcessId, onClose, saved = false, title }: DataPreviewDialogProps) {
+export function DataPreviewDialog({ assetId, transferProcessId, onClose, saved = false }: DataPreviewDialogProps) {
   const [expanded, setExpanded] = useState(false);
   const [attempt, setAttempt] = useState(0);
   return (
@@ -142,7 +157,7 @@ export function DataPreviewDialog({ assetId, transferProcessId, onClose, saved =
       onClose={onClose} aria-labelledby="data-preview-title" data-testid="data-preview-dialog">
       <DialogTitle id="data-preview-title">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <span>{title || <T string={saved ? "dataPreview.savedTitle" : "dataPreview.title"} />}</span>
+          <span><T string={saved ? "dataPreview.savedTitle" : "dataPreview.title"} /></span>
           <div>
             <Button color="secondary" size="small" onClick={() => setAttempt((value) => value + 1)}><T string="datasetExplorer.reload" /></Button>
             <Button color="secondary" size="small" onClick={() => setExpanded((value) => !value)} aria-pressed={expanded}><T string={expanded ? "datasetExplorer.restore" : "datasetExplorer.expand"} /></Button>
@@ -151,7 +166,11 @@ export function DataPreviewDialog({ assetId, transferProcessId, onClose, saved =
       </DialogTitle>
       <DialogContent>
         <div className="space-y-4">
-          <PreviewRequest key={`${transferProcessId}-${attempt}-${saved}`} transferProcessId={transferProcessId} assetId={assetId} saved={saved} />
+          <dl className="flex flex-wrap gap-x-8 gap-y-2 text-xs break-all text-gray-500">
+            <div><dt className="font-semibold"><T string="transferProcesses.headingAsset" /></dt><dd>{assetId}</dd></div>
+            {!saved && <div><dt className="font-semibold"><T string="dataPreview.transferId" /></dt><dd>{transferProcessId}</dd></div>}
+          </dl>
+          <ExploreRequest key={`${transferProcessId}-${attempt}-${saved}`} transferProcessId={transferProcessId} saved={saved} />
         </div>
       </DialogContent>
       <DialogActions><Button color="secondary" onClick={onClose}><T string="common.close" /></Button></DialogActions>
