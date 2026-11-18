@@ -1,4 +1,5 @@
 import type { Catalog } from "@think-it-labs/edc-connector-client";
+import { assessPortalOffer } from "@/domain/metadata-quality/portal-offer";
 
 export interface PortalOffer {
   assetId: string;
@@ -23,6 +24,8 @@ export function filterPortalOffers(offers: PortalOffer[], query: string, organiz
     [offer.assetTitle, offer.assetId, offer.descriptionShortText, offer.organizationName].some((value) => value.toLowerCase().includes(search)),
   );
   if (sort === "title") filtered.sort((a, b) => a.assetTitle.localeCompare(b.assetTitle));
+  // Highest metadata quality score first; equal scores keep the saved catalogue order.
+  if (sort === "quality") filtered.sort((a, b) => assessPortalOffer(b).score - assessPortalOffer(a).score);
   return filtered;
 }
 
