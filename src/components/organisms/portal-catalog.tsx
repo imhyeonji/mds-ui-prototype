@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Alert, Button, Card, CardActionArea, CardContent, Chip, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, TextField } from "@mui/material";
+import { Alert, Box, Button, Card, CardActionArea, CardContent, Chip, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, TextField } from "@mui/material";
+import { assessPortalOffer } from "@/domain/metadata-quality/portal-offer";
+import { useTranslator } from "@/i18n";
 import snapshot from "@/data/portal-catalog-snapshot.json";
 import { categoryLabel, filterPortalOffers, resolvePortalDataset, type PortalOffer } from "@/utilities/portal-catalog";
 
@@ -16,6 +18,23 @@ import ScheduleIcon from "@mui/icons-material/Schedule";
 const offers: PortalOffer[] = snapshot.dataOffers;
 const organizations = [...new Map(offers.map((offer) => [offer.organizationId, offer.organizationName])).entries()];
 const categories = [...new Set(offers.map((offer) => offer.dataCategory).filter(Boolean))];
+
+const QUALITY_RING_SIZE = 16;
+
+/** The offer's metadata quality score on its card: a small ring, the score out of 100 and its band. */
+function QualityScore({ offer }: { offer: PortalOffer }) {
+  const { translator } = useTranslator();
+  const { score, band } = assessPortalOffer(offer);
+  const title = translator("assets.metadataQuality.title");
+  const bandLabel = translator(`assets.metadataQuality.bands.${band}`);
+  return <span className="inline-flex items-center gap-1.5 text-gray-600" data-testid="portal-offer-quality" data-score={score} data-band={band} aria-label={`${title}: ${score}/100, ${bandLabel}`}>
+    <Box component="span" aria-hidden sx={{ position: "relative", display: "inline-flex", width: QUALITY_RING_SIZE, height: QUALITY_RING_SIZE }}>
+      <CircularProgress variant="determinate" value={100} size={QUALITY_RING_SIZE} thickness={6} sx={{ color: "grey.300", position: "absolute" }} />
+      <CircularProgress variant="determinate" value={score} size={QUALITY_RING_SIZE} thickness={6} sx={{ color: "secondary.main", position: "absolute" }} />
+    </Box>
+    <span aria-hidden>{title} <b className="text-gray-900">{score}</b>/100 · {bandLabel}</span>
+  </span>;
+}
 
 export function PortalCatalog() {
   const [statuses, setStatuses] = useState<Record<string, CatalogStatus>>({});
@@ -96,7 +115,7 @@ export function PortalCatalog() {
     <div className="flex flex-wrap items-end gap-4">
       <TextField fullWidth color="secondary" label="Search datasets" placeholder="Title, provider, asset ID or description" value={query} onChange={(event) => { setQuery(event.target.value); setPage(0); }} sx={{ flex: "1 1 320px" }} />
       <TextField select color="secondary" label="Sort by" value={sort} onChange={(event) => { setSort(event.target.value); setPage(0); }} sx={{ minWidth: 190 }}>
-        <MenuItem value="source">Saved catalogue order</MenuItem><MenuItem value="title">Title A–Z</MenuItem>
+        <MenuItem value="source">Saved catalogue order</MenuItem><MenuItem value="title">Title A–Z</MenuItem><MenuItem value="quality">Metadata quality: highest first</MenuItem>
       </TextField>
     </div>
     <div className="grid items-start gap-6 lg:grid-cols-[250px_minmax(0,1fr)]">
@@ -138,6 +157,7 @@ export function PortalCatalog() {
                 {offer.dataCategory && <span>{categoryLabel(offer.dataCategory)}</span>}
                 {offer.version && <span>Version {offer.version}</span>}
                 {offer.assetDataSourceAvailability && <span>Source: {offer.assetDataSourceAvailability}</span>}
+                <QualityScore offer={offer} />
                 <span className="ml-auto font-medium text-gray-900">View details →</span>
               </div>
             </CardContent>

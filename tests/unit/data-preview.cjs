@@ -8,9 +8,15 @@ const ts = require('typescript');
 const { PassThrough } = require('node:stream');
 const { EventEmitter } = require('node:events');
 const root = path.resolve(__dirname, '../..');
+// Source imports name modules with or without their .ts/.tsx extension, or by their folder's index file.
+const withExtension = (file) => {
+  if (/\.tsx?$/.test(file)) return file;
+  return [file + '.ts', file + '.tsx', file + '/index.ts', file + '/index.tsx']
+    .find((candidate) => fs.existsSync(path.join(root, candidate))) ?? file + '.ts';
+};
 function load(file, mocks = {}) {
   const filename = path.join(root, file);
-  const output = ts.transpileModule(fs.readFileSync(filename, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2021, jsx: ts.JsxEmit.ReactJSX } }).outputText;
+  const output = ts.transpileModule(fs.readFileSync(filename, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true, target: ts.ScriptTarget.ES2021, jsx: ts.JsxEmit.ReactJSX } }).outputText;
   const exports = {};
   vm.runInNewContext(output, {
     exports, Buffer, URL, Response, Request, AbortSignal, AbortController, TextDecoder, setTimeout, clearTimeout,
@@ -18,8 +24,8 @@ function load(file, mocks = {}) {
     require(name) {
       if (name in mocks) return mocks[name];
       if (name === 'server-only') return {};
-      if (name.startsWith('@/')) return load('src/' + name.slice(2) + '.ts', mocks);
-      if (name.startsWith('.')) return load(path.relative(root, path.resolve(path.dirname(filename), name)) + '.ts', mocks);
+      if (name.startsWith('@/')) return load(withExtension('src/' + name.slice(2)), mocks);
+      if (name.startsWith('.')) return load(withExtension(path.relative(root, path.resolve(path.dirname(filename), name))), mocks);
       return require(name);
     },
   }, { filename });
@@ -274,6 +280,57 @@ test('portal filters operate only on saved offers and do not mutate source order
   assert.equal(offers[0].assetId, first);
 });
 
+
+test('saved portal offers are scored with the asset form rules from the metadata they carry', () => {
+  const { assessPortalOffer } = load('src/domain/metadata-quality/portal-offer.ts');
+  const snapshot = JSON.parse(fs.readFileSync(path.join(root, 'src/data/portal-catalog-snapshot.json'), 'utf8'));
+  // 108-word description 19 + title 5 + version 2; no keywords or data category saved.
+  const accident = snapshot.dataOffers.find(o => o.assetTitle === 'BMW Accident');
+  assert.deepEqual([assessPortalOffer(accident).score, assessPortalOffer(accident).band], [26, 'Fair']);
+  assert.ok(snapshot.dataOffers.every(o => { const { score } = assessPortalOffer(o); return Number.isInteger(score) && score >= 0 && score <= 100; }));
+
+  const words = n => Array.from({ length: n }, (_, i) => `word${i}`).join(' ');
+  const offer = { assetId: 'parking-berlin', assetTitle: 'Parking occupancy Berlin', descriptionShortText: '', keywords: [], version: '', dataCategory: '' };
+  assert.equal(assessPortalOffer(offer).score, 5);
+  // A title that is only the asset ID earns nothing; the category "Other" earns 1 point.
+  assert.equal(assessPortalOffer({ ...offer, assetTitle: 'parking-berlin', dataCategory: 'OTHER' }).score, 1);
+  // Saved line breaks are the two characters "\n"; read as line breaks, a structured description earns its bonus.
+  assert.equal(assessPortalOffer({ ...offer, descriptionShortText: words(30) }).score, 5 + 14);
+  assert.equal(assessPortalOffer({ ...offer, descriptionShortText: `## Overview\\n${words(30)}` }).score, 5 + 14 + 3);
+});
+
+test('demo scores show every band in the saved catalogue', () => {
+  const { assessPortalOffer, DEMO_SCORES } = load('src/domain/metadata-quality/portal-offer.ts');
+  const offers = JSON.parse(fs.readFileSync(path.join(root, 'src/data/portal-catalog-snapshot.json'), 'utf8')).dataOffers;
+  const demo = offers.filter(o => `${o.connectorId}:${o.assetId}` in DEMO_SCORES);
+  assert.equal(demo.length, Object.keys(DEMO_SCORES).length);
+  assert.deepEqual(demo.map(o => [o.assetTitle, assessPortalOffer(o).score, assessPortalOffer(o).band]), [
+    ['BMW SRTI feed for DFRS', 86, 'Excellent'],
+    ['Mobito Anonymized Aggregated Vehicle Probe Data', 64, 'Good'],
+    ['Korean flex parking usage transactions', 70, 'Good'],
+  ]);
+  assert.deepEqual([...new Set(offers.map(o => assessPortalOffer(o).band))].sort(), ['Basic', 'Excellent', 'Fair', 'Good']);
+});
+
+test('portal offers sort by metadata quality, highest first, keeping saved order for equal scores', () => {
+  const { filterPortalOffers } = load('src/utilities/portal-catalog.ts');
+  const { assessPortalOffer } = load('src/domain/metadata-quality/portal-offer.ts');
+  const snapshot = JSON.parse(fs.readFileSync(path.join(root, 'src/data/portal-catalog-snapshot.json'), 'utf8'));
+  const offers = snapshot.dataOffers;
+  const first = offers[0].assetId;
+  const sorted = filterPortalOffers(offers, '', '', '', 'quality');
+  assert.equal(sorted.length, offers.length);
+  assert.equal(offers[0].assetId, first);
+  for (let i = 1; i < sorted.length; i++) {
+    const [previous, current] = [assessPortalOffer(sorted[i - 1]).score, assessPortalOffer(sorted[i]).score];
+    assert.ok(previous >= current);
+    if (previous === current) assert.ok(offers.indexOf(sorted[i - 1]) < offers.indexOf(sorted[i]));
+  }
+  // Sorting applies after the filters.
+  const bmw = filterPortalOffers(offers, '', 'MDSLW30JNM', '', 'quality');
+  assert.equal(bmw.length, 7);
+  assert.ok(bmw.every(o => o.organizationId === 'MDSLW30JNM'));
+});
 
 test('portal direct lookup accepts only the selected provider and asset', () => {
   const { resolvePortalDataset } = load('src/utilities/portal-catalog.ts');
