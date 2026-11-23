@@ -428,4 +428,52 @@ test('map tab labels the source columns and notes sampling', () => {
   assert.match(big, /explorePreview.mapSampled/);
   const geojson = renderToStaticMarkup(React.createElement(ExploreMapTab, { geo: { ...base, source: 'geojson', lat_column: null, lon_column: null, point_count: 1, total_valid: 1, sampled: false } }));
   assert.match(geojson, /explorePreview.mapGeojson/);
+test('completeness level: green from 95% present, red at 75% or less, orange in between', () => {
+  const { completenessLevel, presentPercent, COMPLETENESS_THRESHOLDS } = load('src/utilities/data-completeness.ts');
+  assert.deepEqual({ ...COMPLETENESS_THRESHOLDS }, { good: 95, poor: 75 });
+  for (const [present, level] of [[100, 'good'], [95, 'good'], [94.99, 'fair'], [85.75, 'fair'], [75.01, 'fair'], [75, 'poor'], [40, 'poor'], [0, 'poor']]) {
+    assert.equal(completenessLevel(present), level, `${present}% present should be ${level}`);
+  }
+  assert.equal(completenessLevel(null), 'unknown');
+  assert.equal(presentPercent(14.25), 85.75);
+  assert.equal(presentPercent(14.3), 85.7);
+  assert.equal(presentPercent(-3), 100);
+  assert.equal(presentPercent(140), 0);
+  assert.equal(presentPercent(Number.NaN), null);
+  assert.equal(presentPercent(undefined), null);
+});
+
+test('data completeness shows the present cells as a donut with a threshold legend on its right', () => {
+  const React = require('react');
+  const { renderToStaticMarkup } = require('react-dom/server');
+  const i18n = { useTranslator: () => ({ translator: (key) => key }) };
+  const { DataCompletenessChart } = load('src/components/molecules/data-completeness-chart.tsx', { '@/i18n': i18n });
+  const render = (health) => renderToStaticMarkup(React.createElement(DataCompletenessChart, { health }));
+  const fair = render({ missing_pct: 14.25, missing_cells: 342, total_cells: 2400 });
+  assert.match(fair, /data-level="fair"/);
+  assert.match(fair, /aria-label="[^"]*\(explorePreview.completenessLevel_fair\)"/);
+  const legend = [...fair.matchAll(/<li([^>]*)>.*?<span class="tabular-nums">([^<]+)<\/span><span>([^<]+)<\/span><\/li>/g)]
+    .map((m) => [m[2], m[3], m[1].includes('data-current="true"')]);
+  assert.deepEqual(legend, [
+    ['≥95%', 'explorePreview.completenessLevel_good', false],
+    ['75–95%', 'explorePreview.completenessLevel_fair', true],
+    ['≤75%', 'explorePreview.completenessLevel_poor', false],
+  ]);
+  assert.match(fair, /background-color:#22c55e[\s\S]*background-color:#f59e0b[\s\S]*background-color:#ef4444/);
+  assert.match(fair, /stroke="#f59e0b"/);
+  assert.match(fair, /stroke-dasharray="85.75 14.25"/);
+  assert.equal(fair.match(/stroke-dasharray/g).length, 1);
+  assert.match(fair, /aria-label="explorePreview.completeness: 85.75%, 2,058 explorePreview.completenessOf 2,400 \(explorePreview.completenessLevel_fair\)"/);
+  assert.match(fair, />85.8%</);
+  assert.doesNotMatch(fair, /342 \/|14.25%/);
+  assert.doesNotMatch(fair, /explorePreview.present/);
+  assert.equal((fair.replace(/aria-label="[^"]*"/g, '').match(/85\.\d+%/g) || []).join(), '85.8%', 'percentage appears only inside the ring');
+  assert.match(fair, /<figcaption><span[^>]*>explorePreview.completeness<\/span><span[^>]*>2,058 explorePreview.completenessOf 2,400<\/span><\/figcaption><svg[\s\S]*<\/svg><ul/);
+  assert.match(render({ missing_pct: 0, missing_cells: 0, total_cells: 50 }), /data-level="good"[\s\S]*>50 explorePreview.completenessOf 50<[\s\S]*>100%</);
+  assert.match(render({ missing_pct: 25, missing_cells: 25, total_cells: 100 }), /data-level="poor"/);
+  const empty = render({ missing_pct: 100, missing_cells: 10, total_cells: 10 });
+  assert.doesNotMatch(empty, /stroke-dasharray/);
+  const unknown = render({ missing_pct: Number.NaN, missing_cells: 0, total_cells: 0 });
+  assert.match(unknown, /data-level="unknown"/);
+  assert.match(unknown, />—</);
 });

@@ -3,6 +3,7 @@ import { ExploreChartsTab } from "@/components/molecules/explore-charts-tab";
 import { ExploreColumnsTab } from "@/components/molecules/explore-columns-tab";
 import { ExploreDataTab } from "@/components/molecules/explore-data-tab";
 import { ExploreMapTab } from "@/components/molecules/explore-map-tab";
+import { DataCompletenessChart } from "@/components/molecules/data-completeness-chart";
 import { T, useTranslator } from "@/i18n";
 import { downloadFormats, viewOf, type ExploreResponse } from "@/utilities/explore-types";
 import { geoOf } from "@/utilities/geo-map";
@@ -81,14 +82,16 @@ function Summary({ summary, transferProcessId, saved }: { summary: ExploreRespon
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
         <dl className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           <Fact label="explorePreview.rows">{meta.rows.toLocaleString("en")}</Fact>
           <Fact label="explorePreview.cols">{meta.cols}</Fact>
           <Fact label="explorePreview.format">{meta.format.toUpperCase()}{meta.container ? ` (${meta.container.toUpperCase()})` : ""}</Fact>
           <Fact label="explorePreview.pages">{meta.pages}</Fact>
-          <Fact label="explorePreview.missing">{health.missing_pct}% ({health.missing_cells.toLocaleString("en")} / {health.total_cells.toLocaleString("en")})</Fact>
           <Fact label="explorePreview.generatedAt">{meta.generated_at}</Fact>
         </dl>
+        <DataCompletenessChart health={health} />
+        </div>
         <DownloadMenu summary={summary} transferProcessId={transferProcessId} disabled={saved} />
       </div>
       {saved && <Alert severity="warning"><T string="explorePreview.savedNotice" /></Alert>}
