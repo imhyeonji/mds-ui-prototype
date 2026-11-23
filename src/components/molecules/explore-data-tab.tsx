@@ -1,6 +1,6 @@
 import { T, useTranslator } from "@/i18n";
 import { formatCell, type ExploreView, type Row } from "@/utilities/explore-types";
-import { MenuItem, TextField } from "@mui/material";
+import { MenuItem, Tab, Tabs, TextField } from "@mui/material";
 import { useState, type ReactNode } from "react";
 
 const ROW_OPTIONS = [5, 10, 25, 50];
@@ -56,10 +56,20 @@ export function ExploreDataTab({ view, totalRows }: { view: ExploreView; totalRo
     .filter((name) => statColumns.some((column) => name in stats[column]));
   const rowsLabel = translator("explorePreview.rowsShown");
   const tail = view.tail ?? [];
+  // Tail only when the dataset is big enough that head doesn't already show every row.
+  const sections = totalRows >= 40 && tail.length > 0 ? ["head", "tail", "info", "describe"] : ["head", "info", "describe"];
+  const [picked, setPicked] = useState("head");
+  const section = sections.includes(picked) ? picked : "head";
 
   return (
-    <div className="space-y-8 p-5">
-      <Section title="explorePreview.info" note={view.info.note}>
+    <div className="space-y-5 p-5">
+      <Tabs value={section} onChange={(_, value: string) => setPicked(value)} textColor="secondary" indicatorColor="secondary" variant="scrollable"
+        aria-label={translator("explorePreview.dataSections")} sx={{ minHeight: 36, borderBottom: 1, borderColor: "divider", "& .MuiTab-root": { minHeight: 36, py: 0.5, textTransform: "none" } }}>
+        {sections.map((item) => <Tab key={item} value={item} id={`explore-data-tab-${item}`} aria-controls={`explore-data-panel-${item}`} label={translator(`explorePreview.${item}`)} />)}
+      </Tabs>
+
+      <div role="tabpanel" id={`explore-data-panel-${section}`} aria-labelledby={`explore-data-tab-${section}`}>
+      {section === "info" && <Section title="explorePreview.info" note={view.info.note}>
         <table className="w-full border-collapse text-sm">
           <thead><tr>{["column", "dtype", "type", "nonNull", "nullPct", "leadingZeros", "coerced"].map((key) => <th key={key} scope="col" className={headClass}><T string={`explorePreview.${key}`} /></th>)}</tr></thead>
           <tbody>{view.info.columns.map((column) => <tr key={column.column} className="even:bg-gray-50">
@@ -72,13 +82,13 @@ export function ExploreDataTab({ view, totalRows }: { view: ExploreView; totalRo
             <td className={`${cellClass} text-right tabular-nums`}>{column.coerced || ""}</td>
           </tr>)}</tbody>
         </table>
-      </Section>
+      </Section>}
 
-      <Section title="explorePreview.head" height={rowsHeight(headRows)} control={<RowCount value={headRows} max={view.head.length || 5} onChange={setHeadRows} label={rowsLabel} />}>
+      {section === "head" && <Section title="explorePreview.head" height={rowsHeight(headRows)} control={<RowCount value={headRows} max={view.head.length || 5} onChange={setHeadRows} label={rowsLabel} />}>
         <RowsTable rows={view.head.slice(0, headRows)} />
-      </Section>
+      </Section>}
 
-      <Section title="explorePreview.describe" note={view.describe.note}>
+      {section === "describe" && <Section title="explorePreview.describe" note={view.describe.note}>
         {statColumns.length ? (
           <table className="w-full border-collapse text-sm">
             <thead><tr><th scope="col" className={headClass} />{statColumns.map((column) => <th key={column} scope="col" className={headClass}>{column}</th>)}</tr></thead>
@@ -88,13 +98,14 @@ export function ExploreDataTab({ view, totalRows }: { view: ExploreView; totalRo
             </tr>)}</tbody>
           </table>
         ) : <p className="p-4 text-sm text-gray-500"><T string="explorePreview.noRows" /></p>}
-      </Section>
+      </Section>}
 
-      {totalRows >= 40 && tail.length > 0 && (
+      {section === "tail" && (
         <Section title="explorePreview.tail" height={rowsHeight(tailRows)} control={<RowCount value={tailRows} max={tail.length} onChange={setTailRows} label={rowsLabel} />}>
           <RowsTable rows={tail.slice(-tailRows)} />
         </Section>
       )}
+      </div>
     </div>
   );
 }
