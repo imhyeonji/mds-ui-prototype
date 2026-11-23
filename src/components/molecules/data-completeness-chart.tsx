@@ -33,13 +33,14 @@ export function DataCompletenessChart({ health }: { health: Health }) {
   const ringText = present === null ? "—" : formatPercent(present, 1);
 
   return (
-    <section className="text-sm" data-testid="data-completeness" data-level={level} aria-labelledby="data-completeness-title">
-      <figure className="m-0 flex items-center gap-3">
+    <section className="min-w-0 flex-1 text-sm" data-testid="data-completeness" data-level={level} aria-labelledby="data-completeness-title">
+      <figure className="m-0 flex w-full items-center gap-3">
         <figcaption>
           <span id="data-completeness-title" className="block font-semibold">{label}</span>
           <span className="tabular-nums">{figures}</span>
         </figcaption>
-        <svg viewBox="0 0 36 36" width={SIZE} height={SIZE} role="img" className="shrink-0"
+        {/* ml-auto here and mr-auto on the legend centre the ring + legend between the caption and the download button. */}
+        <svg viewBox="0 0 36 36" width={SIZE} height={SIZE} role="img" className="ml-auto shrink-0"
           aria-label={`${label}: ${present === null ? "—" : formatPercent(present, 2)}, ${figures} (${translator(`explorePreview.completenessLevel_${level}`)})`}>
           <circle cx="18" cy="18" r={RADIUS} fill="none" stroke={TRACK} strokeWidth="4" />
           {present !== null && present > 0 && (
@@ -52,7 +53,7 @@ export function DataCompletenessChart({ health }: { health: Health }) {
           </text>
         </svg>
         {/* Legend: what each colour means. The dataset's own rating is emphasised. */}
-        <ul className="m-0 list-none space-y-0.5 p-0 text-xs" aria-label={translator("explorePreview.completenessLegend")}>
+        <ul className="m-0 mr-auto list-none space-y-0.5 p-0 text-xs" aria-label={translator("explorePreview.completenessLegend")}>
           {LEGEND.map(({ level: item, range }) => (
             <li key={item} className={`flex items-center gap-1.5 ${item === level ? "font-semibold text-gray-900" : "text-gray-500"}`}
               data-current={item === level || undefined}>

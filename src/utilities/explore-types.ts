@@ -41,6 +41,17 @@ export interface ExploreView {
 /** One map point: [lat, lon, row, count]. `row` is the 0-based row in the full dataset; `count` is how many rows it stands for. */
 export type GeoPoint = [lat: number, lon: number, row: number, count: number];
 
+/** One place in `geo.regions`: nearest city (offline GeoNames lookup), weighted by rows. */
+export interface GeoRegion {
+  city: string | null;
+  admin1: string | null;
+  /** ISO 3166-1 alpha-2, e.g. "DK". */
+  country_code: string | null;
+  count: number;
+  /** Share of `total_valid`, in percent. */
+  pct: number;
+}
+
 /** The explore response's `geo` block (see the Explore API map points handover). Points arrive cleaned and thinned. */
 export interface ExploreGeo {
   source: "columns" | "geojson";
@@ -51,6 +62,8 @@ export interface ExploreGeo {
   total_valid: number;
   sampled: boolean;
   cell_deg: number | null;
+  /** Largest places first. Missing or null when the pipeline couldn't look regions up. */
+  regions?: { items: GeoRegion[]; other_count: number } | null;
   bounds: { min_lat: number; max_lat: number; min_lon: number; max_lon: number };
 }
 

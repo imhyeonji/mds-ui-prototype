@@ -5,6 +5,7 @@ import { ExploreDataTab } from "@/components/molecules/explore-data-tab";
 import { ExploreMapTab } from "@/components/molecules/explore-map-tab";
 import { DataCompletenessChart } from "@/components/molecules/data-completeness-chart";
 import { T, useTranslator } from "@/i18n";
+import { formatDateTime } from "@/utilities/date";
 import { downloadFormats, viewOf, type ExploreResponse } from "@/utilities/explore-types";
 import { geoOf } from "@/utilities/geo-map";
 import {
@@ -18,6 +19,12 @@ function filenameFrom(disposition: string | null, fallback: string) {
   const match = /filename="?([^";]+)"?/i.exec(disposition || "");
   return match?.[1] || fallback;
 }
+
+// The pipeline sends UTC ISO ("2026-11-17T01:32:42Z"); show it in the app's date format and the viewer's time zone.
+const generatedAt = (iso: string) => {
+  const ms = Date.parse(iso);
+  return Number.isNaN(ms) ? iso : formatDateTime(ms);
+};
 
 function Fact({ label, children }: { label: string; children: ReactNode }) {
   return <div><dt className="font-semibold"><T string={label} /></dt><dd>{children}</dd></div>;
@@ -82,13 +89,13 @@ function Summary({ summary, transferProcessId, saved }: { summary: ExploreRespon
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+        <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-8 gap-y-3">
         <dl className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <Fact label="explorePreview.generatedAt">{generatedAt(meta.generated_at)}</Fact>
           <Fact label="explorePreview.rows">{meta.rows.toLocaleString("en")}</Fact>
           <Fact label="explorePreview.cols">{meta.cols}</Fact>
           <Fact label="explorePreview.format">{meta.format.toUpperCase()}{meta.container ? ` (${meta.container.toUpperCase()})` : ""}</Fact>
           <Fact label="explorePreview.pages">{meta.pages}</Fact>
-          <Fact label="explorePreview.generatedAt">{meta.generated_at}</Fact>
         </dl>
         <DataCompletenessChart health={health} />
         </div>
