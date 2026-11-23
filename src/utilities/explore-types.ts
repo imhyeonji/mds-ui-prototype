@@ -38,6 +38,22 @@ export interface ExploreView {
   ranges: Ranges;
 }
 
+/** One map point: [lat, lon, row, count]. `row` is the 0-based row in the full dataset; `count` is how many rows it stands for. */
+export type GeoPoint = [lat: number, lon: number, row: number, count: number];
+
+/** The explore response's `geo` block (see the Explore API map points handover). Points arrive cleaned and thinned. */
+export interface ExploreGeo {
+  source: "columns" | "geojson";
+  lat_column: string | null;
+  lon_column: string | null;
+  points: GeoPoint[];
+  point_count: number;
+  total_valid: number;
+  sampled: boolean;
+  cell_deg: number | null;
+  bounds: { min_lat: number; max_lat: number; min_lon: number; max_lon: number };
+}
+
 export interface ExploreResponse extends ExploreView {
   meta: {
     asset_id: string;
@@ -52,6 +68,8 @@ export interface ExploreResponse extends ExploreView {
     generated_at: string;
   };
   health: { missing_pct: number; missing_cells: number; total_cells: number };
+  /** Ready-to-plot GPS points; null (or absent in older responses) when the dataset has no coordinates. */
+  geo?: ExploreGeo | null;
   raw?: ExploreView;
   schema: { source: Record<string, unknown> };
 }

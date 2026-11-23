@@ -2,9 +2,11 @@ import { LoadingSpinner } from "@/components/atoms/loading-spinner";
 import { ExploreChartsTab } from "@/components/molecules/explore-charts-tab";
 import { ExploreColumnsTab } from "@/components/molecules/explore-columns-tab";
 import { ExploreDataTab } from "@/components/molecules/explore-data-tab";
+import { ExploreMapTab } from "@/components/molecules/explore-map-tab";
 import { DataCompletenessChart } from "@/components/molecules/data-completeness-chart";
 import { T, useTranslator } from "@/i18n";
 import { downloadFormats, viewOf, type ExploreResponse } from "@/utilities/explore-types";
+import { geoOf } from "@/utilities/geo-map";
 import {
   Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, Menu, MenuItem, Tab, Tabs, ToggleButton, ToggleButtonGroup,
 } from "@mui/material";
@@ -73,6 +75,9 @@ function Summary({ summary, transferProcessId, saved }: { summary: ExploreRespon
   const [raw, setRaw] = useState(false);
   const view = viewOf(summary, raw);
   const { meta, health } = summary;
+  // The Map tab exists only when the pipeline found coordinates. There is no raw.geo, so it ignores the raw toggle.
+  const geo = geoOf(summary);
+  const tabs = geo ? ["data", "charts", "columns", "map"] : ["data", "charts", "columns"];
 
   return (
     <div className="space-y-4">
@@ -96,7 +101,7 @@ function Summary({ summary, transferProcessId, saved }: { summary: ExploreRespon
       <div className="overflow-hidden rounded-xl border border-gray-200 bg-white">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 px-2">
           <Tabs value={tab} onChange={(_, value: string) => setTab(value)} textColor="secondary" indicatorColor="secondary" variant="scrollable" aria-label={translator("explorePreview.views")}>
-            {["data", "charts", "columns"].map((item) => <Tab key={item} value={item} id={`explore-tab-${item}`} aria-controls={`explore-panel-${item}`} label={translator(`explorePreview.tab_${item}`)} />)}
+            {tabs.map((item) => <Tab key={item} value={item} id={`explore-tab-${item}`} aria-controls={`explore-panel-${item}`} label={translator(`explorePreview.tab_${item}`)} />)}
           </Tabs>
           <ToggleButtonGroup size="small" exclusive value={raw ? "raw" : "normalized"} onChange={(_, value: string | null) => { if (value) setRaw(value === "raw"); }} aria-label={translator("explorePreview.viewMode")}
             sx={{ mr: 1, "& .MuiToggleButton-root.Mui-selected, & .MuiToggleButton-root.Mui-selected:hover": { bgcolor: "primary.main", color: "#000" } }}>
@@ -108,6 +113,7 @@ function Summary({ summary, transferProcessId, saved }: { summary: ExploreRespon
         <div role="tabpanel" id={`explore-panel-${tab}`} aria-labelledby={`explore-tab-${tab}`}>
           {tab === "data" ? <ExploreDataTab key={String(raw)} view={view} totalRows={meta.rows} />
             : tab === "charts" ? <ExploreChartsTab view={view} />
+            : tab === "map" && geo ? <ExploreMapTab geo={geo} />
             : <ExploreColumnsTab view={view} />}
         </div>
       </div>

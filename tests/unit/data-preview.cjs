@@ -375,6 +375,59 @@ test('catalogue status matches provider and asset, prioritizes contracts and exc
   assert.equal(Object.keys(buildCatalogStatuses([{...agreement,consumerId:'other'}],[],[],'me')).length,0);
 });
 
+test('map tab appears only for a geo block with points', () => {
+  const { geoOf } = load('src/utilities/geo-map.ts');
+  const geo = { points: [[55.67, 12.56, 0, 1]] };
+  assert.equal(geoOf({ geo }), geo);
+  assert.equal(geoOf({ geo: null }), null);
+  assert.equal(geoOf({}), null);
+  assert.equal(geoOf({ geo: { points: [] } }), null);
+});
+
+test('map markers grow with count and bounds keep the [lat, lon] order', () => {
+  const { markerRadius, maxCountOf, leafletBounds, MARKER_RADIUS } = load('src/utilities/geo-map.ts');
+  assert.equal(markerRadius(1, 1), MARKER_RADIUS.min);
+  assert.equal(markerRadius(1, 400), MARKER_RADIUS.min);
+  assert.equal(markerRadius(400, 400), MARKER_RADIUS.max);
+  assert.ok(markerRadius(100, 400) > MARKER_RADIUS.min && markerRadius(100, 400) < MARKER_RADIUS.max);
+  assert.equal(markerRadius(9999, 400), MARKER_RADIUS.max);
+  assert.equal(maxCountOf({ points: [[0, 0, 0, 3], [0, 0, 1, 412], [0, 0, 2, 58]] }), 412);
+  assert.equal(JSON.stringify(leafletBounds({ bounds: { min_lat: 27.6, max_lat: 27.7, min_lon: 85.2, max_lon: 85.4 } })), '[[27.6,85.2],[27.7,85.4]]');
+});
+
+test('saved Copenhagen sample carries a plottable geo block', () => {
+  const sample = JSON.parse(fs.readFileSync(path.join(root, 'src/data/copenhagen-explore.json'), 'utf8'));
+  const { geoOf } = load('src/utilities/geo-map.ts');
+  const geo = geoOf(sample);
+  assert.ok(geo);
+  assert.equal(geo.points.length, geo.point_count);
+  assert.equal(geo.sampled, false);
+  for (const [lat, lon] of geo.points) {
+    assert.ok(lat >= geo.bounds.min_lat && lat <= geo.bounds.max_lat && lon >= geo.bounds.min_lon && lon <= geo.bounds.max_lon);
+    assert.ok(lat > 55 && lat < 56 && lon > 12 && lon < 13, 'Copenhagen, with latitude first');
+  }
+});
+
+test('map tab labels the source columns and notes sampling', () => {
+  const React = require('react');
+  const { renderToStaticMarkup } = require('react-dom/server');
+  const translate = (key) => key;
+  const mocks = {
+    '@/i18n': { useTranslator: () => ({ translator: translate }), T: ({ string }) => string },
+    'next/dynamic': () => () => null,
+    '@/components/atoms/loading-spinner': { LoadingSpinner: () => null },
+  };
+  const { ExploreMapTab } = load('src/components/molecules/explore-map-tab.tsx', mocks);
+  const base = { source: 'columns', lat_column: 'gps_lat', lon_column: 'gps_lng', points: [[1, 2, 0, 1]], cell_deg: null, bounds: { min_lat: 1, max_lat: 1, min_lon: 2, max_lon: 2 } };
+  const small = renderToStaticMarkup(React.createElement(ExploreMapTab, { geo: { ...base, point_count: 100, total_valid: 100, sampled: false } }));
+  assert.match(small, /<code>gps_lat<\/code> \/ <code>gps_lng<\/code>/);
+  assert.match(small, />100 explorePreview.mapPoints</);
+  assert.doesNotMatch(small, /explorePreview.mapSampled/);
+  const big = renderToStaticMarkup(React.createElement(ExploreMapTab, { geo: { ...base, point_count: 5000, total_valid: 337020, sampled: true, cell_deg: 0.0021 } }));
+  assert.match(big, /explorePreview.mapShowing 5,000 explorePreview.mapOf 337,020 explorePreview.mapPoints/);
+  assert.match(big, /explorePreview.mapSampled/);
+  const geojson = renderToStaticMarkup(React.createElement(ExploreMapTab, { geo: { ...base, source: 'geojson', lat_column: null, lon_column: null, point_count: 1, total_valid: 1, sampled: false } }));
+  assert.match(geojson, /explorePreview.mapGeojson/);
 test('completeness level: green from 95% present, red at 75% or less, orange in between', () => {
   const { completenessLevel, presentPercent, COMPLETENESS_THRESHOLDS } = load('src/utilities/data-completeness.ts');
   assert.deepEqual({ ...COMPLETENESS_THRESHOLDS }, { good: 95, poor: 75 });
