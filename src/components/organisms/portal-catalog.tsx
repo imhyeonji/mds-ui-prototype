@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Alert, Box, Button, Card, CardActionArea, CardContent, Chip, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, TextField } from "@mui/material";
+import { Alert, Box, Button, Card, CardActionArea, CardContent, Chip, CircularProgress, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Tab, Tabs, TextField } from "@mui/material";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { assessPortalOffer } from "@/domain/metadata-quality/portal-offer";
 import { useTranslator } from "@/i18n";
 import snapshot from "@/data/portal-catalog-snapshot.json";
@@ -34,6 +36,22 @@ function QualityScore({ offer }: { offer: PortalOffer }) {
     </Box>
     <span aria-hidden>{title} <b className="text-gray-900">{score}</b>/100 · {bandLabel}</span>
   </span>;
+}
+
+const detailTabs = ["Overview", "Technical information", "Provider and conditions"];
+
+function descriptionMarkdown(text: string) {
+  // The snapshot includes escaped line breaks and technical notation such as 10**8.
+  return text.replaceAll("\\n", "\n").replace(/(\d)\*\*(?=\d)/g, "$1\\*\\*");
+}
+
+function DetailFields({ fields }: { fields: string[][] }) {
+  return <dl className="divide-y divide-gray-100 text-sm">
+    {fields.map(([label, value]) => <div key={label} className="grid gap-1 py-2 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-4">
+      <dt className="font-semibold text-gray-600">{label}</dt>
+      <dd className="m-0 break-words">{value || "Not provided"}</dd>
+    </div>)}
+  </dl>;
 }
 
 export function PortalCatalog() {
@@ -92,6 +110,7 @@ export function PortalCatalog() {
       if (currentRequest === requestId.current) setLoading(false);
     }
   };
+  const [detailTab, setDetailTab] = useState(0);
   const [query, setQuery] = useState("");
   const [organization, setOrganization] = useState("");
   const [category, setCategory] = useState("");
@@ -145,14 +164,16 @@ export function PortalCatalog() {
         </div>
         {!visible.length && <Alert severity="info" action={<Button color="inherit" onClick={clear}>Clear filters</Button>}>No saved datasets match your search.</Alert>}
         {pageOffers.map((offer) => <Card key={`${offer.connectorId}:${offer.assetId}`} variant="outlined" sx={{ borderRadius: 3 }} data-testid="portal-offer">
-          <CardActionArea onClick={() => { setLoadError(""); setSelected(offer); }} aria-label={`View details: ${offer.assetTitle || offer.assetId}`}>
+          <CardActionArea onClick={() => { setLoadError(""); setDetailTab(0); setSelected(offer); }} aria-label={`View details: ${offer.assetTitle || offer.assetId}`}>
             <CardContent className="space-y-2 !p-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="text-sm font-medium text-gray-600">{offer.organizationName}</p>
                 <span className="text-xs text-gray-500">Provider at capture: {offer.connectorOnlineStatus.toLowerCase()}</span>
               </div>
               <div className="flex flex-wrap items-center gap-2"><h3 className="text-lg font-semibold tracking-tight text-gray-900 break-words">{offer.assetTitle || offer.assetId}</h3>{statusBadge(offer)}</div>
-              <p className="line-clamp-2 text-sm leading-5 text-gray-600">{offer.descriptionShortText.replaceAll("\\n", " ").replace(/\s+/g, " ") || "No description provided."}</p>
+              <div className="line-clamp-2 text-sm leading-5 text-gray-600">
+                <Markdown allowedElements={["strong", "em"]} unwrapDisallowed>{descriptionMarkdown(offer.descriptionShortText).replace(/\s+/g, " ") || "No description provided."}</Markdown>
+              </div>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-gray-100 pt-2 text-xs text-gray-500">
                 {offer.dataCategory && <span>{categoryLabel(offer.dataCategory)}</span>}
                 {offer.version && <span>Version {offer.version}</span>}
@@ -167,13 +188,24 @@ export function PortalCatalog() {
     </div>
     <Dialog open={!!selected} onClose={closeDetails} fullWidth maxWidth="md" aria-labelledby="portal-offer-title">
       {selected && <>
-        <DialogTitle id="portal-offer-title">{selected.assetTitle}</DialogTitle>
-        <DialogContent className="space-y-5">
-          <div className="flex flex-wrap gap-2"><Chip size="small" label="Saved portal metadata" />{statusBadge(selected)}</div>
-          <p className="whitespace-pre-wrap break-words text-sm leading-6">{selected.descriptionShortText.replaceAll("\\n", "\n")}</p>
-          <dl className="grid gap-4 text-sm sm:grid-cols-2">
-            {[["Provider", selected.organizationName], ["Asset ID", selected.assetId], ["Connector ID", selected.connectorId], ["Category", categoryLabel(selected.dataCategory)], ["Data format / model", "Not included in this saved response"], ["Terms / transfer methods", "Retrieve from the provider's connector"]].map(([label, value]) => <div key={label}><dt className="font-medium text-gray-500">{label}</dt><dd className="mt-1 break-all">{value}</dd></div>)}
-          </dl>
+        <DialogTitle component="div" sx={{ bgcolor: "grey.50" }}>
+          <p className="mb-1 text-sm font-medium text-gray-600">{selected.organizationName}</p>
+          <h2 id="portal-offer-title" className="text-2xl font-bold tracking-tight">{selected.assetTitle || selected.assetId}</h2>
+          <div className="mt-2 flex flex-wrap gap-2"><Chip size="small" label="Saved portal metadata" />{statusBadge(selected)}</div>
+        </DialogTitle>
+        <Tabs value={detailTab} onChange={(_, tab: number) => setDetailTab(tab)} variant="scrollable" scrollButtons="auto" aria-label="Dataset details" textColor="secondary" indicatorColor="secondary" sx={{ px: 2, flexShrink: 0 }}>
+          {detailTabs.map((label, index) => <Tab key={label} id={`offer-tab-${index}`} aria-controls="offer-panel" label={label} sx={{ textTransform: "none", "&.Mui-selected": { fontWeight: 700 } }} />)}
+        </Tabs>
+        <DialogContent dividers key={detailTab} id="offer-panel" role="tabpanel" aria-labelledby={`offer-tab-${detailTab}`} sx={{ height: "min(52vh, 480px)", overflowWrap: "anywhere" }}>
+          {detailTab === 0 && <>
+            <DetailFields fields={[["Category", categoryLabel(selected.dataCategory)], ["Keywords", selected.keywords.filter(Boolean).join(", ")]]} />
+            <h3 className="mb-2 mt-4 text-sm font-semibold text-gray-600">Description</h3>
+            <div className="markdown-description [&_p]:whitespace-pre-line [&_strong]:font-bold">
+              <Markdown remarkPlugins={[remarkGfm]}>{descriptionMarkdown(selected.descriptionShortText) || "No description provided."}</Markdown>
+            </div>
+          </>}
+          {detailTab === 1 && <DetailFields fields={[["Asset ID", selected.assetId], ["Version", selected.version], ["Source type", selected.assetDataSourceAvailability], ["Data format / model", "Not included in this saved response"]]} />}
+          {detailTab === 2 && <DetailFields fields={[["Provider", selected.organizationName], ["Connector ID", selected.connectorId], ["Terms / transfer methods", "Retrieve from the provider's connector"]]} />}
         </DialogContent>
         {(loadError || loading) && <div className="shrink-0 border-t border-gray-200 px-6 py-3" data-testid="catalog-lookup-status">
           {loadError && <Alert severity="error" role="alert">{loadError}</Alert>}
