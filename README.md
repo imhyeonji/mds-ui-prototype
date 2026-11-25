@@ -56,6 +56,12 @@ Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · MUI · Re
 
 ## Running the project
 
+### Try the hosted version
+
+A deployment connected to our connector, with the pipelines wired up, is available at **<https://mds.hyeonji.me>**. Nothing to install: open it to browse the catalogue, see Metadata Scores and use Dataset Explorer.
+
+To run the app yourself, follow the steps below.
+
 ### Prerequisites
 
 - Node.js 26 (the version used by the Dockerfile) and [Yarn](https://yarnpkg.com) 1.x
